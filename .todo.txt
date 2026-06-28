@@ -1,0 +1,8 @@
+allsets delete doesnt delete dist_2_pinks correctly
+
+delete equi greys : costy
+delete hard greys: costy
+
+test speed of ELETE EQUI GREYS DIST FASTER TEST
+
+link_sums = [(link, sum( [ max(0,5-x)**2 for x in dist_2_pinks[link].values() ] )*len(ALLSETS[link].links) - ALLSETS[link].cost()) for link in ALLSETS_get_pinks(False)]
