@@ -14,11 +14,17 @@ from common import find_all_branches, KEYWORDS, dictionary, Set
 # it gives the distance from every SET (key) to every PINK SETS (value)
 
 def load(x:str):
+    """
+    Load a .pickle file into a variable
+    """
     "load file x into variable x"
     with open(x+".pickle", 'rb') as handle:
         globals()[f"{x}"] = pickle.load(handle)
 
 def save(x:str, *args):
+    """
+    Save a variable into a .pickle file
+    """
     "save variable x into file x"
     with open(x+".pickle", 'wb') as handle:
         try:
@@ -278,7 +284,7 @@ def MERGE_GREYS():
     while somethingHappened:
         somethingHappened = False
         
-        GREYS = Set.get_pinks_or_greys(ALLSETS, False)
+        GREYS = Set.filter_sets(ALLSETS, False)
 
         for key,A in GREYS.items():
             # print(f"finding merges for {key}")
@@ -397,7 +403,7 @@ def DELETE_HARD_GREYS():
     At the end, delete every grey SETS not mentionned.
     slow to run
     """
-    PINKS = Set.get_pinks_or_greys(ALLSETS)
+    PINKS = Set.filter_sets(ALLSETS)
     necessary_sets = set()
     done = [set()]
     for A in PINKS:
@@ -411,7 +417,7 @@ def DELETE_HARD_GREYS():
             necessary_sets.update( find_shortest_pathS(A,B) )
 
     # load("necessary_sets")
-    GREYS = Set.get_pinks_or_greys(ALLSETS, False)
+    GREYS = Set.filter_sets(ALLSETS, False)
     for GREY in GREYS:
         if GREY not in necessary_sets:
             log(f"  the set of {GREY} is unecessary")
@@ -486,7 +492,7 @@ def ALLSETS_calculate_dist_to_pinks(SAVE=False):
     it will not take into account PINKs that use other PINKs to
     get to them, but it will take into account every PINK that
     has an alternative path with only GREY sets)
-    slow"""
+    slow to run"""
     
     if all( len(x.words)==1 for x in ALLSETS_get_pinks(False).values()):
         mode = "simple" # only counts the steps

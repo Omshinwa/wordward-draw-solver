@@ -7,25 +7,21 @@ with open("all_picture_words.txt", "r") as file:
     KEYWORDS = set(i)
 
 # dictionary
-with open("dictionary.csv", "r") as file:
+with open("dictionary.txt", "r") as file:
     data = file.read()
     dictionary = data.split("\n")
 
-# dictionary
-# with open("KEYWORDS-2459.txt", "r") as file:
-#     data = file.read()
-#     dictionary = data.split("\n")
-
 class Set:
-    def __init__(self, set_of_words: set, links):
-        self.isKey = False
-        for word in set_of_words:
+    def __init__(self, words: set[str], links: set[str]):
+        # links: ids of connected Sets (each is a key into ALLSETS)
+        self.isKey = False  # is the set part of the solution?
+        self.words = set(words)
+        self.links = links # connections to other sets
+        
+        for word in words:
             if word in KEYWORDS:
                 self.isKey = True
                 break
-        
-        self.words = set(set_of_words)
-        self.links = links
     
     def cost(self):
         i = 0
@@ -44,25 +40,37 @@ class Set:
         return len(self.words) > len(other.words)
     
     @staticmethod
-    def get_pinks_or_greys(ALLSETS:dict, isKey=True):
-        "returns all PINKS or GREYS from ALLSETS, true return PINKS "
+    def filter_sets(ALLSETS: dict[str, "Set"], pink=True):
+        """
+        returns all PINKS (pink=True) or GREYS (pink=False) Sets from ALLSETS.
+        """
         PINKS = {}
         for key, SET in ALLSETS.items():
-            if SET.isKey == isKey:
+            if SET.isKey == pink:
                 PINKS[key] = SET
         return PINKS
     
     @staticmethod
-    def find_set(ALLSETS, word:str):
+    def find_set(ALLSETS: dict[str, "Set"], word: str):
+        """
+        Find the Set containing the WORD.
+        """
         for key, SET in ALLSETS.items():
             if word in SET.words:
                 return SET
         return None
     
-    def update(self, other_set, ALLSETS:dict, dist_2_pinks):
+    def update(self, other_set: "Set", ALLSETS: dict[str, "Set"], dist_2_pinks: dict[str, dict[str, int]]):
+        """Merge (contract) other_set into self: absorb its words/links, rewire
+        neighbors to point at self.id(), and fold other_set's dist_2_pinks entries
+        into self's (keeping the min distance).
+
+        NOTE: this does NOT remove other_set from ALLSETS or dist_2_pinks. The
+        caller is responsible for that via ALLSETS_del(other_set.id()) right after
+        calling update() (see brute_force_this.py merge_pinks / optimize_greys).
+        """
         self.words.update(other_set.words)
         self.links.update(other_set.links)
-        discarded_links = set()
 
         happened = True
         while happened:
@@ -71,7 +79,6 @@ class Set:
                 if link in self.words:
                     self.links.remove(link)
                     happened = True
-                    discarded_links.add(link)
                     break
         
 
@@ -105,17 +112,17 @@ class Set:
         return
     
 
-class Word:
-    "this class is not used in the brute force method"
-    def __init__(self, word, parent, children="", links=None):
-        self.word = word
-        self.parent = parent
-        self.children = set(children) # if it has no children, it's an end node
-        self.propagated = False
-        if links == None:
-            self.links = set()
-    def isKeyWord(self):
-        return self.word in KEYWORDS
+# class Word:
+#     "this class is not used in the brute force method"
+#     def __init__(self, word, parent, children="", links=None):
+#         self.word = word
+#         self.parent = parent
+#         self.children = set(children) # if it has no children, it's an end node
+#         self.propagated = False
+#         if links == None:
+#             self.links = set()
+#     def isKeyWord(self):
+#         return self.word in KEYWORDS
 
 
 def find_all_permutation(word):
