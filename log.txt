@@ -1,2 +1,3247 @@
-found solution with ({'chat', 'sock', 'hoes', 'pone', 'fare', 'lase', 'warm', 'gear', 'face', 'dray', 'girn', 'pill', 'hair', 'sore', 'base', 'sink', 'meat', 'shop', 'worm', 'body', 'pare', 'fort', 'bind', 'pish', 'lear', 'atom', 'sone', 'girl', 'ogre', 'bone', 'dore', 'neat', 'luck', 'pipe', 'leaf', 'nose', 'dirk', 'milk', 'hill', 'moon', 'dere', 'rock', 'wind', 'ward', 'loon', 'road', 'bine', 'data', 'flag', 'pale', 'gold', 'bead', 'frog', 'idea', 'holy', 'sand', 'pony', 'crab', 'dump', 'rose', 'word', 'dire', 'cash', 'song', 'drab', 'disc', 'tire', 'cole', 'lion', 'cite', 'rail', 'dink', 'park', 'plug', 'quiz', 'peak', 'baby', 'bare', 'king', 'pins', 'ware', 'caid', 'hons', 'boot', 'core', 'rain', 'hins', 'icon', 'frag', 'gate', 'bore', 'snog', 'lump', 'bale', 'tree', 'jump', 'love', 'tins', 'zero', 'draw', 'coat', 'pall', 'mill', 'gore', 'read', 'ship', 'poly', 'sank', 'date', 'mite', 'hero', 'line', 'hire', 'lore', 'bike', 'acid', 'mail', 'xray', 'seal', 'wall', 'fore', 'dish', 'deer', 'pond', 'tank', 'hail', 'well', 'bear', 'rode', 'carn', 'bane', 'card', 'perk', 'book', 'wood', 'vase', 'bush', 'boat', 'bell', 'lima', 'moot', 'snow', 'soot', 'lock', 'boob', 'band', 'bash', 'iron', 'hand', 'beat', 'foot', 'bird', 'golf', 'dree', 'star', 'coin', 'head', 'goat', 'city', 'dock', 'bomb', 'cone', 'deck', 'pine', 'moat', 'wolf', 'yarn', 'loin', 'sear', 'lime', 'slag', 'babe', 'bode', 'dram', 'doer', 'ring', 'game', 'time', 'fire', 'hoer', 'pool', 'dare', 'fish', 'dork', 'ball', 'wave', 'door', 'rink', 'shoe', 'nest', 'cold', 'damp', 'poon', 'drum', 'care', 'pore', 'slug'}, 90) words
---- 0.00757598876953125 seconds ---
+initializing 3915 words into singleton Sets...
+  3915 Sets.
+computing dist_2_pinks (slow)...
+reducing the search space (slow)...
+  Currently 3915 sets.
+   - MERGING PINKS-
+  pink: merged bell (1) with ball (1)
+  removed bell from dist_2_pinks
+  pink: merged wall (1) with ball (2)
+  removed wall from dist_2_pinks
+  pink: merged well (1) with ball (3)
+  removed well from dist_2_pinks
+  pink: merged sand (1) with band (1)
+  removed sand from dist_2_pinks
+  pink: merged hand (1) with band (2)
+  removed hand from dist_2_pinks
+  pink: merged gear (1) with bear (1)
+  removed gear from dist_2_pinks
+  pink: merged goat (1) with boat (1)
+  removed goat from dist_2_pinks
+  pink: merged coat (1) with boat (2)
+  removed coat from dist_2_pinks
+  pink: merged chat (1) with boat (3)
+  removed chat from dist_2_pinks
+  pink: merged ward (1) with card (1)
+  removed ward from dist_2_pinks
+  pink: merged warm (1) with card (2)
+  removed warm from dist_2_pinks
+  pink: merged worm (1) with card (3)
+  removed worm from dist_2_pinks
+  pink: merged draw (1) with card (4)
+  removed draw from dist_2_pinks
+  pink: merged word (1) with card (5)
+  removed word from dist_2_pinks
+  pink: merged wood (1) with card (6)
+  removed wood from dist_2_pinks
+  pink: merged gold (1) with cold (1)
+  removed gold from dist_2_pinks
+  pink: merged golf (1) with cold (2)
+  removed golf from dist_2_pinks
+  pink: merged wolf (1) with cold (3)
+  removed wolf from dist_2_pinks
+  pink: merged fort (1) with foot (1)
+  removed fort from dist_2_pinks
+  pink: merged gate (1) with game (1)
+  removed gate from dist_2_pinks
+  pink: merged zero (1) with hero (1)
+  removed zero from dist_2_pinks
+  pink: merged pill (1) with hill (1)
+  removed pill from dist_2_pinks
+  pink: merged ring (1) with king (1)
+  removed ring from dist_2_pinks
+  pink: merged time (1) with lime (1)
+  removed time from dist_2_pinks
+  pink: merged rock (1) with lock (1)
+  removed rock from dist_2_pinks
+  pink: merged sock (1) with lock (2)
+  removed sock from dist_2_pinks
+  pink: merged luck (1) with lock (3)
+  removed luck from dist_2_pinks
+  pink: merged rail (1) with mail (1)
+  removed rail from dist_2_pinks
+  pink: merged rain (1) with mail (2)
+  removed rain from dist_2_pinks
+  pink: merged rose (1) with nose (1)
+  removed rose from dist_2_pinks
+  pink: merged pony (1) with pond (1)
+  removed pony from dist_2_pinks
+   - FIND_NECESSARY_SETS -
+      no necessary set found.
+   - OPTIMIZING GREYS -
+       - MERGING GREYS-
+  grey: merged fohn (1) with john
+  removed john from dist_2_pinks
+  grey: merged hadj (1) with hajj
+  removed hajj from dist_2_pinks
+  grey: merged high (1) with nigh
+  removed nigh from dist_2_pinks
+  grey: merged inia (1) with ixia
+  removed ixia from dist_2_pinks
+  grey: merged kudo (1) with kudu
+  removed kudu from dist_2_pinks
+  grey: merged kudo (2) with kuru
+  removed kuru from dist_2_pinks
+  grey: merged odyl (1) with oldy
+  removed oldy from dist_2_pinks
+  grey: merged unai (1) with unci
+  removed unci from dist_2_pinks
+       - DELETING EQUI-
+   deleted: abri (isolated)
+  removed abri from dist_2_pinks
+   deleted: aqua (isolated)
+  removed aqua from dist_2_pinks
+   deleted: arak (isolated)
+  removed arak from dist_2_pinks
+   deleted: asci (isolated)
+  removed asci from dist_2_pinks
+   deleted: djin (isolated)
+  removed djin from dist_2_pinks
+   deleted: ebbs (isolated)
+  removed ebbs from dist_2_pinks
+   deleted: envy (isolated)
+  removed envy from dist_2_pinks
+   deleted: epee (isolated)
+  removed epee from dist_2_pinks
+   deleted: etui (isolated)
+  removed etui from dist_2_pinks
+   deleted: exam (isolated)
+  removed exam from dist_2_pinks
+   deleted: expo (isolated)
+  removed expo from dist_2_pinks
+   deleted: huic (isolated)
+  removed huic from dist_2_pinks
+   deleted: hymn (isolated)
+  removed hymn from dist_2_pinks
+   deleted: iffy (isolated)
+  removed iffy from dist_2_pinks
+   deleted: iglu (isolated)
+  removed iglu from dist_2_pinks
+   deleted: immy (isolated)
+  removed immy from dist_2_pinks
+   deleted: jehu (isolated)
+  removed jehu from dist_2_pinks
+   deleted: jeux (isolated)
+  removed jeux from dist_2_pinks
+   deleted: jism (isolated)
+  removed jism from dist_2_pinks
+   deleted: juju (isolated)
+  removed juju from dist_2_pinks
+   deleted: kagu (isolated)
+  removed kagu from dist_2_pinks
+   deleted: kiwi (isolated)
+  removed kiwi from dist_2_pinks
+   deleted: lynx (isolated)
+  removed lynx from dist_2_pinks
+   deleted: ogam (isolated)
+  removed ogam from dist_2_pinks
+   deleted: ossa (isolated)
+  removed ossa from dist_2_pinks
+   deleted: ovum (isolated)
+  removed ovum from dist_2_pinks
+   deleted: pfft (isolated)
+  removed pfft from dist_2_pinks
+   deleted: pfui (isolated)
+  removed pfui from dist_2_pinks
+   deleted: upby (isolated)
+  removed upby from dist_2_pinks
+   deleted: upon (isolated)
+  removed upon from dist_2_pinks
+   deleted: uric (isolated)
+  removed uric from dist_2_pinks
+   deleted: void (isolated)
+  removed void from dist_2_pinks
+   deleted: zebu (isolated)
+  removed zebu from dist_2_pinks
+   deleted: zoic (isolated)
+  removed zoic from dist_2_pinks
+   subset deleted: haha is included in aahs
+  removed haha from dist_2_pinks
+   subset deleted: ugly is included in ably
+  removed ugly from dist_2_pinks
+   subset deleted: echo is included in ache
+  removed echo from dist_2_pinks
+   subset deleted: eche is included in achy
+  removed eche from dist_2_pinks
+   subset deleted: agog is included in aeon
+  removed agog from dist_2_pinks
+   subset deleted: ague is included in aged
+  removed ague from dist_2_pinks
+   subset deleted: agio is included in agon
+  removed agio from dist_2_pinks
+   subset deleted: cyan is included in alan
+  removed cyan from dist_2_pinks
+   subset deleted: agha is included in alma
+  removed agha from dist_2_pinks
+   subset deleted: awol is included in aloe
+  removed awol from dist_2_pinks
+   subset deleted: olla is included in aloe
+  removed olla from dist_2_pinks
+   subset deleted: auto is included in also
+  removed auto from dist_2_pinks
+   subset deleted: ayah is included in amas
+  removed ayah from dist_2_pinks
+   subset deleted: amah is included in amis
+  removed amah from dist_2_pinks
+   subset deleted: umbo is included in ammo
+  removed umbo from dist_2_pinks
+   subset deleted: impi is included in amps
+  removed impi from dist_2_pinks
+   subset deleted: acta is included in ants
+  removed acta from dist_2_pinks
+   subset deleted: arvo is included in arch
+  removed arvo from dist_2_pinks
+   subset deleted: uvea is included in area
+  removed uvea from dist_2_pinks
+   subset deleted: asea is included in ares
+  removed asea from dist_2_pinks
+   subset deleted: skua is included in arks
+  removed skua from dist_2_pinks
+   subset deleted: tsks is included in arks
+  removed tsks from dist_2_pinks
+   subset deleted: army is included in arts
+  removed army from dist_2_pinks
+   subset deleted: stir is included in arts
+  removed stir from dist_2_pinks
+   subset deleted: hwan is included in awns
+  removed hwan from dist_2_pinks
+   subset deleted: exec is included in axes
+  removed exec from dist_2_pinks
+   subset deleted: espy is included in ayes
+  removed espy from dist_2_pinks
+   subset deleted: pyic is included in ayin
+  removed pyic from dist_2_pinks
+   subset deleted: isba is included in baas
+  removed isba from dist_2_pinks
+   subset deleted: zarf is included in baff
+  removed zarf from dist_2_pinks
+   subset deleted: jagg is included in bags
+  removed jagg from dist_2_pinks
+   subset deleted: cwms is included in bams
+  removed cwms from dist_2_pinks
+   subset deleted: vatu is included in bats
+  removed vatu from dist_2_pinks
+   subset deleted: whys is included in bays
+  removed whys from dist_2_pinks
+   subset deleted: bubo is included in bibs
+  removed bubo from dist_2_pinks
+   subset deleted: lwei is included in bile
+  removed lwei from dist_2_pinks
+   subset deleted: plie is included in bile
+  removed plie from dist_2_pinks
+   subset deleted: sizy is included in bize
+  removed sizy from dist_2_pinks
+   subset deleted: sybo is included in bobs
+  removed sybo from dist_2_pinks
+   subset deleted: oboe is included in bolo
+  removed oboe from dist_2_pinks
+   subset deleted: muon is included in boon
+  removed muon from dist_2_pinks
+   subset deleted: fugu is included in bugs
+  removed fugu from dist_2_pinks
+   subset deleted: buhr is included in burl
+  removed buhr from dist_2_pinks
+   subset deleted: tutu is included in buts
+  removed tutu from dist_2_pinks
+   subset deleted: fizz is included in buzz
+  removed fizz from dist_2_pinks
+   subset deleted: zyme is included in came
+  removed zyme from dist_2_pinks
+   subset deleted: once is included in cane
+  removed once from dist_2_pinks
+   subset deleted: ecru is included in care
+  removed ecru from dist_2_pinks
+   subset deleted: xyst is included in cast
+  removed xyst from dist_2_pinks
+   subset deleted: elhi is included in ceil
+  removed elhi from dist_2_pinks
+   subset deleted: jefe is included in cete
+  removed jefe from dist_2_pinks
+   subset deleted: jiao is included in chao
+  removed jiao from dist_2_pinks
+   subset deleted: ciao is included in chap
+  removed ciao from dist_2_pinks
+   subset deleted: inch is included in chit
+  removed inch from dist_2_pinks
+   subset deleted: coho is included in coca
+  removed coho from dist_2_pinks
+   subset deleted: cyma is included in come
+  removed cyma from dist_2_pinks
+   subset deleted: fuji is included in cuif
+  removed fuji from dist_2_pinks
+   subset deleted: adze is included in dace
+  removed adze from dist_2_pinks
+   subset deleted: dhak is included in dahl
+  removed dhak from dist_2_pinks
+   subset deleted: emyd is included in defy
+  removed emyd from dist_2_pinks
+   subset deleted: ritz is included in dite
+  removed ritz from dist_2_pinks
+   subset deleted: ooze is included in dozy
+  removed ooze from dist_2_pinks
+   subset deleted: numb is included in duma
+  removed numb from dist_2_pinks
+   subset deleted: unbe is included in dune
+  removed unbe from dist_2_pinks
+   subset deleted: eddo is included in dyed
+  removed eddo from dist_2_pinks
+   subset deleted: sync is included in dyne
+  removed sync from dist_2_pinks
+   subset deleted: yegg is included in edgy
+  removed yegg from dist_2_pinks
+   subset deleted: emeu is included in ekes
+  removed emeu from dist_2_pinks
+   subset deleted: ylem is included in elms
+  removed ylem from dist_2_pinks
+   subset deleted: odic is included in etic
+  removed odic from dist_2_pinks
+   subset deleted: eaux is included in falx
+  removed eaux from dist_2_pinks
+   subset deleted: wifi is included in fife
+  removed wifi from dist_2_pinks
+   subset deleted: ibex is included in flex
+  removed ibex from dist_2_pinks
+   subset deleted: buzz is included in futz
+  removed buzz from dist_2_pinks
+   subset deleted: high is included in ghis
+  removed high from dist_2_pinks
+   subset deleted: inia is included in glia
+  removed inia from dist_2_pinks
+   subset deleted: urge is included in glue
+  removed urge from dist_2_pinks
+   subset deleted: knur is included in gnar
+  removed knur from dist_2_pinks
+   subset deleted: judo is included in guru
+  removed judo from dist_2_pinks
+   subset deleted: haji is included in hade
+  removed haji from dist_2_pinks
+   subset deleted: hadj is included in haed
+  removed hadj from dist_2_pinks
+   subset deleted: epha is included in heal
+  removed epha from dist_2_pinks
+   subset deleted: syph is included in hops
+  removed syph from dist_2_pinks
+   subset deleted: ahoy is included in hora
+  removed ahoy from dist_2_pinks
+   subset deleted: thou is included in hurt
+  removed thou from dist_2_pinks
+   subset deleted: ywis is included in ibis
+  removed ywis from dist_2_pinks
+   subset deleted: icky is included in inby
+  removed icky from dist_2_pinks
+   subset deleted: ikat is included in kats
+  removed ikat from dist_2_pinks
+   subset deleted: ofay is included in kayo
+  removed ofay from dist_2_pinks
+   subset deleted: ocas is included in koas
+  removed ocas from dist_2_pinks
+   subset deleted: bevy is included in leva
+  removed bevy from dist_2_pinks
+   subset deleted: wych is included in lich
+  removed wych from dist_2_pinks
+   subset deleted: gogo is included in lobo
+  removed gogo from dist_2_pinks
+   subset deleted: fohn is included in loin
+  removed fohn from dist_2_pinks
+   subset deleted: huge is included in lugs
+  removed huge from dist_2_pinks
+   subset deleted: luau is included in lull
+  removed luau from dist_2_pinks
+   subset deleted: ulva is included in luna
+  removed ulva from dist_2_pinks
+   subset deleted: imam is included in maid
+  removed imam from dist_2_pinks
+   subset deleted: amok is included in make
+  removed amok from dist_2_pinks
+   subset deleted: elmy is included in mels
+  removed elmy from dist_2_pinks
+   subset deleted: meow is included in menu
+  removed meow from dist_2_pinks
+   subset deleted: nisi is included in midi
+  removed nisi from dist_2_pinks
+   subset deleted: ouph is included in much
+  removed ouph from dist_2_pinks
+   subset deleted: migg is included in mugs
+  removed migg from dist_2_pinks
+   subset deleted: nazi is included in naos
+  removed nazi from dist_2_pinks
+   subset deleted: naoi is included in naps
+  removed naoi from dist_2_pinks
+   subset deleted: yeti is included in nett
+  removed yeti from dist_2_pinks
+   subset deleted: obey is included in obis
+  removed obey from dist_2_pinks
+   subset deleted: syli is included in oils
+  removed syli from dist_2_pinks
+   subset deleted: olio is included in olea
+  removed olio from dist_2_pinks
+   subset deleted: opah is included in oral
+  removed opah from dist_2_pinks
+   subset deleted: okra is included in orca
+  removed okra from dist_2_pinks
+   subset deleted: ouzo is included in ordo
+  removed ouzo from dist_2_pinks
+   subset deleted: quey is included in quad
+  removed quey from dist_2_pinks
+   subset deleted: jazz is included in raze
+  removed jazz from dist_2_pinks
+   subset deleted: orzo is included in rood
+  removed orzo from dist_2_pinks
+   subset deleted: okeh is included in soke
+  removed okeh from dist_2_pinks
+   subset deleted: scry is included in spay
+  removed scry from dist_2_pinks
+   subset deleted: spry is included in spaz
+  removed spry from dist_2_pinks
+   subset deleted: ziti is included in tits
+  removed ziti from dist_2_pinks
+   subset deleted: zoea is included in toed
+  removed zoea from dist_2_pinks
+   subset deleted: also is included in tola
+  removed also from dist_2_pinks
+   subset deleted: otto is included in toon
+  removed otto from dist_2_pinks
+   subset deleted: unau is included in unco
+  removed unau from dist_2_pinks
+   subset deleted: updo is included in unco
+  removed updo from dist_2_pinks
+   subset deleted: unai is included in undo
+  removed unai from dist_2_pinks
+   subset deleted: mugg is included in vugs
+  removed mugg from dist_2_pinks
+       - CLEANING (optional) -
+  Currently 3715 sets.
+   - MERGING PINKS-
+   - FIND_NECESSARY_SETS -
+      no necessary set found.
+   - OPTIMIZING GREYS -
+       - MERGING GREYS-
+  grey: merged opal (1) with oval
+  removed oval from dist_2_pinks
+  grey: merged urea (1) with ursa
+  removed ursa from dist_2_pinks
+       - DELETING EQUI-
+   subset deleted: otic is included in cite
+  removed otic from dist_2_pinks
+   subset deleted: razz is included in daze
+  removed razz from dist_2_pinks
+   subset deleted: ilex is included in flea
+  removed ilex from dist_2_pinks
+   subset deleted: opal is included in orad
+  removed opal from dist_2_pinks
+   subset deleted: oral is included in trad
+  removed oral from dist_2_pinks
+       - CLEANING (optional) -
+  Currently 3708 sets.
+   - MERGING PINKS-
+   - FIND_NECESSARY_SETS -
+      no necessary set found.
+   - OPTIMIZING GREYS -
+       - MERGING GREYS-
+       - DELETING EQUI-
+       - CLEANING (optional) -
+   - DELETE_EQUI_GREYS_dist_2_pinks-
+  set deleted: agly is worse than aahs
+  removed agly from dist_2_pinks
+  set deleted: ambo is worse than aahs
+  removed ambo from dist_2_pinks
+  set deleted: ammo is worse than aahs
+  removed ammo from dist_2_pinks
+  set deleted: guru is worse than aahs
+  removed guru from dist_2_pinks
+  set deleted: kudo is worse than aahs
+  removed kudo from dist_2_pinks
+  set deleted: onyx is worse than aahs
+  removed onyx from dist_2_pinks
+  set deleted: oryx is worse than aahs
+  removed oryx from dist_2_pinks
+  set deleted: oxid is worse than aahs
+  removed oxid from dist_2_pinks
+  set deleted: oxim is worse than aahs
+  removed oxim from dist_2_pinks
+  set deleted: ably is worse than aals
+  removed ably from dist_2_pinks
+  set deleted: ally is worse than aals
+  removed ally from dist_2_pinks
+  set deleted: azan is worse than aals
+  removed azan from dist_2_pinks
+  set deleted: edgy is worse than aals
+  removed edgy from dist_2_pinks
+  set deleted: futz is worse than aals
+  removed futz from dist_2_pinks
+  set deleted: lulu is worse than aals
+  removed lulu from dist_2_pinks
+  set deleted: offs is worse than aals
+  removed offs from dist_2_pinks
+  set deleted: udos is worse than aals
+  removed udos from dist_2_pinks
+  set deleted: vugg is worse than aals
+  removed vugg from dist_2_pinks
+  set deleted: yuks is worse than aals
+  removed yuks from dist_2_pinks
+  set deleted: kyak is worse than abas
+  removed kyak from dist_2_pinks
+  set deleted: abye is worse than abed
+  removed abye from dist_2_pinks
+  set deleted: eggy is worse than abed
+  removed eggy from dist_2_pinks
+  set deleted: fuzz is worse than abed
+  removed fuzz from dist_2_pinks
+  set deleted: effs is worse than abet
+  removed effs from dist_2_pinks
+  set deleted: afar is worse than able
+  removed afar from dist_2_pinks
+  set deleted: ansa is worse than aces
+  removed ansa from dist_2_pinks
+  set deleted: axes is worse than aces
+  removed axes from dist_2_pinks
+  set deleted: cagy is worse than aces
+  removed cagy from dist_2_pinks
+  set deleted: exes is worse than aces
+  removed exes from dist_2_pinks
+  set deleted: maxi is worse than acme
+  removed maxi from dist_2_pinks
+  set deleted: naan is worse than acne
+  removed naan from dist_2_pinks
+  set deleted: anga is worse than acts
+  removed anga from dist_2_pinks
+  set deleted: amyl is worse than acyl
+  removed amyl from dist_2_pinks
+  set deleted: axon is worse than aeon
+  removed axon from dist_2_pinks
+  set deleted: ajar is worse than agar
+  removed ajar from dist_2_pinks
+  set deleted: ajee is worse than agee
+  removed ajee from dist_2_pinks
+  set deleted: agas is worse than ages
+  removed agas from dist_2_pinks
+  set deleted: atma is worse than ages
+  removed atma from dist_2_pinks
+  set deleted: eddy is worse than aide
+  removed eddy from dist_2_pinks
+  set deleted: eide is worse than aide
+  removed eide from dist_2_pinks
+  set deleted: undy is worse than aide
+  removed undy from dist_2_pinks
+  set deleted: bibb is worse than aids
+  removed bibb from dist_2_pinks
+  set deleted: didy is worse than aids
+  removed didy from dist_2_pinks
+  set deleted: idyl is worse than aids
+  removed idyl from dist_2_pinks
+  set deleted: inby is worse than aids
+  removed inby from dist_2_pinks
+  set deleted: inky is worse than aids
+  removed inky from dist_2_pinks
+  set deleted: kayo is worse than aids
+  removed kayo from dist_2_pinks
+  set deleted: obia is worse than aids
+  removed obia from dist_2_pinks
+  set deleted: obit is worse than aids
+  removed obit from dist_2_pinks
+  set deleted: sibb is worse than aids
+  removed sibb from dist_2_pinks
+  set deleted: titi is worse than aids
+  removed titi from dist_2_pinks
+  set deleted: axal is worse than ails
+  removed axal from dist_2_pinks
+  set deleted: idly is worse than ails
+  removed idly from dist_2_pinks
+  set deleted: only is worse than ails
+  removed only from dist_2_pinks
+  set deleted: anna is worse than aims
+  removed anna from dist_2_pinks
+  set deleted: alky is worse than ains
+  removed alky from dist_2_pinks
+  set deleted: emfs is worse than ains
+  removed emfs from dist_2_pinks
+  set deleted: jibb is worse than ains
+  removed jibb from dist_2_pinks
+  set deleted: jins is worse than ains
+  removed jins from dist_2_pinks
+  set deleted: jinx is worse than ains
+  removed jinx from dist_2_pinks
+  set deleted: zinc is worse than ains
+  removed zinc from dist_2_pinks
+  set deleted: zins is worse than ains
+  removed zins from dist_2_pinks
+  set deleted: unco is worse than airs
+  removed unco from dist_2_pinks
+  set deleted: undo is worse than airs
+  removed undo from dist_2_pinks
+  set deleted: anoa is worse than aits
+  removed anoa from dist_2_pinks
+  set deleted: giga is worse than aits
+  removed giga from dist_2_pinks
+  set deleted: zits is worse than aits
+  removed zits from dist_2_pinks
+  set deleted: alar is worse than alae
+  removed alar from dist_2_pinks
+  set deleted: alfa is worse than alba
+  removed alfa from dist_2_pinks
+  set deleted: axle is worse than albs
+  removed axle from dist_2_pinks
+  set deleted: ecus is worse than ales
+  removed ecus from dist_2_pinks
+  set deleted: ukes is worse than ales
+  removed ukes from dist_2_pinks
+  set deleted: upas is worse than ales
+  removed upas from dist_2_pinks
+  set deleted: agma is worse than alme
+  removed agma from dist_2_pinks
+  set deleted: alas is worse than alts
+  removed alas from dist_2_pinks
+  set deleted: ashy is worse than alts
+  removed ashy from dist_2_pinks
+  set deleted: amie is worse than amia
+  removed amie from dist_2_pinks
+  set deleted: amia is worse than amid
+  removed amia from dist_2_pinks
+  set deleted: axil is worse than anil
+  removed axil from dist_2_pinks
+  set deleted: axis is worse than anis
+  removed axis from dist_2_pinks
+  set deleted: anta is worse than ante
+  removed anta from dist_2_pinks
+  set deleted: etna is worse than ante
+  removed etna from dist_2_pinks
+  set deleted: anas is worse than ants
+  removed anas from dist_2_pinks
+  set deleted: apex is worse than aped
+  removed apex from dist_2_pinks
+  set deleted: even is worse than aper
+  removed even from dist_2_pinks
+  set deleted: eyry is worse than aper
+  removed eyry from dist_2_pinks
+  set deleted: apse is worse than apes
+  removed apse from dist_2_pinks
+  set deleted: abas is worse than arbs
+  removed abas from dist_2_pinks
+  set deleted: abys is worse than arbs
+  removed abys from dist_2_pinks
+  set deleted: arco is worse than arbs
+  removed arco from dist_2_pinks
+  set deleted: arfs is worse than arbs
+  removed arfs from dist_2_pinks
+  set deleted: auks is worse than arbs
+  removed auks from dist_2_pinks
+  set deleted: izar is worse than arbs
+  removed izar from dist_2_pinks
+  set deleted: arse is worse than ares
+  removed arse from dist_2_pinks
+  set deleted: drys is worse than ares
+  removed drys from dist_2_pinks
+  set deleted: eses is worse than ares
+  removed eses from dist_2_pinks
+  set deleted: eves is worse than ares
+  removed eves from dist_2_pinks
+  set deleted: fumy is worse than ares
+  removed fumy from dist_2_pinks
+  set deleted: iwis is worse than ares
+  removed iwis from dist_2_pinks
+  set deleted: yaup is worse than ares
+  removed yaup from dist_2_pinks
+  set deleted: asks is worse than arts
+  removed asks from dist_2_pinks
+  set deleted: easy is worse than ates
+  removed easy from dist_2_pinks
+  set deleted: eyen is worse than ayes
+  removed eyen from dist_2_pinks
+  set deleted: eyes is worse than ayes
+  removed eyes from dist_2_pinks
+  set deleted: abos is worse than baas
+  removed abos from dist_2_pinks
+  set deleted: achy is worse than baas
+  removed achy from dist_2_pinks
+  set deleted: arch is worse than baas
+  removed arch from dist_2_pinks
+  set deleted: crux is worse than baas
+  removed crux from dist_2_pinks
+  set deleted: jaup is worse than baas
+  removed jaup from dist_2_pinks
+  set deleted: kyar is worse than baas
+  removed kyar from dist_2_pinks
+  set deleted: vagi is worse than baas
+  removed vagi from dist_2_pinks
+  set deleted: abba is worse than babe
+  removed abba from dist_2_pinks
+  set deleted: abbe is worse than babe
+  removed abbe from dist_2_pinks
+  set deleted: baba is worse than babe
+  removed baba from dist_2_pinks
+  set deleted: babu is worse than babe
+  removed babu from dist_2_pinks
+  set deleted: exon is worse than babe
+  removed exon from dist_2_pinks
+  set deleted: habu is worse than babe
+  removed habu from dist_2_pinks
+  set deleted: jiff is worse than babe
+  removed jiff from dist_2_pinks
+  set deleted: jack is worse than back
+  removed jack from dist_2_pinks
+  set deleted: kbar is worse than back
+  removed kbar from dist_2_pinks
+  set deleted: yack is worse than back
+  removed yack from dist_2_pinks
+  set deleted: yuca is worse than back
+  removed yuca from dist_2_pinks
+  set deleted: abut is worse than bade
+  removed abut from dist_2_pinks
+  set deleted: ache is worse than bade
+  removed ache from dist_2_pinks
+  set deleted: apod is worse than bade
+  removed apod from dist_2_pinks
+  set deleted: bedu is worse than bade
+  removed bedu from dist_2_pinks
+  set deleted: cavy is worse than bade
+  removed cavy from dist_2_pinks
+  set deleted: davy is worse than bade
+  removed davy from dist_2_pinks
+  set deleted: dexy is worse than bade
+  removed dexy from dist_2_pinks
+  set deleted: fava is worse than bade
+  removed fava from dist_2_pinks
+  set deleted: hazy is worse than bade
+  removed hazy from dist_2_pinks
+  set deleted: ibis is worse than bade
+  removed ibis from dist_2_pinks
+  set deleted: jade is worse than bade
+  removed jade from dist_2_pinks
+  set deleted: java is worse than bade
+  removed java from dist_2_pinks
+  set deleted: neve is worse than bade
+  removed neve from dist_2_pinks
+  set deleted: rely is worse than bade
+  removed rely from dist_2_pinks
+  set deleted: ados is worse than bads
+  removed ados from dist_2_pinks
+  set deleted: bays is worse than bads
+  removed bays from dist_2_pinks
+  set deleted: duty is worse than bads
+  removed duty from dist_2_pinks
+  set deleted: fays is worse than bads
+  removed fays from dist_2_pinks
+  set deleted: jabs is worse than bads
+  removed jabs from dist_2_pinks
+  set deleted: jays is worse than bads
+  removed jays from dist_2_pinks
+  set deleted: kays is worse than bads
+  removed kays from dist_2_pinks
+  set deleted: tufa is worse than bads
+  removed tufa from dist_2_pinks
+  set deleted: vaus is worse than bads
+  removed vaus from dist_2_pinks
+  set deleted: yays is worse than bads
+  removed yays from dist_2_pinks
+  set deleted: yodh is worse than bads
+  removed yodh from dist_2_pinks
+  set deleted: yaff is worse than baff
+  removed yaff from dist_2_pinks
+  set deleted: chub is worse than bags
+  removed chub from dist_2_pinks
+  set deleted: jags is worse than bags
+  removed jags from dist_2_pinks
+  set deleted: naos is worse than bags
+  removed naos from dist_2_pinks
+  set deleted: nays is worse than bags
+  removed nays from dist_2_pinks
+  set deleted: vugh is worse than bags
+  removed vugh from dist_2_pinks
+  set deleted: zags is worse than bags
+  removed zags from dist_2_pinks
+  set deleted: jake is worse than bake
+  removed jake from dist_2_pinks
+  set deleted: weka is worse than bake
+  removed weka from dist_2_pinks
+  set deleted: juba is worse than bald
+  removed juba from dist_2_pinks
+  set deleted: sagy is worse than bald
+  removed sagy from dist_2_pinks
+  set deleted: able is worse than bale
+  removed able from dist_2_pinks
+  set deleted: alba is worse than bale
+  removed alba from dist_2_pinks
+  set deleted: alga is worse than bale
+  removed alga from dist_2_pinks
+  set deleted: eely is worse than bale
+  removed eely from dist_2_pinks
+  set deleted: egal is worse than bale
+  removed egal from dist_2_pinks
+  set deleted: elks is worse than bale
+  removed elks from dist_2_pinks
+  set deleted: ells is worse than bale
+  removed ells from dist_2_pinks
+  set deleted: jape is worse than bale
+  removed jape from dist_2_pinks
+  set deleted: leku is worse than bale
+  removed leku from dist_2_pinks
+  set deleted: miff is worse than bale
+  removed miff from dist_2_pinks
+  set deleted: odyl is worse than bale
+  removed odyl from dist_2_pinks
+  set deleted: ruly is worse than bale
+  removed ruly from dist_2_pinks
+  set deleted: jauk is worse than balk
+  removed jauk from dist_2_pinks
+  set deleted: ouch is worse than balk
+  removed ouch from dist_2_pinks
+  set deleted: taxi is worse than balm
+  removed taxi from dist_2_pinks
+  set deleted: duly is worse than bals
+  removed duly from dist_2_pinks
+  set deleted: aahs is worse than bams
+  removed aahs from dist_2_pinks
+  set deleted: away is worse than bams
+  removed away from dist_2_pinks
+  set deleted: gawp is worse than bams
+  removed gawp from dist_2_pinks
+  set deleted: jams is worse than bams
+  removed jams from dist_2_pinks
+  set deleted: acne is worse than bane
+  removed acne from dist_2_pinks
+  set deleted: agar is worse than bane
+  removed agar from dist_2_pinks
+  set deleted: avos is worse than bane
+  removed avos from dist_2_pinks
+  set deleted: bema is worse than bane
+  removed bema from dist_2_pinks
+  set deleted: dodo is worse than bane
+  removed dodo from dist_2_pinks
+  set deleted: ebon is worse than bane
+  removed ebon from dist_2_pinks
+  set deleted: emus is worse than bane
+  removed emus from dist_2_pinks
+  set deleted: erne is worse than bane
+  removed erne from dist_2_pinks
+  set deleted: jane is worse than bane
+  removed jane from dist_2_pinks
+  set deleted: maya is worse than bane
+  removed maya from dist_2_pinks
+  set deleted: mazy is worse than bane
+  removed mazy from dist_2_pinks
+  set deleted: meou is worse than bane
+  removed meou from dist_2_pinks
+  set deleted: nabe is worse than bane
+  removed nabe from dist_2_pinks
+  set deleted: nana is worse than bane
+  removed nana from dist_2_pinks
+  set deleted: tivy is worse than bane
+  removed tivy from dist_2_pinks
+  set deleted: visa is worse than bane
+  removed visa from dist_2_pinks
+  set deleted: yagi is worse than bane
+  removed yagi from dist_2_pinks
+  set deleted: yogh is worse than bane
+  removed yogh from dist_2_pinks
+  set deleted: yuan is worse than bane
+  removed yuan from dist_2_pinks
+  set deleted: yurt is worse than bane
+  removed yurt from dist_2_pinks
+  set deleted: zany is worse than bane
+  removed zany from dist_2_pinks
+  set deleted: yang is worse than bang
+  removed yang from dist_2_pinks
+  set deleted: yank is worse than bank
+  removed yank from dist_2_pinks
+  set deleted: baff is worse than bans
+  removed baff from dist_2_pinks
+  set deleted: baht is worse than bans
+  removed baht from dist_2_pinks
+  set deleted: daff is worse than bans
+  removed daff from dist_2_pinks
+  set deleted: etch is worse than bans
+  removed etch from dist_2_pinks
+  set deleted: knee is worse than bans
+  removed knee from dist_2_pinks
+  set deleted: nans is worse than bans
+  removed nans from dist_2_pinks
+  set deleted: teff is worse than bans
+  removed teff from dist_2_pinks
+  set deleted: gyps is worse than baps
+  removed gyps from dist_2_pinks
+  set deleted: zaps is worse than baps
+  removed zaps from dist_2_pinks
+  set deleted: barf is worse than barb
+  removed barf from dist_2_pinks
+  set deleted: barb is worse than bard
+  removed barb from dist_2_pinks
+  set deleted: barm is worse than bard
+  removed barm from dist_2_pinks
+  set deleted: bawd is worse than bard
+  removed bawd from dist_2_pinks
+  set deleted: kerf is worse than bard
+  removed kerf from dist_2_pinks
+  set deleted: urea is worse than bard
+  removed urea from dist_2_pinks
+  set deleted: yald is worse than bard
+  removed yald from dist_2_pinks
+  set deleted: aver is worse than bare
+  removed aver from dist_2_pinks
+  set deleted: daft is worse than bare
+  removed daft from dist_2_pinks
+  set deleted: defy is worse than bare
+  removed defy from dist_2_pinks
+  set deleted: eery is worse than bare
+  removed eery from dist_2_pinks
+  set deleted: eked is worse than bare
+  removed eked from dist_2_pinks
+  set deleted: eyed is worse than bare
+  removed eyed from dist_2_pinks
+  set deleted: eyre is worse than bare
+  removed eyre from dist_2_pinks
+  set deleted: fyke is worse than bare
+  removed fyke from dist_2_pinks
+  set deleted: gybe is worse than bare
+  removed gybe from dist_2_pinks
+  set deleted: gyve is worse than bare
+  removed gyve from dist_2_pinks
+  set deleted: meze is worse than bare
+  removed meze from dist_2_pinks
+  set deleted: navy is worse than bare
+  removed navy from dist_2_pinks
+  set deleted: orby is worse than bare
+  removed orby from dist_2_pinks
+  set deleted: rudd is worse than bare
+  removed rudd from dist_2_pinks
+  set deleted: ryke is worse than bare
+  removed ryke from dist_2_pinks
+  set deleted: serf is worse than bare
+  removed serf from dist_2_pinks
+  set deleted: tabu is worse than bare
+  removed tabu from dist_2_pinks
+  set deleted: tahr is worse than bare
+  removed tahr from dist_2_pinks
+  set deleted: thru is worse than bare
+  removed thru from dist_2_pinks
+  set deleted: typp is worse than bare
+  removed typp from dist_2_pinks
+  set deleted: typy is worse than bare
+  removed typy from dist_2_pinks
+  set deleted: utas is worse than bare
+  removed utas from dist_2_pinks
+  set deleted: vara is worse than bare
+  removed vara from dist_2_pinks
+  set deleted: vary is worse than bare
+  removed vary from dist_2_pinks
+  set deleted: yirr is worse than bark
+  removed yirr from dist_2_pinks
+  set deleted: narc is worse than barn
+  removed narc from dist_2_pinks
+  set deleted: nary is worse than barn
+  removed nary from dist_2_pinks
+  set deleted: biff is worse than bars
+  removed biff from dist_2_pinks
+  set deleted: chug is worse than bars
+  removed chug from dist_2_pinks
+  set deleted: fury is worse than bars
+  removed fury from dist_2_pinks
+  set deleted: jars is worse than bars
+  removed jars from dist_2_pinks
+  set deleted: jury is worse than bars
+  removed jury from dist_2_pinks
+  set deleted: ruby is worse than bars
+  removed ruby from dist_2_pinks
+  set deleted: saga is worse than bars
+  removed saga from dist_2_pinks
+  set deleted: suba is worse than bars
+  removed suba from dist_2_pinks
+  set deleted: surf is worse than bars
+  removed surf from dist_2_pinks
+  set deleted: tiff is worse than bars
+  removed tiff from dist_2_pinks
+  set deleted: vars is worse than bars
+  removed vars from dist_2_pinks
+  set deleted: yawp is worse than bars
+  removed yawp from dist_2_pinks
+  set deleted: bath is worse than base
+  removed bath from dist_2_pinks
+  set deleted: beth is worse than base
+  removed beth from dist_2_pinks
+  set deleted: eyas is worse than base
+  removed eyas from dist_2_pinks
+  set deleted: hath is worse than base
+  removed hath from dist_2_pinks
+  set deleted: kaph is worse than base
+  removed kaph from dist_2_pinks
+  set deleted: lakh is worse than base
+  removed lakh from dist_2_pinks
+  set deleted: sexy is worse than base
+  removed sexy from dist_2_pinks
+  set deleted: teth is worse than base
+  removed teth from dist_2_pinks
+  set deleted: vasa is worse than base
+  removed vasa from dist_2_pinks
+  set deleted: okay is worse than bask
+  removed okay from dist_2_pinks
+  set deleted: asps is worse than bass
+  removed asps from dist_2_pinks
+  set deleted: dahl is worse than bast
+  removed dahl from dist_2_pinks
+  set deleted: yett is worse than bast
+  removed yett from dist_2_pinks
+  set deleted: beta is worse than bate
+  removed beta from dist_2_pinks
+  set deleted: each is worse than bate
+  removed each from dist_2_pinks
+  set deleted: nada is worse than bate
+  removed nada from dist_2_pinks
+  set deleted: zeta is worse than bate
+  removed zeta from dist_2_pinks
+  set deleted: chez is worse than bats
+  removed chez from dist_2_pinks
+  set deleted: efts is worse than bats
+  removed efts from dist_2_pinks
+  set deleted: qats is worse than bats
+  removed qats from dist_2_pinks
+  set deleted: beau is worse than bead
+  removed beau from dist_2_pinks
+  set deleted: yech is worse than beak
+  removed yech from dist_2_pinks
+  set deleted: czar is worse than beam
+  removed czar from dist_2_pinks
+  set deleted: azon is worse than bean
+  removed azon from dist_2_pinks
+  set deleted: dojo is worse than bean
+  removed dojo from dist_2_pinks
+  set deleted: jean is worse than bean
+  removed jean from dist_2_pinks
+  set deleted: khet is worse than beat
+  removed khet from dist_2_pinks
+  set deleted: kyat is worse than beat
+  removed kyat from dist_2_pinks
+  set deleted: thud is worse than beat
+  removed thud from dist_2_pinks
+  set deleted: vext is worse than beat
+  removed vext from dist_2_pinks
+  set deleted: zeks is worse than beat
+  removed zeks from dist_2_pinks
+  set deleted: feck is worse than beck
+  removed feck from dist_2_pinks
+  set deleted: dewy is worse than beds
+  removed dewy from dist_2_pinks
+  set deleted: zeds is worse than beds
+  removed zeds from dist_2_pinks
+  set deleted: zees is worse than bees
+  removed zees from dist_2_pinks
+  set deleted: beys is worse than begs
+  removed beys from dist_2_pinks
+  set deleted: elms is worse than bels
+  removed elms from dist_2_pinks
+  set deleted: text is worse than bent
+  removed text from dist_2_pinks
+  set deleted: jest is worse than best
+  removed jest from dist_2_pinks
+  set deleted: zest is worse than best
+  removed zest from dist_2_pinks
+  set deleted: jets is worse than bets
+  removed jets from dist_2_pinks
+  set deleted: stye is worse than bets
+  removed stye from dist_2_pinks
+  set deleted: muni is worse than bibs
+  removed muni from dist_2_pinks
+  set deleted: bize is worse than bice
+  removed bize from dist_2_pinks
+  set deleted: jibe is worse than bide
+  removed jibe from dist_2_pinks
+  set deleted: wyte is worse than bide
+  removed wyte from dist_2_pinks
+  set deleted: bibs is worse than bids
+  removed bibs from dist_2_pinks
+  set deleted: isms is worse than bids
+  removed isms from dist_2_pinks
+  set deleted: jibs is worse than bids
+  removed jibs from dist_2_pinks
+  set deleted: jigs is worse than bigs
+  removed jigs from dist_2_pinks
+  set deleted: illy is worse than bile
+  removed illy from dist_2_pinks
+  set deleted: juke is worse than bile
+  removed juke from dist_2_pinks
+  set deleted: jupe is worse than bile
+  removed jupe from dist_2_pinks
+  set deleted: yoyo is worse than bile
+  removed yoyo from dist_2_pinks
+  set deleted: zill is worse than bill
+  removed zill from dist_2_pinks
+  set deleted: fief is worse than bine
+  removed fief from dist_2_pinks
+  set deleted: inly is worse than bine
+  removed inly from dist_2_pinks
+  set deleted: kepi is worse than bine
+  removed kepi from dist_2_pinks
+  set deleted: kibe is worse than bine
+  removed kibe from dist_2_pinks
+  set deleted: nixe is worse than bine
+  removed nixe from dist_2_pinks
+  set deleted: nixy is worse than bine
+  removed nixy from dist_2_pinks
+  set deleted: tiki is worse than bine
+  removed tiki from dist_2_pinks
+  set deleted: sigh is worse than bins
+  removed sigh from dist_2_pinks
+  set deleted: tipi is worse than bins
+  removed tipi from dist_2_pinks
+  set deleted: yins is worse than bins
+  removed yins from dist_2_pinks
+  set deleted: tuft is worse than bios
+  removed tuft from dist_2_pinks
+  set deleted: brrr is worse than birr
+  removed brrr from dist_2_pinks
+  set deleted: etic is worse than bite
+  removed etic from dist_2_pinks
+  set deleted: kyte is worse than bite
+  removed kyte from dist_2_pinks
+  set deleted: hypo is worse than bits
+  removed hypo from dist_2_pinks
+  set deleted: kith is worse than bits
+  removed kith from dist_2_pinks
+  set deleted: blah is worse than blab
+  removed blah from dist_2_pinks
+  set deleted: chef is worse than blew
+  removed chef from dist_2_pinks
+  set deleted: bloc is worse than blog
+  removed bloc from dist_2_pinks
+  set deleted: yoga is worse than blot
+  removed yoga from dist_2_pinks
+  set deleted: hoax is worse than boar
+  removed hoax from dist_2_pinks
+  set deleted: orra is worse than boar
+  removed orra from dist_2_pinks
+  set deleted: rhos is worse than boas
+  removed rhos from dist_2_pinks
+  set deleted: ohms is worse than bobs
+  removed ohms from dist_2_pinks
+  set deleted: jock is worse than bock
+  removed jock from dist_2_pinks
+  set deleted: yock is worse than bock
+  removed yock from dist_2_pinks
+  set deleted: over is worse than bode
+  removed over from dist_2_pinks
+  set deleted: oyez is worse than bode
+  removed oyez from dist_2_pinks
+  set deleted: bobs is worse than bods
+  removed bobs from dist_2_pinks
+  set deleted: foxy is worse than bods
+  removed foxy from dist_2_pinks
+  set deleted: foys is worse than bods
+  removed foys from dist_2_pinks
+  set deleted: fozy is worse than bods
+  removed fozy from dist_2_pinks
+  set deleted: hobo is worse than bods
+  removed hobo from dist_2_pinks
+  set deleted: jobs is worse than bods
+  removed jobs from dist_2_pinks
+  set deleted: joey is worse than bods
+  removed joey from dist_2_pinks
+  set deleted: joys is worse than bods
+  removed joys from dist_2_pinks
+  set deleted: nova is worse than bods
+  removed nova from dist_2_pinks
+  set deleted: oozy is worse than bods
+  removed oozy from dist_2_pinks
+  set deleted: oven is worse than bods
+  removed oven from dist_2_pinks
+  set deleted: tofu is worse than bods
+  removed tofu from dist_2_pinks
+  set deleted: yobs is worse than bods
+  removed yobs from dist_2_pinks
+  set deleted: yods is worse than bods
+  removed yods from dist_2_pinks
+  set deleted: yoks is worse than bods
+  removed yoks from dist_2_pinks
+  set deleted: boys is worse than bogs
+  removed boys from dist_2_pinks
+  set deleted: hogg is worse than bogs
+  removed hogg from dist_2_pinks
+  set deleted: jogs is worse than bogs
+  removed jogs from dist_2_pinks
+  set deleted: nogg is worse than bogs
+  removed nogg from dist_2_pinks
+  set deleted: boxy is worse than bogy
+  removed boxy from dist_2_pinks
+  set deleted: unto is worse than boil
+  removed unto from dist_2_pinks
+  set deleted: obol is worse than bola
+  removed obol from dist_2_pinks
+  set deleted: bozo is worse than bold
+  removed bozo from dist_2_pinks
+  set deleted: anon is worse than bole
+  removed anon from dist_2_pinks
+  set deleted: boyo is worse than bole
+  removed boyo from dist_2_pinks
+  set deleted: homo is worse than bole
+  removed homo from dist_2_pinks
+  set deleted: jole is worse than bole
+  removed jole from dist_2_pinks
+  set deleted: levy is worse than bole
+  removed levy from dist_2_pinks
+  set deleted: obis is worse than bole
+  removed obis from dist_2_pinks
+  set deleted: oxen is worse than bole
+  removed oxen from dist_2_pinks
+  set deleted: ropy is worse than bole
+  removed ropy from dist_2_pinks
+  set deleted: loll is worse than boll
+  removed loll from dist_2_pinks
+  set deleted: yogi is worse than boll
+  removed yogi from dist_2_pinks
+  set deleted: jolt is worse than bolt
+  removed jolt from dist_2_pinks
+  set deleted: yuch is worse than bonk
+  removed yuch from dist_2_pinks
+  set deleted: zoom is worse than boom
+  removed zoom from dist_2_pinks
+  set deleted: zoon is worse than boon
+  removed zoon from dist_2_pinks
+  set deleted: noun is worse than boos
+  removed noun from dist_2_pinks
+  set deleted: zoos is worse than boos
+  removed zoos from dist_2_pinks
+  set deleted: oops is worse than bops
+  removed oops from dist_2_pinks
+  set deleted: qoph is worse than bops
+  removed qoph from dist_2_pinks
+  set deleted: whoa is worse than bops
+  removed whoa from dist_2_pinks
+  set deleted: dopy is worse than bore
+  removed dopy from dist_2_pinks
+  set deleted: doxy is worse than bore
+  removed doxy from dist_2_pinks
+  set deleted: dozy is worse than bore
+  removed dozy from dist_2_pinks
+  set deleted: euro is worse than bore
+  removed euro from dist_2_pinks
+  set deleted: iota is worse than bore
+  removed iota from dist_2_pinks
+  set deleted: mayo is worse than bore
+  removed mayo from dist_2_pinks
+  set deleted: nota is worse than bore
+  removed nota from dist_2_pinks
+  set deleted: omer is worse than bore
+  removed omer from dist_2_pinks
+  set deleted: doff is worse than bort
+  removed doff from dist_2_pinks
+  set deleted: toff is worse than bort
+  removed toff from dist_2_pinks
+  set deleted: josh is worse than bosh
+  removed josh from dist_2_pinks
+  set deleted: cusp is worse than boss
+  removed cusp from dist_2_pinks
+  set deleted: yuga is worse than bots
+  removed yuga from dist_2_pinks
+  set deleted: jowl is worse than bowl
+  removed jowl from dist_2_pinks
+  set deleted: vrow is worse than brow
+  removed vrow from dist_2_pinks
+  set deleted: buoy is worse than bubs
+  removed buoy from dist_2_pinks
+  set deleted: yuck is worse than buck
+  removed yuck from dist_2_pinks
+  set deleted: huff is worse than buff
+  removed huff from dist_2_pinks
+  set deleted: luff is worse than buff
+  removed luff from dist_2_pinks
+  set deleted: muff is worse than buff
+  removed muff from dist_2_pinks
+  set deleted: puff is worse than buff
+  removed puff from dist_2_pinks
+  set deleted: bubs is worse than bugs
+  removed bubs from dist_2_pinks
+  set deleted: buys is worse than bugs
+  removed buys from dist_2_pinks
+  set deleted: jugs is worse than bugs
+  removed jugs from dist_2_pinks
+  set deleted: vugs is worse than bugs
+  removed vugs from dist_2_pinks
+  set deleted: buhl is worse than bull
+  removed buhl from dist_2_pinks
+  set deleted: lull is worse than bull
+  removed lull from dist_2_pinks
+  set deleted: bumf is worse than bums
+  removed bumf from dist_2_pinks
+  set deleted: mumm is worse than bums
+  removed mumm from dist_2_pinks
+  set deleted: mumu is worse than bums
+  removed mumu from dist_2_pinks
+  set deleted: such is worse than bunk
+  removed such from dist_2_pinks
+  set deleted: nuns is worse than buns
+  removed nuns from dist_2_pinks
+  set deleted: suqs is worse than buns
+  removed suqs from dist_2_pinks
+  set deleted: aunt is worse than bunt
+  removed aunt from dist_2_pinks
+  set deleted: aura is worse than bura
+  removed aura from dist_2_pinks
+  set deleted: jura is worse than bura
+  removed jura from dist_2_pinks
+  set deleted: nurl is worse than burl
+  removed nurl from dist_2_pinks
+  set deleted: boff is worse than burn
+  removed boff from dist_2_pinks
+  set deleted: bury is worse than burs
+  removed bury from dist_2_pinks
+  set deleted: juga is worse than burs
+  removed juga from dist_2_pinks
+  set deleted: busy is worse than buss
+  removed busy from dist_2_pinks
+  set deleted: just is worse than bust
+  removed just from dist_2_pinks
+  set deleted: lutz is worse than bute
+  removed lutz from dist_2_pinks
+  set deleted: putz is worse than buts
+  removed putz from dist_2_pinks
+  set deleted: ceca is worse than caca
+  removed ceca from dist_2_pinks
+  set deleted: axed is worse than cade
+  removed axed from dist_2_pinks
+  set deleted: unde is worse than cade
+  removed unde from dist_2_pinks
+  set deleted: cays is worse than cads
+  removed cays from dist_2_pinks
+  set deleted: quag is worse than caid
+  removed quag from dist_2_pinks
+  set deleted: quai is worse than caid
+  removed quai from dist_2_pinks
+  set deleted: quay is worse than caid
+  removed quay from dist_2_pinks
+  set deleted: ohia is worse than cain
+  removed ohia from dist_2_pinks
+  set deleted: acme is worse than cake
+  removed acme from dist_2_pinks
+  set deleted: calx is worse than calm
+  removed calx from dist_2_pinks
+  set deleted: cyme is worse than came
+  removed cyme from dist_2_pinks
+  set deleted: fume is worse than came
+  removed fume from dist_2_pinks
+  set deleted: fuze is worse than came
+  removed fuze from dist_2_pinks
+  set deleted: imps is worse than camp
+  removed imps from dist_2_pinks
+  set deleted: vamp is worse than camp
+  removed vamp from dist_2_pinks
+  set deleted: amus is worse than cams
+  removed amus from dist_2_pinks
+  set deleted: acre is worse than care
+  removed acre from dist_2_pinks
+  set deleted: axel is worse than care
+  removed axel from dist_2_pinks
+  set deleted: caca is worse than care
+  removed caca from dist_2_pinks
+  set deleted: cage is worse than care
+  removed cage from dist_2_pinks
+  set deleted: kaki is worse than care
+  removed kaki from dist_2_pinks
+  set deleted: lazy is worse than care
+  removed lazy from dist_2_pinks
+  set deleted: orca is worse than care
+  removed orca from dist_2_pinks
+  set deleted: carr is worse than cark
+  removed carr from dist_2_pinks
+  set deleted: agon is worse than carn
+  removed agon from dist_2_pinks
+  set deleted: raja is worse than carn
+  removed raja from dist_2_pinks
+  set deleted: yaks is worse than cars
+  removed yaks from dist_2_pinks
+  set deleted: casa is worse than case
+  removed casa from dist_2_pinks
+  set deleted: ease is worse than case
+  removed ease from dist_2_pinks
+  set deleted: cyst is worse than cast
+  removed cyst from dist_2_pinks
+  set deleted: eave is worse than cave
+  removed eave from dist_2_pinks
+  set deleted: jaws is worse than caws
+  removed jaws from dist_2_pinks
+  set deleted: chao is worse than chad
+  removed chao from dist_2_pinks
+  set deleted: char is worse than chaw
+  removed char from dist_2_pinks
+  set deleted: chic is worse than chia
+  removed chic from dist_2_pinks
+  set deleted: chia is worse than chid
+  removed chia from dist_2_pinks
+  set deleted: dhow is worse than chow
+  removed dhow from dist_2_pinks
+  set deleted: egis is worse than cine
+  removed egis from dist_2_pinks
+  set deleted: kief is worse than cine
+  removed kief from dist_2_pinks
+  set deleted: orgy is worse than cire
+  removed orgy from dist_2_pinks
+  set deleted: demo is worse than code
+  removed demo from dist_2_pinks
+  set deleted: dopa is worse than code
+  removed dopa from dist_2_pinks
+  set deleted: coys is worse than cods
+  removed coys from dist_2_pinks
+  set deleted: join is worse than coil
+  removed join from dist_2_pinks
+  set deleted: joke is worse than coke
+  removed joke from dist_2_pinks
+  set deleted: coxa is worse than cola
+  removed coxa from dist_2_pinks
+  set deleted: cozy is worse than coly
+  removed cozy from dist_2_pinks
+  set deleted: womb is worse than comb
+  removed womb from dist_2_pinks
+  set deleted: coke is worse than cone
+  removed coke from dist_2_pinks
+  set deleted: joky is worse than cone
+  removed joky from dist_2_pinks
+  set deleted: keto is worse than cone
+  removed keto from dist_2_pinks
+  set deleted: yoni is worse than cone
+  removed yoni from dist_2_pinks
+  set deleted: zone is worse than cone
+  removed zone from dist_2_pinks
+  set deleted: zonk is worse than conk
+  removed zonk from dist_2_pinks
+  set deleted: mojo is worse than conn
+  removed mojo from dist_2_pinks
+  set deleted: onto is worse than conn
+  removed onto from dist_2_pinks
+  set deleted: ions is worse than cons
+  removed ions from dist_2_pinks
+  set deleted: nous is worse than cons
+  removed nous from dist_2_pinks
+  set deleted: coca is worse than core
+  removed coca from dist_2_pinks
+  set deleted: coda is worse than core
+  removed coda from dist_2_pinks
+  set deleted: kore is worse than core
+  removed kore from dist_2_pinks
+  set deleted: corf is worse than corn
+  removed corf from dist_2_pinks
+  set deleted: coft is worse than cost
+  removed coft from dist_2_pinks
+  set deleted: croc is worse than crop
+  removed croc from dist_2_pinks
+  set deleted: tuff is worse than cuds
+  removed tuff from dist_2_pinks
+  set deleted: crud is worse than cued
+  removed crud from dist_2_pinks
+  set deleted: used is worse than cues
+  removed used from dist_2_pinks
+  set deleted: duff is worse than cuff
+  removed duff from dist_2_pinks
+  set deleted: curf is worse than curn
+  removed curf from dist_2_pinks
+  set deleted: jube is worse than cute
+  removed jube from dist_2_pinks
+  set deleted: jute is worse than cute
+  removed jute from dist_2_pinks
+  set deleted: amas is worse than dale
+  removed amas from dist_2_pinks
+  set deleted: daze is worse than dale
+  removed daze from dist_2_pinks
+  set deleted: edge is worse than dale
+  removed edge from dist_2_pinks
+  set deleted: egad is worse than dale
+  removed egad from dist_2_pinks
+  set deleted: gaga is worse than dale
+  removed gaga from dist_2_pinks
+  set deleted: elds is worse than dals
+  removed elds from dist_2_pinks
+  set deleted: dumb is worse than damp
+  removed dumb from dist_2_pinks
+  set deleted: umps is worse than damp
+  removed umps from dist_2_pinks
+  set deleted: ahem is worse than dare
+  removed ahem from dist_2_pinks
+  set deleted: area is worse than dare
+  removed area from dist_2_pinks
+  set deleted: berg is worse than dare
+  removed berg from dist_2_pinks
+  set deleted: deva is worse than dare
+  removed deva from dist_2_pinks
+  set deleted: eggs is worse than dare
+  removed eggs from dist_2_pinks
+  set deleted: ever is worse than dare
+  removed ever from dist_2_pinks
+  set deleted: eyer is worse than dare
+  removed eyer from dist_2_pinks
+  set deleted: eyra is worse than dare
+  removed eyra from dist_2_pinks
+  set deleted: gyri is worse than dare
+  removed gyri from dist_2_pinks
+  set deleted: jeez is worse than dare
+  removed jeez from dist_2_pinks
+  set deleted: yeah is worse than dare
+  removed yeah from dist_2_pinks
+  set deleted: dawt is worse than darn
+  removed dawt from dist_2_pinks
+  set deleted: kart is worse than dart
+  removed kart from dist_2_pinks
+  set deleted: dada is worse than date
+  removed dada from dist_2_pinks
+  set deleted: dhal is worse than deal
+  removed dhal from dist_2_pinks
+  set deleted: zeal is worse than deal
+  removed zeal from dist_2_pinks
+  set deleted: jeed is worse than deed
+  removed jeed from dist_2_pinks
+  set deleted: jeep is worse than deep
+  removed jeep from dist_2_pinks
+  set deleted: debt is worse than dees
+  removed debt from dist_2_pinks
+  set deleted: defi is worse than dees
+  removed defi from dist_2_pinks
+  set deleted: jees is worse than dees
+  removed jees from dist_2_pinks
+  set deleted: idle is worse than deil
+  removed idle from dist_2_pinks
+  set deleted: jell is worse than dell
+  removed jell from dist_2_pinks
+  set deleted: demy is worse than deme
+  removed demy from dist_2_pinks
+  set deleted: deny is worse than dene
+  removed deny from dist_2_pinks
+  set deleted: inns is worse than dens
+  removed inns from dist_2_pinks
+  set deleted: kefs is worse than dens
+  removed kefs from dist_2_pinks
+  set deleted: snye is worse than dens
+  removed snye from dist_2_pinks
+  set deleted: kerb is worse than dere
+  removed kerb from dist_2_pinks
+  set deleted: viol is worse than dial
+  removed viol from dist_2_pinks
+  set deleted: edit is worse than diet
+  removed edit from dist_2_pinks
+  set deleted: exit is worse than diet
+  removed exit from dist_2_pinks
+  set deleted: zigs is worse than digs
+  removed zigs from dist_2_pinks
+  set deleted: jill is worse than dill
+  removed jill from dist_2_pinks
+  set deleted: emic is worse than dine
+  removed emic from dist_2_pinks
+  set deleted: epic is worse than dine
+  removed epic from dist_2_pinks
+  set deleted: idol is worse than dine
+  removed idol from dist_2_pinks
+  set deleted: zing is worse than ding
+  removed zing from dist_2_pinks
+  set deleted: jink is worse than dink
+  removed jink from dist_2_pinks
+  set deleted: zips is worse than dips
+  removed zips from dist_2_pinks
+  set deleted: dyke is worse than dire
+  removed dyke from dist_2_pinks
+  set deleted: ditz is worse than dita
+  removed ditz from dist_2_pinks
+  set deleted: kaka is worse than dite
+  removed kaka from dist_2_pinks
+  set deleted: kava is worse than dite
+  removed kava from dist_2_pinks
+  set deleted: jive is worse than dive
+  removed jive from dist_2_pinks
+  set deleted: jouk is worse than docs
+  removed jouk from dist_2_pinks
+  set deleted: joes is worse than does
+  removed joes from dist_2_pinks
+  set deleted: owse is worse than does
+  removed owse from dist_2_pinks
+  set deleted: fogy is worse than dogy
+  removed fogy from dist_2_pinks
+  set deleted: doge is worse than dole
+  removed doge from dist_2_pinks
+  set deleted: doze is worse than dole
+  removed doze from dist_2_pinks
+  set deleted: dona is worse than done
+  removed dona from dist_2_pinks
+  set deleted: moxa is worse than dore
+  removed moxa from dist_2_pinks
+  set deleted: nona is worse than dore
+  removed nona from dist_2_pinks
+  set deleted: orle is worse than dore
+  removed orle from dist_2_pinks
+  set deleted: yoke is worse than dore
+  removed yoke from dist_2_pinks
+  set deleted: toyo is worse than dors
+  removed toyo from dist_2_pinks
+  set deleted: goth is worse than doss
+  removed goth from dist_2_pinks
+  set deleted: doux is worse than dour
+  removed doux from dist_2_pinks
+  set deleted: your is worse than dour
+  removed your from dist_2_pinks
+  set deleted: jows is worse than dows
+  removed jows from dist_2_pinks
+  set deleted: knop is worse than dows
+  removed knop from dist_2_pinks
+  set deleted: daub is worse than drab
+  removed daub from dist_2_pinks
+  set deleted: drek is worse than dree
+  removed drek from dist_2_pinks
+  set deleted: auld is worse than dual
+  removed auld from dist_2_pinks
+  set deleted: duos is worse than dubs
+  removed duos from dist_2_pinks
+  set deleted: gude is worse than dude
+  removed gude from dist_2_pinks
+  set deleted: uses is worse than dues
+  removed uses from dist_2_pinks
+  set deleted: dude is worse than dune
+  removed dude from dist_2_pinks
+  set deleted: junk is worse than dunk
+  removed junk from dist_2_pinks
+  set deleted: ruer is worse than dure
+  removed ruer from dist_2_pinks
+  set deleted: myth is worse than east
+  removed myth from dist_2_pinks
+  set deleted: oath is worse than east
+  removed oath from dist_2_pinks
+  set deleted: errs is worse than eras
+  removed errs from dist_2_pinks
+  set deleted: faze is worse than fake
+  removed faze from dist_2_pinks
+  set deleted: fado is worse than fane
+  removed fado from dist_2_pinks
+  set deleted: fehs is worse than fets
+  removed fehs from dist_2_pinks
+  set deleted: fyce is worse than fice
+  removed fyce from dist_2_pinks
+  set deleted: fife is worse than file
+  removed fife from dist_2_pinks
+  set deleted: jinn is worse than fino
+  removed jinn from dist_2_pinks
+  set deleted: fixt is worse than fist
+  removed fixt from dist_2_pinks
+  set deleted: flak is worse than flab
+  removed flak from dist_2_pinks
+  set deleted: floc is worse than flow
+  removed floc from dist_2_pinks
+  set deleted: forb is worse than fora
+  removed forb from dist_2_pinks
+  set deleted: joss is worse than foss
+  removed joss from dist_2_pinks
+  set deleted: friz is worse than frat
+  removed friz from dist_2_pinks
+  set deleted: gays is worse than gads
+  removed gays from dist_2_pinks
+  set deleted: sego is worse than gaes
+  removed sego from dist_2_pinks
+  set deleted: gala is worse than gale
+  removed gala from dist_2_pinks
+  set deleted: culm is worse than gall
+  removed culm from dist_2_pinks
+  set deleted: lall is worse than gall
+  removed lall from dist_2_pinks
+  set deleted: gyms is worse than gams
+  removed gyms from dist_2_pinks
+  set deleted: crus is worse than gars
+  removed crus from dist_2_pinks
+  set deleted: faux is worse than gars
+  removed faux from dist_2_pinks
+  set deleted: geez is worse than geed
+  removed geez from dist_2_pinks
+  set deleted: yids is worse than gids
+  removed yids from dist_2_pinks
+  set deleted: sign is worse than gins
+  removed sign from dist_2_pinks
+  set deleted: opus is worse than goes
+  removed opus from dist_2_pinks
+  set deleted: ergo is worse than gore
+  removed ergo from dist_2_pinks
+  set deleted: guan is worse than gran
+  removed guan from dist_2_pinks
+  set deleted: guvs is worse than guls
+  removed guvs from dist_2_pinks
+  set deleted: ulus is worse than guls
+  removed ulus from dist_2_pinks
+  set deleted: ughs is worse than gush
+  removed ughs from dist_2_pinks
+  set deleted: juts is worse than guts
+  removed juts from dist_2_pinks
+  set deleted: haze is worse than hake
+  removed haze from dist_2_pinks
+  set deleted: half is worse than hale
+  removed half from dist_2_pinks
+  set deleted: hyla is worse than hale
+  removed hyla from dist_2_pinks
+  set deleted: heth is worse than halt
+  removed heth from dist_2_pinks
+  set deleted: ankh is worse than hank
+  removed ankh from dist_2_pinks
+  set deleted: haaf is worse than hark
+  removed haaf from dist_2_pinks
+  set deleted: haft is worse than hart
+  removed haft from dist_2_pinks
+  set deleted: very is worse than hart
+  removed very from dist_2_pinks
+  set deleted: hahs is worse than haws
+  removed hahs from dist_2_pinks
+  set deleted: verb is worse than heal
+  removed verb from dist_2_pinks
+  set deleted: tzar is worse than hear
+  removed tzar from dist_2_pinks
+  set deleted: eths is worse than heat
+  removed eths from dist_2_pinks
+  set deleted: heft is worse than heat
+  removed heft from dist_2_pinks
+  set deleted: yelp is worse than held
+  removed yelp from dist_2_pinks
+  set deleted: hebe is worse than heme
+  removed hebe from dist_2_pinks
+  set deleted: herb is worse than herd
+  removed herb from dist_2_pinks
+  set deleted: aero is worse than here
+  removed aero from dist_2_pinks
+  set deleted: edhs is worse than hets
+  removed edhs from dist_2_pinks
+  set deleted: jilt is worse than hilt
+  removed jilt from dist_2_pinks
+  set deleted: phiz is worse than hist
+  removed phiz from dist_2_pinks
+  set deleted: hoys is worse than hods
+  removed hoys from dist_2_pinks
+  set deleted: holm is worse than hole
+  removed holm from dist_2_pinks
+  set deleted: homy is worse than hole
+  removed homy from dist_2_pinks
+  set deleted: kohl is worse than holk
+  removed kohl from dist_2_pinks
+  set deleted: oohs is worse than hols
+  removed oohs from dist_2_pinks
+  set deleted: soph is worse than hops
+  removed soph from dist_2_pinks
+  set deleted: genu is worse than hots
+  removed genu from dist_2_pinks
+  set deleted: jots is worse than hots
+  removed jots from dist_2_pinks
+  set deleted: koph is worse than hots
+  removed koph from dist_2_pinks
+  set deleted: soth is worse than hots
+  removed soth from dist_2_pinks
+  set deleted: sumo is worse than hums
+  removed sumo from dist_2_pinks
+  set deleted: kvas is worse than kaas
+  removed kvas from dist_2_pinks
+  set deleted: kaif is worse than kail
+  removed kaif from dist_2_pinks
+  set deleted: kafs is worse than kats
+  removed kafs from dist_2_pinks
+  set deleted: khaf is worse than khan
+  removed khaf from dist_2_pinks
+  set deleted: inks is worse than kins
+  removed inks from dist_2_pinks
+  set deleted: unit is worse than knit
+  removed unit from dist_2_pinks
+  set deleted: laky is worse than lace
+  removed laky from dist_2_pinks
+  set deleted: alec is worse than lade
+  removed alec from dist_2_pinks
+  set deleted: else is worse than lade
+  removed else from dist_2_pinks
+  set deleted: jamb is worse than lade
+  removed jamb from dist_2_pinks
+  set deleted: laze is worse than lade
+  removed laze from dist_2_pinks
+  set deleted: leva is worse than lade
+  removed leva from dist_2_pinks
+  set deleted: ulna is worse than lads
+  removed ulna from dist_2_pinks
+  set deleted: vavs is worse than lads
+  removed vavs from dist_2_pinks
+  set deleted: laic is worse than laid
+  removed laic from dist_2_pinks
+  set deleted: vair is worse than lair
+  removed vair from dist_2_pinks
+  set deleted: iamb is worse than lamb
+  removed iamb from dist_2_pinks
+  set deleted: alma is worse than lame
+  removed alma from dist_2_pinks
+  set deleted: lava is worse than lame
+  removed lava from dist_2_pinks
+  set deleted: mama is worse than lame
+  removed mama from dist_2_pinks
+  set deleted: aryl is worse than lard
+  removed aryl from dist_2_pinks
+  set deleted: raya is worse than lard
+  removed raya from dist_2_pinks
+  set deleted: waff is worse than lars
+  removed waff from dist_2_pinks
+  set deleted: ekes is worse than lees
+  removed ekes from dist_2_pinks
+  set deleted: lept is worse than leet
+  removed lept from dist_2_pinks
+  set deleted: jess is worse than less
+  removed jess from dist_2_pinks
+  set deleted: emes is worse than lets
+  removed emes from dist_2_pinks
+  set deleted: vets is worse than lets
+  removed vets from dist_2_pinks
+  set deleted: lieu is worse than lied
+  removed lieu from dist_2_pinks
+  set deleted: kier is worse than lier
+  removed kier from dist_2_pinks
+  set deleted: isle is worse than lies
+  removed isle from dist_2_pinks
+  set deleted: evil is worse than line
+  removed evil from dist_2_pinks
+  set deleted: kist is worse than list
+  removed kist from dist_2_pinks
+  set deleted: litu is worse than lite
+  removed litu from dist_2_pinks
+  set deleted: neif is worse than lite
+  removed neif from dist_2_pinks
+  set deleted: nevi is worse than lite
+  removed nevi from dist_2_pinks
+  set deleted: omit is worse than lits
+  removed omit from dist_2_pinks
+  set deleted: nuke is worse than lode
+  removed nuke from dist_2_pinks
+  set deleted: club is worse than logs
+  removed club from dist_2_pinks
+  set deleted: avow is worse than lone
+  removed avow from dist_2_pinks
+  set deleted: levo is worse than lone
+  removed levo from dist_2_pinks
+  set deleted: scup is worse than lops
+  removed scup from dist_2_pinks
+  set deleted: egos is worse than lore
+  removed egos from dist_2_pinks
+  set deleted: smew is worse than lots
+  removed smew from dist_2_pinks
+  set deleted: veto is worse than lots
+  removed veto from dist_2_pinks
+  set deleted: vows is worse than lows
+  removed vows from dist_2_pinks
+  set deleted: luxe is worse than lube
+  removed luxe from dist_2_pinks
+  set deleted: oust is worse than lust
+  removed oust from dist_2_pinks
+  set deleted: caky is worse than mace
+  removed caky from dist_2_pinks
+  set deleted: maze is worse than mace
+  removed maze from dist_2_pinks
+  set deleted: mays is worse than mads
+  removed mays from dist_2_pinks
+  set deleted: taxa is worse than mads
+  removed taxa from dist_2_pinks
+  set deleted: agin is worse than main
+  removed agin from dist_2_pinks
+  set deleted: magi is worse than male
+  removed magi from dist_2_pinks
+  set deleted: myna is worse than mana
+  removed myna from dist_2_pinks
+  set deleted: mako is worse than mane
+  removed mako from dist_2_pinks
+  set deleted: turf is worse than mark
+  removed turf from dist_2_pinks
+  set deleted: daut is worse than mart
+  removed daut from dist_2_pinks
+  set deleted: meta is worse than mate
+  removed meta from dist_2_pinks
+  set deleted: fawn is worse than mawn
+  removed fawn from dist_2_pinks
+  set deleted: jerk is worse than merk
+  removed jerk from dist_2_pinks
+  set deleted: yill is worse than mill
+  removed yill from dist_2_pinks
+  set deleted: ayin is worse than mina
+  removed ayin from dist_2_pinks
+  set deleted: mini is worse than mina
+  removed mini from dist_2_pinks
+  set deleted: minx is worse than mina
+  removed minx from dist_2_pinks
+  set deleted: miri is worse than mire
+  removed miri from dist_2_pinks
+  set deleted: semi is worse than mise
+  removed semi from dist_2_pinks
+  set deleted: mixt is worse than mist
+  removed mixt from dist_2_pinks
+  set deleted: gibe is worse than mite
+  removed gibe from dist_2_pinks
+  set deleted: mhos is worse than mobs
+  removed mhos from dist_2_pinks
+  set deleted: coco is worse than mocs
+  removed coco from dist_2_pinks
+  set deleted: moue is worse than mode
+  removed moue from dist_2_pinks
+  set deleted: soys is worse than mons
+  removed soys from dist_2_pinks
+  set deleted: mozo is worse than mood
+  removed mozo from dist_2_pinks
+  set deleted: soda is worse than mors
+  removed soda from dist_2_pinks
+  set deleted: soja is worse than mors
+  removed soja from dist_2_pinks
+  set deleted: soya is worse than mors
+  removed soya from dist_2_pinks
+  set deleted: atap is worse than most
+  removed atap from dist_2_pinks
+  set deleted: yule is worse than mule
+  removed yule from dist_2_pinks
+  set deleted: null is worse than mull
+  removed null from dist_2_pinks
+  set deleted: nema is worse than name
+  removed nema from dist_2_pinks
+  set deleted: next is worse than neat
+  removed next from dist_2_pinks
+  set deleted: knit is worse than nits
+  removed knit from dist_2_pinks
+  set deleted: nidi is worse than node
+  removed nidi from dist_2_pinks
+  set deleted: into is worse than noil
+  removed into from dist_2_pinks
+  set deleted: aeon is worse than nope
+  removed aeon from dist_2_pinks
+  set deleted: zori is worse than nori
+  removed zori from dist_2_pinks
+  set deleted: enow is worse than nows
+  removed enow from dist_2_pinks
+  set deleted: osar is worse than oars
+  removed osar from dist_2_pinks
+  set deleted: oafs is worse than oats
+  removed oafs from dist_2_pinks
+  set deleted: ordo is worse than odor
+  removed ordo from dist_2_pinks
+  set deleted: oleo is worse than olea
+  removed oleo from dist_2_pinks
+  set deleted: oxes is worse than oles
+  removed oxes from dist_2_pinks
+  set deleted: oses is worse than opes
+  removed oses from dist_2_pinks
+  set deleted: obes is worse than ores
+  removed obes from dist_2_pinks
+  set deleted: pech is worse than pack
+  removed pech from dist_2_pinks
+  set deleted: paca is worse than pacs
+  removed paca from dist_2_pinks
+  set deleted: vacs is worse than pacs
+  removed vacs from dist_2_pinks
+  set deleted: pays is worse than pads
+  removed pays from dist_2_pinks
+  set deleted: apps is worse than pale
+  removed apps from dist_2_pinks
+  set deleted: self is worse than pale
+  removed self from dist_2_pinks
+  set deleted: skeg is worse than pals
+  removed skeg from dist_2_pinks
+  set deleted: puja is worse than pams
+  removed puja from dist_2_pinks
+  set deleted: pupa is worse than pams
+  removed pupa from dist_2_pinks
+  set deleted: pelf is worse than pane
+  removed pelf from dist_2_pinks
+  set deleted: naps is worse than pans
+  removed naps from dist_2_pinks
+  set deleted: page is worse than pare
+  removed page from dist_2_pinks
+  set deleted: para is worse than pare
+  removed para from dist_2_pinks
+  set deleted: raff is worse than pare
+  removed raff from dist_2_pinks
+  set deleted: seif is worse than pare
+  removed seif from dist_2_pinks
+  set deleted: vape is worse than pase
+  removed vape from dist_2_pinks
+  set deleted: psst is worse than past
+  removed psst from dist_2_pinks
+  set deleted: geta is worse than pate
+  removed geta from dist_2_pinks
+  set deleted: hyte is worse than pate
+  removed hyte from dist_2_pinks
+  set deleted: papa is worse than pats
+  removed papa from dist_2_pinks
+  set deleted: vaws is worse than paws
+  removed vaws from dist_2_pinks
+  set deleted: delf is worse than peal
+  removed delf from dist_2_pinks
+  set deleted: jeon is worse than pean
+  removed jeon from dist_2_pinks
+  set deleted: pyas is worse than peas
+  removed pyas from dist_2_pinks
+  set deleted: peag is worse than peat
+  removed peag from dist_2_pinks
+  set deleted: teat is worse than peat
+  removed teat from dist_2_pinks
+  set deleted: yeuk is worse than peed
+  removed yeuk from dist_2_pinks
+  set deleted: veep is worse than pees
+  removed veep from dist_2_pinks
+  set deleted: zein is worse than pein
+  removed zein from dist_2_pinks
+  set deleted: pehs is worse than pens
+  removed pehs from dist_2_pinks
+  set deleted: neon is worse than peon
+  removed neon from dist_2_pinks
+  set deleted: jews is worse than pews
+  removed jews from dist_2_pinks
+  set deleted: ghis is worse than phis
+  removed ghis from dist_2_pinks
+  set deleted: piki is worse than pike
+  removed piki from dist_2_pinks
+  set deleted: pixy is worse than pily
+  removed pixy from dist_2_pinks
+  set deleted: nipa is worse than pina
+  removed nipa from dist_2_pinks
+  set deleted: viny is worse than pine
+  removed viny from dist_2_pinks
+  set deleted: yipe is worse than pine
+  removed yipe from dist_2_pinks
+  set deleted: pigs is worse than pins
+  removed pigs from dist_2_pinks
+  set deleted: psis is worse than pins
+  removed psis from dist_2_pinks
+  set deleted: poem is worse than poke
+  removed poem from dist_2_pinks
+  set deleted: ruff is worse than pole
+  removed ruff from dist_2_pinks
+  set deleted: mopy is worse than pols
+  removed mopy from dist_2_pinks
+  set deleted: owly is worse than pone
+  removed owly from dist_2_pinks
+  set deleted: hoya is worse than pore
+  removed hoya from dist_2_pinks
+  set deleted: momi is worse than pore
+  removed momi from dist_2_pinks
+  set deleted: repo is worse than pore
+  removed repo from dist_2_pinks
+  set deleted: epos is worse than pose
+  removed epos from dist_2_pinks
+  set deleted: nosy is worse than pose
+  removed nosy from dist_2_pinks
+  set deleted: rosy is worse than pose
+  removed rosy from dist_2_pinks
+  set deleted: prao is worse than pram
+  removed prao from dist_2_pinks
+  set deleted: prau is worse than pram
+  removed prau from dist_2_pinks
+  set deleted: prex is worse than pree
+  removed prex from dist_2_pinks
+  set deleted: prez is worse than pree
+  removed prez from dist_2_pinks
+  set deleted: proa is worse than prom
+  removed proa from dist_2_pinks
+  set deleted: puli is worse than pule
+  removed puli from dist_2_pinks
+  set deleted: sulu is worse than pule
+  removed sulu from dist_2_pinks
+  set deleted: urus is worse than purs
+  removed urus from dist_2_pinks
+  set deleted: pugh is worse than push
+  removed pugh from dist_2_pinks
+  set deleted: quod is worse than quad
+  removed quod from dist_2_pinks
+  set deleted: quip is worse than quid
+  removed quip from dist_2_pinks
+  set deleted: raze is worse than rake
+  removed raze from dist_2_pinks
+  set deleted: rynd is worse than rand
+  removed rynd from dist_2_pinks
+  set deleted: jato is worse than rato
+  removed jato from dist_2_pinks
+  set deleted: revs is worse than rebs
+  removed revs from dist_2_pinks
+  set deleted: refs is worse than reds
+  removed refs from dist_2_pinks
+  set deleted: neem is worse than reed
+  removed neem from dist_2_pinks
+  set deleted: jete is worse than rete
+  removed jete from dist_2_pinks
+  set deleted: ills is worse than rile
+  removed ills from dist_2_pinks
+  set deleted: kifs is worse than rins
+  removed kifs from dist_2_pinks
+  set deleted: view is worse than rive
+  removed view from dist_2_pinks
+  set deleted: odor is worse than rood
+  removed odor from dist_2_pinks
+  set deleted: jota is worse than rota
+  removed jota from dist_2_pinks
+  set deleted: vote is worse than rote
+  removed vote from dist_2_pinks
+  set deleted: oots is worse than rots
+  removed oots from dist_2_pinks
+  set deleted: user is worse than rues
+  removed user from dist_2_pinks
+  set deleted: fuse is worse than rule
+  removed fuse from dist_2_pinks
+  set deleted: adds is worse than sade
+  removed adds from dist_2_pinks
+  set deleted: safe is worse than sade
+  removed safe from dist_2_pinks
+  set deleted: kadi is worse than sadi
+  removed kadi from dist_2_pinks
+  set deleted: shri is worse than sari
+  removed shri from dist_2_pinks
+  set deleted: seta is worse than sate
+  removed seta from dist_2_pinks
+  set deleted: sect is worse than seat
+  removed sect from dist_2_pinks
+  set deleted: sext is worse than seat
+  removed sext from dist_2_pinks
+  set deleted: jeer is worse than seer
+  removed jeer from dist_2_pinks
+  set deleted: veer is worse than seer
+  removed veer from dist_2_pinks
+  set deleted: nett is worse than sent
+  removed nett from dist_2_pinks
+  set deleted: eyne is worse than sere
+  removed eyne from dist_2_pinks
+  set deleted: shah is worse than sham
+  removed shah from dist_2_pinks
+  set deleted: shiv is worse than shim
+  removed shiv from dist_2_pinks
+  set deleted: itch is worse than shit
+  removed itch from dist_2_pinks
+  set deleted: size is worse than sice
+  removed size from dist_2_pinks
+  set deleted: syce is worse than sice
+  removed syce from dist_2_pinks
+  set deleted: nill is worse than sill
+  removed nill from dist_2_pinks
+  set deleted: swum is worse than slam
+  removed swum from dist_2_pinks
+  set deleted: swim is worse than slim
+  removed swim from dist_2_pinks
+  set deleted: flic is worse than slot
+  removed flic from dist_2_pinks
+  set deleted: knot is worse than snot
+  removed knot from dist_2_pinks
+  set deleted: onus is worse than sole
+  removed onus from dist_2_pinks
+  set deleted: modi is worse than sord
+  removed modi from dist_2_pinks
+  set deleted: yowe is worse than sore
+  removed yowe from dist_2_pinks
+  set deleted: sofa is worse than sort
+  removed sofa from dist_2_pinks
+  set deleted: spaz is worse than spae
+  removed spaz from dist_2_pinks
+  set deleted: spiv is worse than spik
+  removed spiv from dist_2_pinks
+  set deleted: spik is worse than spin
+  removed spik from dist_2_pinks
+  set deleted: sunn is worse than sunk
+  removed sunn from dist_2_pinks
+  set deleted: sudd is worse than sure
+  removed sudd from dist_2_pinks
+  set deleted: talc is worse than tala
+  removed talc from dist_2_pinks
+  set deleted: yams is worse than tams
+  removed yams from dist_2_pinks
+  set deleted: tepa is worse than tape
+  removed tepa from dist_2_pinks
+  set deleted: ness is worse than tens
+  removed ness from dist_2_pinks
+  set deleted: yens is worse than tens
+  removed yens from dist_2_pinks
+  set deleted: whey is worse than then
+  removed whey from dist_2_pinks
+  set deleted: whew is worse than thew
+  removed whew from dist_2_pinks
+  set deleted: whom is worse than this
+  removed whom from dist_2_pinks
+  set deleted: spic is worse than tins
+  removed spic from dist_2_pinks
+  set deleted: gyro is worse than tire
+  removed gyro from dist_2_pinks
+  set deleted: toys is worse than tods
+  removed toys from dist_2_pinks
+  set deleted: tolu is worse than tole
+  removed tolu from dist_2_pinks
+  set deleted: fops is worse than tops
+  removed fops from dist_2_pinks
+  set deleted: torc is worse than tora
+  removed torc from dist_2_pinks
+  set deleted: inti is worse than torn
+  removed inti from dist_2_pinks
+  set deleted: toft is worse than tost
+  removed toft from dist_2_pinks
+  set deleted: twos is worse than tows
+  removed twos from dist_2_pinks
+  set deleted: trek is worse than trey
+  removed trek from dist_2_pinks
+  set deleted: stud is worse than tuns
+  removed stud from dist_2_pinks
+  set deleted: yups is worse than tups
+  removed yups from dist_2_pinks
+  set deleted: vibe is worse than vide
+  removed vibe from dist_2_pinks
+  set deleted: wady is worse than wade
+  removed wady from dist_2_pinks
+  set deleted: wavy is worse than wade
+  removed wavy from dist_2_pinks
+  set deleted: waxy is worse than wade
+  removed waxy from dist_2_pinks
+  set deleted: waif is worse than wail
+  removed waif from dist_2_pinks
+  set deleted: wyle is worse than wale
+  removed wyle from dist_2_pinks
+  set deleted: wynd is worse than wand
+  removed wynd from dist_2_pinks
+  set deleted: wynn is worse than wand
+  removed wynn from dist_2_pinks
+  set deleted: anew is worse than wane
+  removed anew from dist_2_pinks
+  set deleted: knew is worse than wans
+  removed knew from dist_2_pinks
+  set deleted: awry is worse than ware
+  removed awry from dist_2_pinks
+  set deleted: wary is worse than ware
+  removed wary from dist_2_pinks
+  set deleted: awny is worse than wars
+  removed awny from dist_2_pinks
+  set deleted: waft is worse than wart
+  removed waft from dist_2_pinks
+  set deleted: ways is worse than wats
+  removed ways from dist_2_pinks
+  set deleted: wyns is worse than wens
+  removed wyns from dist_2_pinks
+  set deleted: weft is worse than went
+  removed weft from dist_2_pinks
+  set deleted: wept is worse than went
+  removed wept from dist_2_pinks
+  set deleted: whig is worse than whid
+  removed whig from dist_2_pinks
+  set deleted: whiz is worse than whin
+  removed whiz from dist_2_pinks
+  set deleted: wife is worse than wile
+  removed wife from dist_2_pinks
+  set deleted: know is worse than wons
+  removed know from dist_2_pinks
+   - DELETE_HARD_GREYS -
+  the set of aals is unecessary
+  removed aals from dist_2_pinks
+  the set of acyl is unecessary
+  removed acyl from dist_2_pinks
+  the set of aery is unecessary
+  removed aery from dist_2_pinks
+  the set of aims is unecessary
+  removed aims from dist_2_pinks
+  the set of airt is unecessary
+  removed airt from dist_2_pinks
+  the set of akee is unecessary
+  removed akee from dist_2_pinks
+  the set of akin is unecessary
+  removed akin from dist_2_pinks
+  the set of alae is unecessary
+  removed alae from dist_2_pinks
+  the set of alan is unecessary
+  removed alan from dist_2_pinks
+  the set of albs is unecessary
+  removed albs from dist_2_pinks
+  the set of alls is unecessary
+  removed alls from dist_2_pinks
+  the set of alme is unecessary
+  removed alme from dist_2_pinks
+  the set of alms is unecessary
+  removed alms from dist_2_pinks
+  the set of alow is unecessary
+  removed alow from dist_2_pinks
+  the set of alto is unecessary
+  removed alto from dist_2_pinks
+  the set of alts is unecessary
+  removed alts from dist_2_pinks
+  the set of anal is unecessary
+  removed anal from dist_2_pinks
+  the set of anil is unecessary
+  removed anil from dist_2_pinks
+  the set of anis is unecessary
+  removed anis from dist_2_pinks
+  the set of anus is unecessary
+  removed anus from dist_2_pinks
+  the set of arbs is unecessary
+  removed arbs from dist_2_pinks
+  the set of arcs is unecessary
+  removed arcs from dist_2_pinks
+  the set of aria is unecessary
+  removed aria from dist_2_pinks
+  the set of arks is unecessary
+  removed arks from dist_2_pinks
+  the set of arms is unecessary
+  removed arms from dist_2_pinks
+  the set of awls is unecessary
+  removed awls from dist_2_pinks
+  the set of beef is unecessary
+  removed beef from dist_2_pinks
+  the set of beep is unecessary
+  removed beep from dist_2_pinks
+  the set of begs is unecessary
+  removed begs from dist_2_pinks
+  the set of bhut is unecessary
+  removed bhut from dist_2_pinks
+  the set of bigs is unecessary
+  removed bigs from dist_2_pinks
+  the set of bima is unecessary
+  removed bima from dist_2_pinks
+  the set of bleb is unecessary
+  removed bleb from dist_2_pinks
+  the set of bled is unecessary
+  removed bled from dist_2_pinks
+  the set of blet is unecessary
+  removed blet from dist_2_pinks
+  the set of blew is unecessary
+  removed blew from dist_2_pinks
+  the set of blin is unecessary
+  removed blin from dist_2_pinks
+  the set of blip is unecessary
+  removed blip from dist_2_pinks
+  the set of bola is unecessary
+  removed bola from dist_2_pinks
+  the set of brig is unecessary
+  removed brig from dist_2_pinks
+  the set of brim is unecessary
+  removed brim from dist_2_pinks
+  the set of bris is unecessary
+  removed bris from dist_2_pinks
+  the set of brit is unecessary
+  removed brit from dist_2_pinks
+  the set of brut is unecessary
+  removed brut from dist_2_pinks
+  the set of buff is unecessary
+  removed buff from dist_2_pinks
+  the set of bulb is unecessary
+  removed bulb from dist_2_pinks
+  the set of bunn is unecessary
+  removed bunn from dist_2_pinks
+  the set of burr is unecessary
+  removed burr from dist_2_pinks
+  the set of byes is unecessary
+  removed byes from dist_2_pinks
+  the set of byte is unecessary
+  removed byte from dist_2_pinks
+  the set of caff is unecessary
+  removed caff from dist_2_pinks
+  the set of calf is unecessary
+  removed calf from dist_2_pinks
+  the set of calm is unecessary
+  removed calm from dist_2_pinks
+  the set of cams is unecessary
+  removed cams from dist_2_pinks
+  the set of capo is unecessary
+  removed capo from dist_2_pinks
+  the set of caws is unecessary
+  removed caws from dist_2_pinks
+  the set of cees is unecessary
+  removed cees from dist_2_pinks
+  the set of cels is unecessary
+  removed cels from dist_2_pinks
+  the set of cepe is unecessary
+  removed cepe from dist_2_pinks
+  the set of ceps is unecessary
+  removed ceps from dist_2_pinks
+  the set of cess is unecessary
+  removed cess from dist_2_pinks
+  the set of chay is unecessary
+  removed chay from dist_2_pinks
+  the set of chew is unecessary
+  removed chew from dist_2_pinks
+  the set of clad is unecessary
+  removed clad from dist_2_pinks
+  the set of clef is unecessary
+  removed clef from dist_2_pinks
+  the set of clew is unecessary
+  removed clew from dist_2_pinks
+  the set of clot is unecessary
+  removed clot from dist_2_pinks
+  the set of coax is unecessary
+  removed coax from dist_2_pinks
+  the set of coff is unecessary
+  removed coff from dist_2_pinks
+  the set of coof is unecessary
+  removed coof from dist_2_pinks
+  the set of copy is unecessary
+  removed copy from dist_2_pinks
+  the set of coup is unecessary
+  removed coup from dist_2_pinks
+  the set of cowl is unecessary
+  removed cowl from dist_2_pinks
+  the set of cowy is unecessary
+  removed cowy from dist_2_pinks
+  the set of cube is unecessary
+  removed cube from dist_2_pinks
+  the set of cues is unecessary
+  removed cues from dist_2_pinks
+  the set of cuff is unecessary
+  removed cuff from dist_2_pinks
+  the set of cuif is unecessary
+  removed cuif from dist_2_pinks
+  the set of cuke is unecessary
+  removed cuke from dist_2_pinks
+  the set of cult is unecessary
+  removed cult from dist_2_pinks
+  the set of cups is unecessary
+  removed cups from dist_2_pinks
+  the set of cure is unecessary
+  removed cure from dist_2_pinks
+  the set of curr is unecessary
+  removed curr from dist_2_pinks
+  the set of curt is unecessary
+  removed curt from dist_2_pinks
+  the set of cuts is unecessary
+  removed cuts from dist_2_pinks
+  the set of dads is unecessary
+  removed dads from dist_2_pinks
+  the set of daks is unecessary
+  removed daks from dist_2_pinks
+  the set of dang is unecessary
+  removed dang from dist_2_pinks
+  the set of daps is unecessary
+  removed daps from dist_2_pinks
+  the set of dawk is unecessary
+  removed dawk from dist_2_pinks
+  the set of daws is unecessary
+  removed daws from dist_2_pinks
+  the set of days is unecessary
+  removed days from dist_2_pinks
+  the set of dean is unecessary
+  removed dean from dist_2_pinks
+  the set of deft is unecessary
+  removed deft from dist_2_pinks
+  the set of deli is unecessary
+  removed deli from dist_2_pinks
+  the set of devs is unecessary
+  removed devs from dist_2_pinks
+  the set of deys is unecessary
+  removed deys from dist_2_pinks
+  the set of diol is unecessary
+  removed diol from dist_2_pinks
+  the set of dipt is unecessary
+  removed dipt from dist_2_pinks
+  the set of dogy is unecessary
+  removed dogy from dist_2_pinks
+  the set of doth is unecessary
+  removed doth from dist_2_pinks
+  the set of down is unecessary
+  removed down from dist_2_pinks
+  the set of drip is unecessary
+  removed drip from dist_2_pinks
+  the set of drop is unecessary
+  removed drop from dist_2_pinks
+  the set of duci is unecessary
+  removed duci from dist_2_pinks
+  the set of duds is unecessary
+  removed duds from dist_2_pinks
+  the set of dull is unecessary
+  removed dull from dist_2_pinks
+  the set of duns is unecessary
+  removed duns from dist_2_pinks
+  the set of dupe is unecessary
+  removed dupe from dist_2_pinks
+  the set of dups is unecessary
+  removed dups from dist_2_pinks
+  the set of durn is unecessary
+  removed durn from dist_2_pinks
+  the set of duro is unecessary
+  removed duro from dist_2_pinks
+  the set of durr is unecessary
+  removed durr from dist_2_pinks
+  the set of dyad is unecessary
+  removed dyad from dist_2_pinks
+  the set of dyed is unecessary
+  removed dyed from dist_2_pinks
+  the set of dyne is unecessary
+  removed dyne from dist_2_pinks
+  the set of eath is unecessary
+  removed eath from dist_2_pinks
+  the set of eats is unecessary
+  removed eats from dist_2_pinks
+  the set of eels is unecessary
+  removed eels from dist_2_pinks
+  the set of eger is unecessary
+  removed eger from dist_2_pinks
+  the set of ends is unecessary
+  removed ends from dist_2_pinks
+  the set of engs is unecessary
+  removed engs from dist_2_pinks
+  the set of enol is unecessary
+  removed enol from dist_2_pinks
+  the set of ergs is unecessary
+  removed ergs from dist_2_pinks
+  the set of erns is unecessary
+  removed erns from dist_2_pinks
+  the set of erst is unecessary
+  removed erst from dist_2_pinks
+  the set of etas is unecessary
+  removed etas from dist_2_pinks
+  the set of ewer is unecessary
+  removed ewer from dist_2_pinks
+  the set of ewes is unecessary
+  removed ewes from dist_2_pinks
+  the set of fads is unecessary
+  removed fads from dist_2_pinks
+  the set of fags is unecessary
+  removed fags from dist_2_pinks
+  the set of faro is unecessary
+  removed faro from dist_2_pinks
+  the set of faun is unecessary
+  removed faun from dist_2_pinks
+  the set of feds is unecessary
+  removed feds from dist_2_pinks
+  the set of felt is unecessary
+  removed felt from dist_2_pinks
+  the set of feme is unecessary
+  removed feme from dist_2_pinks
+  the set of fems is unecessary
+  removed fems from dist_2_pinks
+  the set of fend is unecessary
+  removed fend from dist_2_pinks
+  the set of fess is unecessary
+  removed fess from dist_2_pinks
+  the set of feta is unecessary
+  removed feta from dist_2_pinks
+  the set of feud is unecessary
+  removed feud from dist_2_pinks
+  the set of fido is unecessary
+  removed fido from dist_2_pinks
+  the set of fila is unecessary
+  removed fila from dist_2_pinks
+  the set of film is unecessary
+  removed film from dist_2_pinks
+  the set of fils is unecessary
+  removed fils from dist_2_pinks
+  the set of flub is unecessary
+  removed flub from dist_2_pinks
+  the set of fobs is unecessary
+  removed fobs from dist_2_pinks
+  the set of foci is unecessary
+  removed foci from dist_2_pinks
+  the set of foes is unecessary
+  removed foes from dist_2_pinks
+  the set of foss is unecessary
+  removed foss from dist_2_pinks
+  the set of foul is unecessary
+  removed foul from dist_2_pinks
+  the set of four is unecessary
+  removed four from dist_2_pinks
+  the set of fuci is unecessary
+  removed fuci from dist_2_pinks
+  the set of fuck is unecessary
+  removed fuck from dist_2_pinks
+  the set of fuds is unecessary
+  removed fuds from dist_2_pinks
+  the set of fuel is unecessary
+  removed fuel from dist_2_pinks
+  the set of fund is unecessary
+  removed fund from dist_2_pinks
+  the set of funs is unecessary
+  removed funs from dist_2_pinks
+  the set of furl is unecessary
+  removed furl from dist_2_pinks
+  the set of gaff is unecessary
+  removed gaff from dist_2_pinks
+  the set of gags is unecessary
+  removed gags from dist_2_pinks
+  the set of gaol is unecessary
+  removed gaol from dist_2_pinks
+  the set of gaun is unecessary
+  removed gaun from dist_2_pinks
+  the set of gawk is unecessary
+  removed gawk from dist_2_pinks
+  the set of gaze is unecessary
+  removed gaze from dist_2_pinks
+  the set of geck is unecessary
+  removed geck from dist_2_pinks
+  the set of geds is unecessary
+  removed geds from dist_2_pinks
+  the set of gems is unecessary
+  removed gems from dist_2_pinks
+  the set of ghee is unecessary
+  removed ghee from dist_2_pinks
+  the set of gift is unecessary
+  removed gift from dist_2_pinks
+  the set of gigs is unecessary
+  removed gigs from dist_2_pinks
+  the set of give is unecessary
+  removed give from dist_2_pinks
+  the set of glad is unecessary
+  removed glad from dist_2_pinks
+  the set of glib is unecessary
+  removed glib from dist_2_pinks
+  the set of glob is unecessary
+  removed glob from dist_2_pinks
+  the set of glom is unecessary
+  removed glom from dist_2_pinks
+  the set of glop is unecessary
+  removed glop from dist_2_pinks
+  the set of glow is unecessary
+  removed glow from dist_2_pinks
+  the set of gnus is unecessary
+  removed gnus from dist_2_pinks
+  the set of gowk is unecessary
+  removed gowk from dist_2_pinks
+  the set of goys is unecessary
+  removed goys from dist_2_pinks
+  the set of grip is unecessary
+  removed grip from dist_2_pinks
+  the set of grow is unecessary
+  removed grow from dist_2_pinks
+  the set of guck is unecessary
+  removed guck from dist_2_pinks
+  the set of guff is unecessary
+  removed guff from dist_2_pinks
+  the set of guys is unecessary
+  removed guys from dist_2_pinks
+  the set of haem is unecessary
+  removed haem from dist_2_pinks
+  the set of haen is unecessary
+  removed haen from dist_2_pinks
+  the set of harp is unecessary
+  removed harp from dist_2_pinks
+  the set of hasp is unecessary
+  removed hasp from dist_2_pinks
+  the set of haut is unecessary
+  removed haut from dist_2_pinks
+  the set of hays is unecessary
+  removed hays from dist_2_pinks
+  the set of hehs is unecessary
+  removed hehs from dist_2_pinks
+  the set of helm is unecessary
+  removed helm from dist_2_pinks
+  the set of hili is unecessary
+  removed hili from dist_2_pinks
+  the set of hoof is unecessary
+  removed hoof from dist_2_pinks
+  the set of howe is unecessary
+  removed howe from dist_2_pinks
+  the set of howf is unecessary
+  removed howf from dist_2_pinks
+  the set of howl is unecessary
+  removed howl from dist_2_pinks
+  the set of hula is unecessary
+  removed hula from dist_2_pinks
+  the set of hunt is unecessary
+  removed hunt from dist_2_pinks
+  the set of hurt is unecessary
+  removed hurt from dist_2_pinks
+  the set of hype is unecessary
+  removed hype from dist_2_pinks
+  the set of hyps is unecessary
+  removed hyps from dist_2_pinks
+  the set of imid is unecessary
+  removed imid from dist_2_pinks
+  the set of irks is unecessary
+  removed irks from dist_2_pinks
+  the set of jail is unecessary
+  removed jail from dist_2_pinks
+  the set of jarl is unecessary
+  removed jarl from dist_2_pinks
+  the set of kaas is unecessary
+  removed kaas from dist_2_pinks
+  the set of kabs is unecessary
+  removed kabs from dist_2_pinks
+  the set of kaes is unecessary
+  removed kaes from dist_2_pinks
+  the set of kapa is unecessary
+  removed kapa from dist_2_pinks
+  the set of keef is unecessary
+  removed keef from dist_2_pinks
+  the set of keek is unecessary
+  removed keek from dist_2_pinks
+  the set of keel is unecessary
+  removed keel from dist_2_pinks
+  the set of keen is unecessary
+  removed keen from dist_2_pinks
+  the set of keet is unecessary
+  removed keet from dist_2_pinks
+  the set of kegs is unecessary
+  removed kegs from dist_2_pinks
+  the set of keir is unecessary
+  removed keir from dist_2_pinks
+  the set of kelp is unecessary
+  removed kelp from dist_2_pinks
+  the set of kept is unecessary
+  removed kept from dist_2_pinks
+  the set of keys is unecessary
+  removed keys from dist_2_pinks
+  the set of khis is unecessary
+  removed khis from dist_2_pinks
+  the set of kilt is unecessary
+  removed kilt from dist_2_pinks
+  the set of kiva is unecessary
+  removed kiva from dist_2_pinks
+  the set of knap is unecessary
+  removed knap from dist_2_pinks
+  the set of kobs is unecessary
+  removed kobs from dist_2_pinks
+  the set of koel is unecessary
+  removed koel from dist_2_pinks
+  the set of kola is unecessary
+  removed kola from dist_2_pinks
+  the set of kops is unecessary
+  removed kops from dist_2_pinks
+  the set of koss is unecessary
+  removed koss from dist_2_pinks
+  the set of koto is unecessary
+  removed koto from dist_2_pinks
+  the set of kues is unecessary
+  removed kues from dist_2_pinks
+  the set of lady is unecessary
+  removed lady from dist_2_pinks
+  the set of laud is unecessary
+  removed laud from dist_2_pinks
+  the set of lays is unecessary
+  removed lays from dist_2_pinks
+  the set of lech is unecessary
+  removed lech from dist_2_pinks
+  the set of leek is unecessary
+  removed leek from dist_2_pinks
+  the set of left is unecessary
+  removed left from dist_2_pinks
+  the set of leke is unecessary
+  removed leke from dist_2_pinks
+  the set of leks is unecessary
+  removed leks from dist_2_pinks
+  the set of lewd is unecessary
+  removed lewd from dist_2_pinks
+  the set of leys is unecessary
+  removed leys from dist_2_pinks
+  the set of libs is unecessary
+  removed libs from dist_2_pinks
+  the set of lids is unecessary
+  removed lids from dist_2_pinks
+  the set of lily is unecessary
+  removed lily from dist_2_pinks
+  the set of liri is unecessary
+  removed liri from dist_2_pinks
+  the set of loft is unecessary
+  removed loft from dist_2_pinks
+  the set of lory is unecessary
+  removed lory from dist_2_pinks
+  the set of lota is unecessary
+  removed lota from dist_2_pinks
+  the set of loth is unecessary
+  removed loth from dist_2_pinks
+  the set of loti is unecessary
+  removed loti from dist_2_pinks
+  the set of loud is unecessary
+  removed loud from dist_2_pinks
+  the set of loup is unecessary
+  removed loup from dist_2_pinks
+  the set of lyre is unecessary
+  removed lyre from dist_2_pinks
+  the set of lyse is unecessary
+  removed lyse from dist_2_pinks
+  the set of maar is unecessary
+  removed maar from dist_2_pinks
+  the set of maes is unecessary
+  removed maes from dist_2_pinks
+  the set of mags is unecessary
+  removed mags from dist_2_pinks
+  the set of maim is unecessary
+  removed maim from dist_2_pinks
+  the set of malm is unecessary
+  removed malm from dist_2_pinks
+  the set of mana is unecessary
+  removed mana from dist_2_pinks
+  the set of many is unecessary
+  removed many from dist_2_pinks
+  the set of maps is unecessary
+  removed maps from dist_2_pinks
+  the set of matt is unecessary
+  removed matt from dist_2_pinks
+  the set of maws is unecessary
+  removed maws from dist_2_pinks
+  the set of meme is unecessary
+  removed meme from dist_2_pinks
+  the set of memo is unecessary
+  removed memo from dist_2_pinks
+  the set of mems is unecessary
+  removed mems from dist_2_pinks
+  the set of menu is unecessary
+  removed menu from dist_2_pinks
+  the set of mesa is unecessary
+  removed mesa from dist_2_pinks
+  the set of mewl is unecessary
+  removed mewl from dist_2_pinks
+  the set of mews is unecessary
+  removed mews from dist_2_pinks
+  the set of mibs is unecessary
+  removed mibs from dist_2_pinks
+  the set of mica is unecessary
+  removed mica from dist_2_pinks
+  the set of midi is unecessary
+  removed midi from dist_2_pinks
+  the set of mien is unecessary
+  removed mien from dist_2_pinks
+  the set of migs is unecessary
+  removed migs from dist_2_pinks
+  the set of miso is unecessary
+  removed miso from dist_2_pinks
+  the set of mome is unecessary
+  removed mome from dist_2_pinks
+  the set of moth is unecessary
+  removed moth from dist_2_pinks
+  the set of muds is unecessary
+  removed muds from dist_2_pinks
+  the set of murr is unecessary
+  removed murr from dist_2_pinks
+  the set of musk is unecessary
+  removed musk from dist_2_pinks
+  the set of mutt is unecessary
+  removed mutt from dist_2_pinks
+  the set of naif is unecessary
+  removed naif from dist_2_pinks
+  the set of nebs is unecessary
+  removed nebs from dist_2_pinks
+  the set of need is unecessary
+  removed need from dist_2_pinks
+  the set of neep is unecessary
+  removed neep from dist_2_pinks
+  the set of nene is unecessary
+  removed nene from dist_2_pinks
+  the set of neuk is unecessary
+  removed neuk from dist_2_pinks
+  the set of neum is unecessary
+  removed neum from dist_2_pinks
+  the set of nibs is unecessary
+  removed nibs from dist_2_pinks
+  the set of nick is unecessary
+  removed nick from dist_2_pinks
+  the set of nims is unecessary
+  removed nims from dist_2_pinks
+  the set of nude is unecessary
+  removed nude from dist_2_pinks
+  the set of nurd is unecessary
+  removed nurd from dist_2_pinks
+  the set of oaks is unecessary
+  removed oaks from dist_2_pinks
+  the set of oars is unecessary
+  removed oars from dist_2_pinks
+  the set of odds is unecessary
+  removed odds from dist_2_pinks
+  the set of ohed is unecessary
+  removed ohed from dist_2_pinks
+  the set of oily is unecessary
+  removed oily from dist_2_pinks
+  the set of okas is unecessary
+  removed okas from dist_2_pinks
+  the set of okes is unecessary
+  removed okes from dist_2_pinks
+  the set of olds is unecessary
+  removed olds from dist_2_pinks
+  the set of omen is unecessary
+  removed omen from dist_2_pinks
+  the set of oped is unecessary
+  removed oped from dist_2_pinks
+  the set of orbs is unecessary
+  removed orbs from dist_2_pinks
+  the set of orcs is unecessary
+  removed orcs from dist_2_pinks
+  the set of ouds is unecessary
+  removed ouds from dist_2_pinks
+  the set of ours is unecessary
+  removed ours from dist_2_pinks
+  the set of outs is unecessary
+  removed outs from dist_2_pinks
+  the set of owed is unecessary
+  removed owed from dist_2_pinks
+  the set of ower is unecessary
+  removed ower from dist_2_pinks
+  the set of oyer is unecessary
+  removed oyer from dist_2_pinks
+  the set of oyes is unecessary
+  removed oyes from dist_2_pinks
+  the set of pact is unecessary
+  removed pact from dist_2_pinks
+  the set of pant is unecessary
+  removed pant from dist_2_pinks
+  the set of peep is unecessary
+  removed peep from dist_2_pinks
+  the set of pees is unecessary
+  removed pees from dist_2_pinks
+  the set of phew is unecessary
+  removed phew from dist_2_pinks
+  the set of phut is unecessary
+  removed phut from dist_2_pinks
+  the set of pics is unecessary
+  removed pics from dist_2_pinks
+  the set of pied is unecessary
+  removed pied from dist_2_pinks
+  the set of pili is unecessary
+  removed pili from dist_2_pinks
+  the set of pleb is unecessary
+  removed pleb from dist_2_pinks
+  the set of plew is unecessary
+  removed plew from dist_2_pinks
+  the set of plot is unecessary
+  removed plot from dist_2_pinks
+  the set of plow is unecessary
+  removed plow from dist_2_pinks
+  the set of poet is unecessary
+  removed poet from dist_2_pinks
+  the set of pouf is unecessary
+  removed pouf from dist_2_pinks
+  the set of prig is unecessary
+  removed prig from dist_2_pinks
+  the set of prim is unecessary
+  removed prim from dist_2_pinks
+  the set of prow is unecessary
+  removed prow from dist_2_pinks
+  the set of pula is unecessary
+  removed pula from dist_2_pinks
+  the set of pung is unecessary
+  removed pung from dist_2_pinks
+  the set of puri is unecessary
+  removed puri from dist_2_pinks
+  the set of purr is unecessary
+  removed purr from dist_2_pinks
+  the set of putt is unecessary
+  removed putt from dist_2_pinks
+  the set of pyes is unecessary
+  removed pyes from dist_2_pinks
+  the set of racy is unecessary
+  removed racy from dist_2_pinks
+  the set of raga is unecessary
+  removed raga from dist_2_pinks
+  the set of ragi is unecessary
+  removed ragi from dist_2_pinks
+  the set of raia is unecessary
+  removed raia from dist_2_pinks
+  the set of raki is unecessary
+  removed raki from dist_2_pinks
+  the set of raws is unecessary
+  removed raws from dist_2_pinks
+  the set of rays is unecessary
+  removed rays from dist_2_pinks
+  the set of regs is unecessary
+  removed regs from dist_2_pinks
+  the set of repp is unecessary
+  removed repp from dist_2_pinks
+  the set of reps is unecessary
+  removed reps from dist_2_pinks
+  the set of rhus is unecessary
+  removed rhus from dist_2_pinks
+  the set of riff is unecessary
+  removed riff from dist_2_pinks
+  the set of rimy is unecessary
+  removed rimy from dist_2_pinks
+  the set of roux is unecessary
+  removed roux from dist_2_pinks
+  the set of rube is unecessary
+  removed rube from dist_2_pinks
+  the set of rule is unecessary
+  removed rule from dist_2_pinks
+  the set of ryas is unecessary
+  removed ryas from dist_2_pinks
+  the set of ryes is unecessary
+  removed ryes from dist_2_pinks
+  the set of ryot is unecessary
+  removed ryot from dist_2_pinks
+  the set of sags is unecessary
+  removed sags from dist_2_pinks
+  the set of saki is unecessary
+  removed saki from dist_2_pinks
+  the set of sals is unecessary
+  removed sals from dist_2_pinks
+  the set of salt is unecessary
+  removed salt from dist_2_pinks
+  the set of saps is unecessary
+  removed saps from dist_2_pinks
+  the set of saws is unecessary
+  removed saws from dist_2_pinks
+  the set of says is unecessary
+  removed says from dist_2_pinks
+  the set of scab is unecessary
+  removed scab from dist_2_pinks
+  the set of scam is unecessary
+  removed scam from dist_2_pinks
+  the set of scan is unecessary
+  removed scan from dist_2_pinks
+  the set of scud is unecessary
+  removed scud from dist_2_pinks
+  the set of scum is unecessary
+  removed scum from dist_2_pinks
+  the set of scut is unecessary
+  removed scut from dist_2_pinks
+  the set of secs is unecessary
+  removed secs from dist_2_pinks
+  the set of seek is unecessary
+  removed seek from dist_2_pinks
+  the set of seem is unecessary
+  removed seem from dist_2_pinks
+  the set of segs is unecessary
+  removed segs from dist_2_pinks
+  the set of sels is unecessary
+  removed sels from dist_2_pinks
+  the set of seme is unecessary
+  removed seme from dist_2_pinks
+  the set of sept is unecessary
+  removed sept from dist_2_pinks
+  the set of sett is unecessary
+  removed sett from dist_2_pinks
+  the set of shay is unecessary
+  removed shay from dist_2_pinks
+  the set of shes is unecessary
+  removed shes from dist_2_pinks
+  the set of shmo is unecessary
+  removed shmo from dist_2_pinks
+  the set of shoo is unecessary
+  removed shoo from dist_2_pinks
+  the set of sibs is unecessary
+  removed sibs from dist_2_pinks
+  the set of skee is unecessary
+  removed skee from dist_2_pinks
+  the set of skew is unecessary
+  removed skew from dist_2_pinks
+  the set of skim is unecessary
+  removed skim from dist_2_pinks
+  the set of smut is unecessary
+  removed smut from dist_2_pinks
+  the set of sned is unecessary
+  removed sned from dist_2_pinks
+  the set of soft is unecessary
+  removed soft from dist_2_pinks
+  the set of solo is unecessary
+  removed solo from dist_2_pinks
+  the set of soma is unecessary
+  removed soma from dist_2_pinks
+  the set of soup is unecessary
+  removed soup from dist_2_pinks
+  the set of spas is unecessary
+  removed spas from dist_2_pinks
+  the set of spay is unecessary
+  removed spay from dist_2_pinks
+  the set of spec is unecessary
+  removed spec from dist_2_pinks
+  the set of spew is unecessary
+  removed spew from dist_2_pinks
+  the set of spin is unecessary
+  removed spin from dist_2_pinks
+  the set of spud is unecessary
+  removed spud from dist_2_pinks
+  the set of spun is unecessary
+  removed spun from dist_2_pinks
+  the set of sris is unecessary
+  removed sris from dist_2_pinks
+  the set of stay is unecessary
+  removed stay from dist_2_pinks
+  the set of stey is unecessary
+  removed stey from dist_2_pinks
+  the set of stun is unecessary
+  removed stun from dist_2_pinks
+  the set of suds is unecessary
+  removed suds from dist_2_pinks
+  the set of sugh is unecessary
+  removed sugh from dist_2_pinks
+  the set of sulk is unecessary
+  removed sulk from dist_2_pinks
+  the set of supe is unecessary
+  removed supe from dist_2_pinks
+  the set of sups is unecessary
+  removed sups from dist_2_pinks
+  the set of sura is unecessary
+  removed sura from dist_2_pinks
+  the set of swab is unecessary
+  removed swab from dist_2_pinks
+  the set of swap is unecessary
+  removed swap from dist_2_pinks
+  the set of swig is unecessary
+  removed swig from dist_2_pinks
+  the set of swob is unecessary
+  removed swob from dist_2_pinks
+  the set of swop is unecessary
+  removed swop from dist_2_pinks
+  the set of syke is unecessary
+  removed syke from dist_2_pinks
+  the set of taka is unecessary
+  removed taka from dist_2_pinks
+  the set of tali is unecessary
+  removed tali from dist_2_pinks
+  the set of taos is unecessary
+  removed taos from dist_2_pinks
+  the set of tapa is unecessary
+  removed tapa from dist_2_pinks
+  the set of tass is unecessary
+  removed tass from dist_2_pinks
+  the set of taus is unecessary
+  removed taus from dist_2_pinks
+  the set of taut is unecessary
+  removed taut from dist_2_pinks
+  the set of tech is unecessary
+  removed tech from dist_2_pinks
+  the set of teed is unecessary
+  removed teed from dist_2_pinks
+  the set of teel is unecessary
+  removed teel from dist_2_pinks
+  the set of teem is unecessary
+  removed teem from dist_2_pinks
+  the set of teen is unecessary
+  removed teen from dist_2_pinks
+  the set of tegs is unecessary
+  removed tegs from dist_2_pinks
+  the set of tela is unecessary
+  removed tela from dist_2_pinks
+  the set of tent is unecessary
+  removed tent from dist_2_pinks
+  the set of tews is unecessary
+  removed tews from dist_2_pinks
+  the set of they is unecessary
+  removed they from dist_2_pinks
+  the set of thio is unecessary
+  removed thio from dist_2_pinks
+  the set of thir is unecessary
+  removed thir from dist_2_pinks
+  the set of thro is unecessary
+  removed thro from dist_2_pinks
+  the set of tics is unecessary
+  removed tics from dist_2_pinks
+  the set of tilt is unecessary
+  removed tilt from dist_2_pinks
+  the set of tint is unecessary
+  removed tint from dist_2_pinks
+  the set of tits is unecessary
+  removed tits from dist_2_pinks
+  the set of toea is unecessary
+  removed toea from dist_2_pinks
+  the set of towy is unecessary
+  removed towy from dist_2_pinks
+  the set of trim is unecessary
+  removed trim from dist_2_pinks
+  the set of trio is unecessary
+  removed trio from dist_2_pinks
+  the set of trip is unecessary
+  removed trip from dist_2_pinks
+  the set of trod is unecessary
+  removed trod from dist_2_pinks
+  the set of trop is unecessary
+  removed trop from dist_2_pinks
+  the set of tsar is unecessary
+  removed tsar from dist_2_pinks
+  the set of tuba is unecessary
+  removed tuba from dist_2_pinks
+  the set of tube is unecessary
+  removed tube from dist_2_pinks
+  the set of tubs is unecessary
+  removed tubs from dist_2_pinks
+  the set of tule is unecessary
+  removed tule from dist_2_pinks
+  the set of tuna is unecessary
+  removed tuna from dist_2_pinks
+  the set of turn is unecessary
+  removed turn from dist_2_pinks
+  the set of twat is unecessary
+  removed twat from dist_2_pinks
+  the set of twig is unecessary
+  removed twig from dist_2_pinks
+  the set of twin is unecessary
+  removed twin from dist_2_pinks
+  the set of twit is unecessary
+  removed twit from dist_2_pinks
+  the set of typo is unecessary
+  removed typo from dist_2_pinks
+  the set of urbs is unecessary
+  removed urbs from dist_2_pinks
+  the set of urds is unecessary
+  removed urds from dist_2_pinks
+  the set of urns is unecessary
+  removed urns from dist_2_pinks
+  the set of vats is unecessary
+  removed vats from dist_2_pinks
+  the set of vees is unecessary
+  removed vees from dist_2_pinks
+  the set of vela is unecessary
+  removed vela from dist_2_pinks
+  the set of veld is unecessary
+  removed veld from dist_2_pinks
+  the set of vend is unecessary
+  removed vend from dist_2_pinks
+  the set of vied is unecessary
+  removed vied from dist_2_pinks
+  the set of vier is unecessary
+  removed vier from dist_2_pinks
+  the set of viga is unecessary
+  removed viga from dist_2_pinks
+  the set of vigs is unecessary
+  removed vigs from dist_2_pinks
+  the set of vims is unecessary
+  removed vims from dist_2_pinks
+  the set of viva is unecessary
+  removed viva from dist_2_pinks
+  the set of voes is unecessary
+  removed voes from dist_2_pinks
+  the set of waps is unecessary
+  removed waps from dist_2_pinks
+  the set of watt is unecessary
+  removed watt from dist_2_pinks
+  the set of wauk is unecessary
+  removed wauk from dist_2_pinks
+  the set of webs is unecessary
+  removed webs from dist_2_pinks
+  the set of weds is unecessary
+  removed weds from dist_2_pinks
+  the set of ween is unecessary
+  removed ween from dist_2_pinks
+  the set of weep is unecessary
+  removed weep from dist_2_pinks
+  the set of wets is unecessary
+  removed wets from dist_2_pinks
+  the set of wham is unecessary
+  removed wham from dist_2_pinks
+  the set of what is unecessary
+  removed what from dist_2_pinks
+  the set of whee is unecessary
+  removed whee from dist_2_pinks
+  the set of when is unecessary
+  removed when from dist_2_pinks
+  the set of whet is unecessary
+  removed whet from dist_2_pinks
+  the set of whid is unecessary
+  removed whid from dist_2_pinks
+  the set of whim is unecessary
+  removed whim from dist_2_pinks
+  the set of whop is unecessary
+  removed whop from dist_2_pinks
+  the set of wiry is unecessary
+  removed wiry from dist_2_pinks
+  the set of woke is unecessary
+  removed woke from dist_2_pinks
+  the set of woks is unecessary
+  removed woks from dist_2_pinks
+  the set of wren is unecessary
+  removed wren from dist_2_pinks
+  the set of wyes is unecessary
+  removed wyes from dist_2_pinks
+  the set of yaps is unecessary
+  removed yaps from dist_2_pinks
+  the set of yean is unecessary
+  removed yean from dist_2_pinks
+  the set of yeas is unecessary
+  removed yeas from dist_2_pinks
+  the set of yeld is unecessary
+  removed yeld from dist_2_pinks
+  the set of yelk is unecessary
+  removed yelk from dist_2_pinks
+  the set of yell is unecessary
+  removed yell from dist_2_pinks
+  the set of yerk is unecessary
+  removed yerk from dist_2_pinks
+  the set of yews is unecessary
+  removed yews from dist_2_pinks
+  the set of yips is unecessary
+  removed yips from dist_2_pinks
+  the set of yolk is unecessary
+  removed yolk from dist_2_pinks
+  the set of yond is unecessary
+  removed yond from dist_2_pinks
+  the set of yowl is unecessary
+  removed yowl from dist_2_pinks
+  Currently 2317 sets.
+   - MERGING PINKS-
+   - FIND_NECESSARY_SETS -
+      no necessary set found.
+   - OPTIMIZING GREYS -
+       - MERGING GREYS-
+       - DELETING EQUI-
+   subset deleted: chum is included in mach
+  removed chum from dist_2_pinks
+       - CLEANING (optional) -
+  Currently 2316 sets.
+   - MERGING PINKS-
+   - FIND_NECESSARY_SETS -
+      no necessary set found.
+   - OPTIMIZING GREYS -
+       - MERGING GREYS-
+       - DELETING EQUI-
+       - CLEANING (optional) -
+   - DELETE_EQUI_GREYS_dist_2_pinks-
+   - DELETE_HARD_GREYS -
+--- reduced to 2316 Sets in 78.53009557723999 seconds ---

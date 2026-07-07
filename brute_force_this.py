@@ -1,6 +1,8 @@
 import pickle
 import copy
 import random
+import time
+import sys
 from common import find_all_branches, KEYWORDS, dictionary, Set
 
 # global vars are ALLSETS and dist_2_pinks
@@ -171,6 +173,7 @@ def pinkCost_sort(pinkOnly = False):
     
 def initialize():
     "convert words into SETS"
+    global ALLSETS
     allWords = {}
     i=0
     for word in dictionary:
@@ -622,20 +625,48 @@ def euristic():
         log(f"found solution with {ALLSETS_get_cost()} words")
         save("ALLSETS")
 
-import time
-start_time = time.time()
+def run_euristic():
+    "load the reduced search space, run the heuristic search, save the result"
+    start_time = time.time()
 
-load("ALLSETS")
-load("dist_2_pinks")
+    load("ALLSETS")
+    load("dist_2_pinks")
 
-with open("log.txt", 'w') as file:
-    file.write("")
-    
-# variable = input("Regenerate dist_2_pinks? Y/N")
-# if variable == "Y":
-#     ALLSETS_calculate_dist_to_pinks()
-euristic()
+    with open("log.txt", 'w') as file:
+        file.write("")
 
-# DELETE_EQUI_GREYS_dist_2_pinks()
-log("--- %s seconds ---" % (time.time() - start_time))
-save("ALLSETS")
+    euristic()
+
+    log("--- %s seconds ---" % (time.time() - start_time))
+    save("ALLSETS")
+
+def build_from_scratch():
+    """Start from every word in the dictionary and reduce the search space with the
+    optimality-preserving reductions, writing ALLSETS.pickle + dist_2_pinks.pickle
+    as it goes. Slow. The result is the checkpoint shipped as ALLSETS_OPTIMAL_2283.pickle."""
+    global ALLSETS, dist_2_pinks
+    start_time = time.time()
+
+    with open("log.txt", 'w') as file:
+        file.write("")
+
+    log(f"initializing {len(dictionary)} words into singleton Sets...")
+    initialize()
+    log(f"  {len(ALLSETS)} Sets.")
+
+    log("computing dist_2_pinks (slow)...")
+    ALLSETS_calculate_dist_to_pinks(SAVE=True)
+    save("ALLSETS")
+
+    log("reducing the search space (slow)...")
+    optimize_all()
+
+    save("ALLSETS")
+    save("dist_2_pinks")
+    log("--- reduced to %d Sets in %s seconds ---" % (len(ALLSETS), time.time() - start_time))
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "init":
+        build_from_scratch()
+    else:
+        run_euristic()
