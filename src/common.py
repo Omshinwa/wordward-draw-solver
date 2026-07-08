@@ -43,35 +43,14 @@ class Set:
     def __lt__(self,other):
         return len(self.words) > len(other.words)
     
-    @staticmethod
-    def filter_sets(graph: dict[str, "Set"], pink=True):
-        """
-        returns all PINKS (pink=True) or GREYS (pink=False) Sets from graph.
-        """
-        PINKS = {}
-        for key, SET in graph.items():
-            if SET.isKey == pink:
-                PINKS[key] = SET
-        return PINKS
-    
-    @staticmethod
-    def find_set(graph: dict[str, "Set"], word: str):
-        """
-        Find the Set containing the WORD.
-        """
-        for key, SET in graph.items():
-            if word in SET.words:
-                return SET
-        return None
-    
-    def update(self, other_set: "Set", graph: dict[str, "Set"], dist_2_pinks: dict[str, dict[str, int]]):
+    def update(self, other_set: "Set", sets: dict[str, "Set"], dist_to_pinks: dict[str, dict[str, int]]):
         """Merge (contract) other_set into self: absorb its words/links, rewire
-        neighbors to point at self.id(), and fold other_set's dist_2_pinks entries
+        neighbors to point at self.id(), and fold other_set's dist_to_pinks entries
         into self's (keeping the min distance).
 
-        NOTE: this does NOT remove other_set from graph or dist_2_pinks. The
-        caller is responsible for that via graph_del(other_set.id()) right after
-        calling update() (see brute_force_this.py merge_pinks / optimize_greys).
+        NOTE: this does NOT remove other_set from the graph or dist_to_pinks. The
+        caller is responsible for that via WordGraph.remove(other_set.id()) right after
+        calling update() (see reductions.py).
         """
         self.words.update(other_set.words)
         self.links.update(other_set.links)
@@ -88,30 +67,30 @@ class Set:
 
         for link in self.links:
             # update the links in other Sets
-            graph[link].links -= self.words
-            graph[link].links.add( self.id() )
+            sets[link].links -= self.words
+            sets[link].links.add( self.id() )
 
         self.isKey = self.isKey or other_set.isKey
 
         #UPDATE THE DIST_TO_PINK
         # delete the longest distance before the merge
-        for key in dist_2_pinks:
-            if other_set.id() in dist_2_pinks[key]:
-                if self.id() in dist_2_pinks[key]:
-                    dist_2_pinks[key][self.id()] = min( dist_2_pinks[key][self.id()], dist_2_pinks[key][other_set.id()] )
+        for key in dist_to_pinks:
+            if other_set.id() in dist_to_pinks[key]:
+                if self.id() in dist_to_pinks[key]:
+                    dist_to_pinks[key][self.id()] = min( dist_to_pinks[key][self.id()], dist_to_pinks[key][other_set.id()] )
                 else:
-                    dist_2_pinks[key][self.id()] = dist_2_pinks[key][other_set.id()]
-                del dist_2_pinks[key][other_set.id()]
+                    dist_to_pinks[key][self.id()] = dist_to_pinks[key][other_set.id()]
+                del dist_to_pinks[key][other_set.id()]
 
-        for link in dist_2_pinks[other_set.id()]:
-            if link not in dist_2_pinks[self.id()]:
-                dist_2_pinks[self.id()][link] = dist_2_pinks[other_set.id()][link]
+        for link in dist_to_pinks[other_set.id()]:
+            if link not in dist_to_pinks[self.id()]:
+                dist_to_pinks[self.id()][link] = dist_to_pinks[other_set.id()][link]
             else:
-                dist_2_pinks[self.id()][link] = min( dist_2_pinks[self.id()][link], dist_2_pinks[other_set.id()][link])
-        # del dist_2_pinks[other_set.id()]
+                dist_to_pinks[self.id()][link] = min( dist_to_pinks[self.id()][link], dist_to_pinks[other_set.id()][link])
+        # del dist_to_pinks[other_set.id()]
 
-        if other_set.id() in dist_2_pinks[self.id()]:
-            del dist_2_pinks[self.id()][other_set.id()]
+        if other_set.id() in dist_to_pinks[self.id()]:
+            del dist_to_pinks[self.id()][other_set.id()]
 
         return
     
