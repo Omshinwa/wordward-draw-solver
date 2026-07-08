@@ -1,6 +1,0 @@
-latest claude about renaming stuff
-
-running python3 brute_force_this.py init:
---- reduced to 2316 Sets in 78.53009557723999 seconds ---
-
-how come it's 2316 and not 2283?

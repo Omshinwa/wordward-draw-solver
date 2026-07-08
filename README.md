@@ -21,7 +21,7 @@ My goal, and what I call *solving* is finding the shortest path possible to reac
 
 # Results
 
-My current best score is 173 operations. The result can be seen in `./result.txt`.
+My current best score is 173 operations. The result can be seen in `results/result_playable.txt`.
 
 ```
 WORM 0 
@@ -113,12 +113,12 @@ Each Set is either **PINK** (`isKey == True` — it already contains a picture w
 
 Because the picture-word list never changes, I first apply **optimality-preserving** reductions: each one provably keeps at least one optimal solution, so the smaller instance has the exact same optimum as the original. They run to a fixpoint in `optimize_all()`, each pass feeding the next, until nothing more can be removed.
 
-* **Merge adjacent PINKs** (`MERGE_PINK_SETS`) — two PINK sets that are neighbours will both be in the answer, so contracting them into one changes nothing.
-* **Promote forced sets** (`FIND_NECESSARY_SETS`) — tentatively delete a GREY; if the game becomes unwinnable (some PINK can no longer be reached), that GREY was a cut point present in *every* solution, so promote it to PINK. A PINK with a single neighbour forces that neighbour the same way.
-* **Contract GREY chains** (`MERGE_GREYS`) — a degree-2 GREY whose neighbour is also a degree-2 GREY: reaching one forces passing through the other, so merge them.
-* **Drop dead & dominated GREYs** (`DELETE_EQUIVALENT_GREYS`) — a GREY with ≤1 connection is a dead end (it can never bridge two PINKs). And if GREY `B`'s neighbours are a subset of GREY `A`'s, then `A` dominates `B` — anything `B` could connect, `A` connects at least as cheaply — so `B` goes.
-* **Drop distance-dominated GREYs** (`DELETE_EQUI_GREYS_dist_2_pinks`) — the same idea using `dist_2_pinks`: if `B` is at least as far from every PINK as `A` is, `B` can be discarded.
-* **Drop off-path GREYs** (`DELETE_HARD_GREYS`) — for every pair of PINKs, collect every Set lying on a shortest path between them; a GREY that never appears on any such path can't help and is removed. (This is the slow one — it is effectively all-pairs shortest paths.)
+* **Merge adjacent PINKs** (`merge_pink_sets`) — two PINK sets that are neighbours will both be in the answer, so contracting them into one changes nothing.
+* **Promote forced sets** (`find_necessary_sets`) — tentatively delete a GREY; if the game becomes unwinnable (some PINK can no longer be reached), that GREY was a cut point present in *every* solution, so promote it to PINK. A PINK with a single neighbour forces that neighbour the same way.
+* **Contract GREY chains** (`merge_greys`) — a degree-2 GREY whose neighbour is also a degree-2 GREY: reaching one forces passing through the other, so merge them.
+* **Drop dead & dominated GREYs** (`delete_equivalent_greys`) — a GREY with ≤1 connection is a dead end (it can never bridge two PINKs). And if GREY `B`'s neighbours are a subset of GREY `A`'s, then `A` dominates `B` — anything `B` could connect, `A` connects at least as cheaply — so `B` goes.
+* **Drop distance-dominated GREYs** (`delete_equi_greys_dist_2_pinks`) — the same idea using `dist_2_pinks`: if `B` is at least as far from every PINK as `A` is, `B` can be discarded.
+* **Drop off-path GREYs** (`delete_hard_greys`) — for every pair of PINKs, collect every Set lying on a shortest path between them; a GREY that never appears on any such path can't help and is removed. (This is the slow one — it is effectively all-pairs shortest paths.)
 
 Starting from 3915 words, these bring the graph down to **2283** Sets (saved as `ALLSETS_OPTIMAL_2283.pickle`) without giving up a single optimal solution.
 
@@ -126,11 +126,11 @@ Starting from 3915 words, these bring the graph down to **2283** Sets (saved as 
 
 Past 2283, no reduction fires, so `euristic()` has to *guess* which GREY to commit — and once committed, it re-runs every reduction on the now-smaller graph:
 
-1. **Find the bottleneck.** `pinkCost_sort()` ranks the PINKs by how far, on average, they sit from the others; the current hardest-to-reach picture word is where a wrong choice costs the most, so we work on it first.
+1. **Find the bottleneck.** `pink_cost_sort()` ranks the PINKs by how far, on average, they sit from the others; the current hardest-to-reach picture word is where a wrong choice costs the most, so we work on it first.
 2. **Pick its best neighbour.** For each candidate Set adjacent to that PINK, score it by how many PINKs it sits *near*: `sum( max(0, 7 − d)³ for d in dist_2_pinks[candidate] )`, minus the candidate's own `cost()`. The cube heavily rewards a word that is close to several picture words at once (anything farther than 7 contributes nothing); the `− cost()` penalises one that would drag in many non-picture words.
 3. **Commit and reduce.** Promote the winner to PINK, merge, and loop back through all the reductions.
 
-Repeated, this closes the graph down to a single connected set. My best-tuned run reached **173 operations** (preserved in `ALLSETS 173 alt.pickle`, and rendered as the annotated path in `result.txt`).
+Repeated, this closes the graph down to a single connected set. My best-tuned run reached **173 operations** (preserved in `ALLSETS 173 alt.pickle`, and rendered as the annotated path in `results/result_playable.txt`).
 
 ## Persisting state with `pickle`
 
@@ -142,10 +142,10 @@ Two things to know: a pickle can only be loaded where its classes are importable
 
 ## Running it yourself
 
-No dependencies beyond **Python 3** (standard library only). The whole solver is two files: `common.py` (the `Set` class + the graph helpers) and `brute_force_this.py` (the reductions + the heuristic).
+No dependencies beyond **Python 3** (standard library only). The code lives in `src/`, and commands are run from the repo root (the `.txt` inputs and `.pickle` checkpoints sit there). The solver itself is two files: `src/common.py` (the `Set` class + the graph helpers) and `src/brute_force_this.py` (the reductions + the heuristic).
 
 ```bash
-python3 brute_force_this.py
+python3 src/brute_force_this.py
 ```
 
 On start it loads `ALLSETS.pickle` + `dist_2_pinks.pickle`, runs the heuristic, logs each decision to `log.txt`, and saves the resulting set back to `ALLSETS.pickle`.
@@ -155,10 +155,12 @@ On start it loads `ALLSETS.pickle` + `dist_2_pinks.pickle`, runs the heuristic, 
 The shipped `.pickle` files are pre-computed checkpoints. To regenerate them from nothing but the raw dictionary, run:
 
 ```bash
-python3 brute_force_this.py init
+python3 src/brute_force_this.py init
 ```
 
-This starts from all **3915** words in `dictionary.txt`, turns each into a singleton `Set`, computes `dist_2_pinks`, then applies the optimality-preserving reductions (`optimize_all()`) until they reach a fixpoint — writing `ALLSETS.pickle` and `dist_2_pinks.pickle` when it finishes. This is the step that shrinks the instance from **3915 → ~2283** Sets, the smaller search space the heuristic then works on. It takes roughly a minute and a half; a clean run settles around 2300 Sets, and my saved milestone (`ALLSETS_OPTIMAL_2283.pickle`) reached 2283. With those two files in place you can run the heuristic below.
+This starts from all **3915** words in `dictionary.txt`, turns each into a singleton `Set`, computes `dist_2_pinks`, then applies the optimality-preserving reductions until they reach a fixpoint — writing `ALLSETS.pickle` and `dist_2_pinks.pickle` when it finishes. This is the step that shrinks the instance from **3915 → 2283** Sets, the smaller search space the heuristic then works on. It takes about two minutes and reproduces the shipped milestone `ALLSETS_OPTIMAL_2283.pickle` exactly (2283 Sets, 76 PINKs). With those two files in place you can run the heuristic below.
+
+> One subtlety: `optimize_all()` maintains `dist_2_pinks` only incrementally, so its stored distances drift (they stay too optimistic as Sets are deleted) and the distance-based prune stops early — a single reduction pass bottoms out around 2316 Sets. `build_from_scratch()` therefore **recomputes `dist_2_pinks` from scratch between rounds**, which unlocks the missed deletions and converges to 2283.
 
 ### Re-running the heuristic
 
@@ -167,18 +169,23 @@ The bundled `ALLSETS.pickle` is already a finished run, so as-is the script just
 ```bash
 cp ALLSETS_OPTIMAL_2283.pickle ALLSETS.pickle
 cp "dist_2_pinks - 2283.pickle"  dist_2_pinks.pickle
-python3 brute_force_this.py        # now "euristic: added ..." lines appear in log.txt
+python3 src/brute_force_this.py        # now "euristic: added ..." lines appear in log.txt
 ```
 
-A full run is slow — the `DELETE_HARD_GREYS` all-pairs pass dominates the time. Reaching the record 173 also involved hand-tuning the heuristic's weights and stop threshold, so a fresh run lands *near* — not necessarily on — 173; the record itself is preserved in `ALLSETS 173 alt.pickle` / `result.txt`.
+A full run is slow — the `delete_hard_greys` all-pairs pass dominates the time. Reaching the record 173 also involved hand-tuning the heuristic's weights and stop threshold, so a fresh run lands *near* — not necessarily on — 173; the record itself is preserved in `ALLSETS 173 alt.pickle` / `results/result_playable.txt`.
 
-### Generating the human-readable path
+### Rendering the solution (path or CSV)
 
-A solved `ALLSETS` pickle stores the answer as a bare *set* of words. `render_solution.py` turns it into the playable, annotated path shown at the top of this README:
+A solved `ALLSETS` pickle stores the answer as a bare *set* of words. `src/render_solution.py` walks a spanning tree of that set — starting from the WORM → WORD → WARD → DRAW opening — and renders it in either of two formats. Run from the repo root:
 
 ```bash
-python3 render_solution.py "ALLSETS 173 alt.pickle"             # print to stdout
-python3 render_solution.py "ALLSETS 173 alt.pickle" result.txt  # write to a file
+# the playable move list: +1 per new word, free `>` undos
+python3 src/render_solution.py "ALLSETS 173 alt.pickle"                             # -> stdout
+python3 src/render_solution.py "ALLSETS 173 alt.pickle" results/result_playable.txt
+
+# the spanning tree as a spreadsheet: word;isKeyWord;parent;children
+python3 src/render_solution.py "ALLSETS 173 alt.pickle" results/result_csv_view.csv  # inferred from .csv
+python3 src/render_solution.py "ALLSETS 173 alt.pickle" --csv                  # -> stdout
 ```
 
-It walks a spanning tree of the solution set starting from the WORM → WORD → WARD → DRAW opening, printing one `+1` operation per newly reached word and free `>` undos whenever it backtracks to a branch point. An *N*-word solution therefore always prints in exactly *N* − 1 operations.
+Because a spanning tree of *N* words has *N* − 1 edges, the move list is always exactly *N* − 1 operations. The generated files in `results/` are the human-readable twins of the `ALLSETS 173 alt.pickle` checkpoint.

@@ -24,6 +24,10 @@ class Set:
                 break
     
     def cost(self):
+        """
+        number of non keywords in it
+        higher = the most costly is the solution
+        """
         i = 0
         for word in self.words:
             if word not in KEYWORDS:

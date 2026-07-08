@@ -42,7 +42,7 @@ def log(x:str):
         file.write("\n")
 
 
-def ALLSETS_del(word, doPrint=True):
+def allsets_del(word, doPrint=True):
     "method to delete a SET from ALLSETS"
     global ALLSETS
     global dist_2_pinks
@@ -62,7 +62,7 @@ def ALLSETS_del(word, doPrint=True):
                 SET.links.remove(word)
 
 
-def ALLSETS_find(word:str):
+def allsets_find(word:str):
     "find the SET that contains word"
     global ALLSETS
     for key, SET in ALLSETS.items():
@@ -70,13 +70,13 @@ def ALLSETS_find(word:str):
             return SET
     return None
 
-def ALLSETS_check_if_all_IDs_are_correct():
+def allsets_check_if_all_ids_are_correct():
     "check if every SET in ALLSETS have the correct ID"
     for key, SET in ALLSETS.items():
         if key != SET.id():
             print(f"ERROR key: {key}, id:{SET.id()} for {SET}")
 
-def ALLSETS_get_pinks(isKey:bool=True):
+def allsets_get_pinks(isKey:bool=True):
     "true return PINKS, false returns GREYS"
 
     global ALLSET
@@ -86,13 +86,13 @@ def ALLSETS_get_pinks(isKey:bool=True):
             PINKS[key] = SET
     return PINKS
 
-def ALLSETS_is_winnable(doPrint=True):
+def allsets_is_winnable(doPrint=True):
     "check if the game is still winnable from the current state of ALLSETS"
     global ALLSETS
 
     set_of_words = set()
-    for PINK in ALLSETS_get_pinks().values():
-        if len(PINK.links) == 0 and len(ALLSETS_get_pinks())>1:
+    for PINK in allsets_get_pinks().values():
+        if len(PINK.links) == 0 and len(allsets_get_pinks())>1:
             print(f"can't reach {PINK}")
             return False
         set_of_words.update( PINK.words )
@@ -103,7 +103,7 @@ def ALLSETS_is_winnable(doPrint=True):
         log(f"some Keywords are missing")
         return False
 
-def ALLSETS_get_words():
+def allsets_get_words():
     "return the set of words in ALLSETS"
     global ALLSETS
     result = set()
@@ -112,17 +112,17 @@ def ALLSETS_get_words():
             result.add(word)
     return result
 
-def ALLSETS_to_txt():
+def allsets_to_txt():
     "write a file with the list of words in ALLSETS"
-    result = "\n".join(ALLSETS_get_words())
+    result = "\n".join(allsets_get_words())
     with open("KEYWORDS-"+ str(len(result.split("\n"))) +".txt", 'w') as file:
         file.write(result)
 
-def ALLSETS_get_cost():
+def allsets_get_cost():
     "get the cost of all PINK SETS"
     global ALLSETS
-    value = sum(x.cost() for x in ALLSETS_get_pinks().values())
-    SETS_OF_LINKS = [links.words for links in ALLSETS_get_pinks().values()]
+    value = sum(x.cost() for x in allsets_get_pinks().values())
+    SETS_OF_LINKS = [links.words for links in allsets_get_pinks().values()]
     words = set()
     for SET in SETS_OF_LINKS:
         words.update(SET)
@@ -130,7 +130,7 @@ def ALLSETS_get_cost():
     return (words, value)
 
 
-def get_pinkCosts():
+def get_pink_costs():
     """(the reverse of dist_2_pink)
     from dist_2_pinks, generate pinkCost which is a dict of all PINKS (key)
     and the sum of the costs of all SETS to get to that key (value)
@@ -139,7 +139,7 @@ def get_pinkCosts():
     pinkCost = {}
     # variable = input("Regenerate dist_2_pinks? Y/N")
     # if variable == "Y":
-    #     ALLSETS_calculate_dist_to_pinks()
+    #     allsets_calculate_dist_to_pinks()
 
     for origin, links in dist_2_pinks.items():
         for destination, linkCost in links.items():
@@ -148,12 +148,12 @@ def get_pinkCosts():
             pinkCost[destination][origin] = linkCost
     return pinkCost
 
-def pinkCost_sort(pinkOnly = False):
+def pink_cost_sort(pinkOnly = False):
     "from pinkCost, get list of PINK SETS ordered by the most expensive on average to get to"
     global ALLSETS
     global dist_2_pinks
 
-    pinkCost = get_pinkCosts()
+    pinkCost = get_pink_costs()
     my_dict = {}
     for PINK in pinkCost:
         my_dict[PINK] = 0
@@ -195,7 +195,7 @@ def initialize():
 
 ##############################################################################
 
-def MERGE_PINK_SETS():
+def merge_pink_sets():
     "if two pink sets are next to each others: merge them together"
     global ALLSETS
     global dist_2_pinks
@@ -213,14 +213,14 @@ def MERGE_PINK_SETS():
                         first_word = sorted([ALLSETS[link].id(), SET.id()])[0]
                         second_word = sorted([ALLSETS[link].id(), SET.id()])[1]
                         ALLSETS[first_word].update( ALLSETS[second_word], ALLSETS, dist_2_pinks)
-                        ALLSETS_del(second_word)
+                        allsets_del(second_word)
                         somethingHappened = True
                         break
                 if somethingHappened:    
                     break
     pass
 
-def clean_ALLSETS():
+def clean_allsets():
     "Remove link of words that were moved/deleted, it's just for doublechecking"
     global ALLSETS
     done = set()
@@ -240,7 +240,7 @@ def clean_ALLSETS():
 
                 done.add(key)
 
-def DELETE_EQUIVALENT_GREYS(minimum_connection=1):
+def delete_equivalent_greys(minimum_connection=1):
     """first, delete sets that have 1 or less connection, they are useless
     then when it finds two SETs with the same links or one with more links only keep that."""
     global ALLSETS
@@ -249,18 +249,18 @@ def DELETE_EQUIVALENT_GREYS(minimum_connection=1):
     somethingHappened = True
     while somethingHappened:
         somethingHappened = False
-        for SET in ALLSETS_get_pinks(False):
+        for SET in allsets_get_pinks(False):
             if len(ALLSETS[SET].links) < minimum_connection:
                 log("   deleted: "+ALLSETS[SET].id()+" (isolated)")
-                ALLSETS_del(SET)
+                allsets_del(SET)
 
-                # if not ALLSETS_is_winnable:
+                # if not allsets_is_winnable:
                 #     print("UNWINNABLE")
                 #     return
                 # somethingHappened = True
                 # break
 
-    GREYS = ALLSETS_get_pinks(False)
+    GREYS = allsets_get_pinks(False)
     count = 0
     for key, A in GREYS.items():
         count += 1
@@ -276,9 +276,9 @@ def DELETE_EQUIVALENT_GREYS(minimum_connection=1):
 
             if (B.links - {A.id}).issubset(A.links - {B.id}): 
                 log("   subset deleted: "+B.id()+" is included in "+A.id())
-                ALLSETS_del(key2)
+                allsets_del(key2)
 
-def MERGE_GREYS():
+def merge_greys():
     """if two greys are connected to each others, you can merge them if they only have
     one other connection each"""
     global ALLSETS
@@ -297,7 +297,7 @@ def MERGE_GREYS():
                         if not ALLSETS[B].isKey and len(ALLSETS[B].links)==2:
                             log(f"  grey: merged {A} with {B}")
                             A.update( ALLSETS[B], ALLSETS, dist_2_pinks)
-                            ALLSETS_del(B)
+                            allsets_del(B)
                             somethingHappened = True
                             break
                     if somethingHappened:    
@@ -308,11 +308,11 @@ def optimize_greys():
     global ALLSETS
     log("   - OPTIMIZING GREYS -")
     log("       - MERGING GREYS-")
-    MERGE_GREYS()   #deletable
+    merge_greys()   #deletable
     log("       - DELETING EQUI-")
-    DELETE_EQUIVALENT_GREYS() #deletable
+    delete_equivalent_greys() #deletable
     log("       - CLEANING (optional) -")
-    clean_ALLSETS() #deletable
+    clean_allsets() #deletable
 
 def optimize_all():
     "try to optimize ALLSETS"
@@ -324,7 +324,7 @@ def optimize_all():
 
         log(f"  Currently {current} sets.")
         
-        if not ALLSETS_is_winnable():
+        if not allsets_is_winnable():
             log(f"not winnable anymore")
             input("rip")
             print("nooo")
@@ -332,22 +332,22 @@ def optimize_all():
             return
         
         log("   - MERGING PINKS-")
-        MERGE_PINK_SETS()
+        merge_pink_sets()
         
-        log("   - FIND_NECESSARY_SETS -")
-        FIND_NECESSARY_SETS()
+        log("   - find_necessary_sets -")
+        find_necessary_sets()
 
         optimize_greys() #deletable
 
         if current == len(ALLSETS):
-            log("   - DELETE_EQUI_GREYS_dist_2_pinks-")
-            DELETE_EQUI_GREYS_dist_2_pinks()
-            log("   - DELETE_HARD_GREYS -")
-            DELETE_HARD_GREYS()
+            log("   - delete_equi_greys_dist_2_pinks-")
+            delete_equi_greys_dist_2_pinks()
+            log("   - delete_hard_greys -")
+            delete_hard_greys()
 
-def find_shortest_pathS(start_set, end_set, getWords=True):
+def find_shortest_paths(start_set, end_set, getWords=True):
     """Return a list of all Sets included in the shortest paths between the inputs
-    is used in the DELETE_HARD_GREYS function"""
+    is used in the delete_hard_greys function"""
     
     if start_set == end_set:
         return set()
@@ -399,7 +399,7 @@ def find_shortest_pathS(start_set, end_set, getWords=True):
 
         return list(reversed(path))
 
-def DELETE_HARD_GREYS():
+def delete_hard_greys():
     """
     For every pair of PINK, find shortest pathS
     between the two. Remember all the SETs mentionned
@@ -417,16 +417,16 @@ def DELETE_HARD_GREYS():
             done.append( {A,B} )
             if len(done)%100 == 0:
                 print(f"searching for {A} and {B}, currently {len(necessary_sets)} words")
-            necessary_sets.update( find_shortest_pathS(A,B) )
+            necessary_sets.update( find_shortest_paths(A,B) )
 
     # load("necessary_sets")
     GREYS = Set.filter_sets(ALLSETS, False)
     for GREY in GREYS:
         if GREY not in necessary_sets:
             log(f"  the set of {GREY} is unecessary")
-            ALLSETS_del(GREY)
+            allsets_del(GREY)
 
-def FIND_NECESSARY_SETS():
+def find_necessary_sets():
     """
     for every GREY:
     try to delete it, is the game still winnable?
@@ -439,13 +439,13 @@ def FIND_NECESSARY_SETS():
 
     # if there is pinks with only 1 connection:
 
-    PINKS = ALLSETS_get_pinks()
+    PINKS = allsets_get_pinks()
     for key, pink in PINKS.items():
         if len(pink.links) == 1:
             ALLSETS[list(pink.links)[0]].isKey = True
-            MERGE_PINK_SETS()
+            merge_pink_sets()
 
-    GREYS = ALLSETS_get_pinks(False)
+    GREYS = allsets_get_pinks(False)
     
     ALLSETS_BACKUP = copy.deepcopy(ALLSETS)
     dist_2_pinks_BACK = copy.deepcopy(dist_2_pinks)
@@ -459,9 +459,9 @@ def FIND_NECESSARY_SETS():
         SET = GREYS[key]
         # if key<"gaby":
         #     continue
-        ALLSETS_del(key, False)
+        allsets_del(key, False)
         # i think an easier way is just to check if all PINKs still have at least 1 connection
-        if ALLSETS_is_winnable():
+        if allsets_is_winnable():
             if i%100 == 0:
                 print(f"No info on {SET}.")
             cutInThePast = True
@@ -479,14 +479,14 @@ def FIND_NECESSARY_SETS():
                 dist_2_pinks = copy.deepcopy(dist_2_pinks_BACK)
                 ALLSETS[key].isKey = True
 
-                MERGE_PINK_SETS()
+                merge_pink_sets()
                 return
     log(f"      no necessary set found.")
     ALLSETS = copy.deepcopy(ALLSETS_BACKUP)
     dist_2_pinks = copy.deepcopy(dist_2_pinks_BACK)
     return
 
-def ALLSETS_calculate_dist_to_pinks(SAVE=False):
+def allsets_calculate_dist_to_pinks(SAVE=False):
     """
     create dist_2_pinks
     Calculate distance to nearest pinks,
@@ -497,7 +497,7 @@ def ALLSETS_calculate_dist_to_pinks(SAVE=False):
     has an alternative path with only GREY sets)
     slow to run"""
     
-    if all( len(x.words)==1 for x in ALLSETS_get_pinks(False).values()):
+    if all( len(x.words)==1 for x in allsets_get_pinks(False).values()):
         mode = "simple" # only counts the steps
     else:
         mode = "hard" # counts the cost()
@@ -505,7 +505,7 @@ def ALLSETS_calculate_dist_to_pinks(SAVE=False):
     global dist_2_pinks
     dist_2_pinks = {}
     global ALLSETS
-    # GREYS = ALLSETS_get_pinks(False)
+    # GREYS = allsets_get_pinks(False)
     i = 0
     for key,SET in ALLSETS.items():
         i+=1
@@ -560,14 +560,14 @@ def ALLSETS_calculate_dist_to_pinks(SAVE=False):
     if SAVE:
         save("dist_2_pinks")
 
-def DELETE_EQUI_GREYS_dist_2_pinks():
+def delete_equi_greys_dist_2_pinks():
     """
     if two GREYs have the same distance to PINKs, or one have shorter route, or more
     connections, delete the worse one.
     """
     global ALLSETS
     global dist_2_pinks
-    GREYS = ALLSETS_get_pinks(False)
+    GREYS = allsets_get_pinks(False)
 
     done = 0
     for keyA in GREYS:
@@ -580,12 +580,12 @@ def DELETE_EQUI_GREYS_dist_2_pinks():
                 continue
 
             if done%100000 == 0:
-                print(f"{keyA}, {keyB} DELETE_EQUI_GREYS_dist_2_pinks")
+                print(f"{keyA}, {keyB} delete_equi_greys_dist_2_pinks")
 
             if all(link in dist_2_pinks[keyA] and dist_2_pinks[keyB][link] >= dist_2_pinks[keyA][link] for link in dist_2_pinks[keyB]):
             
                 log(f"  set deleted: {keyB} is worse than {keyA}")
-                ALLSETS_del(keyB)
+                allsets_del(keyB)
 
 def test_time(callback):
     start_time = time.time()
@@ -598,31 +598,31 @@ def euristic():
     """
     global ALLSETS
     global dist_2_pinks
-    while ALLSETS_is_winnable() and len(ALLSETS_get_pinks())>1 and ALLSETS_get_cost()[1]<90:
+    while allsets_is_winnable() and len(allsets_get_pinks())>1 and allsets_get_cost()[1]<90:
         
-        log(f"Currently {len(ALLSETS)} sets & {len(ALLSETS_get_words())} words:  {ALLSETS_get_cost()}")
+        log(f"Currently {len(ALLSETS)} sets & {len(allsets_get_words())} words:  {allsets_get_cost()}")
 
         # optimize_all()
 
         #  173 words
         # choose the word with the highest average cost, find use the link with the lowest distance
-        bestChoice = pinkCost_sort()[-1][0] #the Set with the highest average cost
+        bestChoice = pink_cost_sort()[-1][0] #the Set with the highest average cost
         link_sums = [(link, sum( [ max(0,7-x)**3 for x in dist_2_pinks[link].values() ] ) - ALLSETS[link].cost()) for link in ALLSETS[bestChoice].links]
 
         # Sort the list of tuples by the total sum of values
         bestLink = sorted(link_sums, key=lambda x: x[1])[-1]
         log(f"euristic: added {bestLink} as Key")
         ALLSETS[bestLink[0]].isKey = True
-        MERGE_PINK_SETS()
+        merge_pink_sets()
         optimize_all()
 
         save("ALLSETS")
 
-    if not ALLSETS_is_winnable:
+    if not allsets_is_winnable:
         log("CANT WIN ANYMORE")
         variable = input("u suck")
     else:
-        log(f"found solution with {ALLSETS_get_cost()} words")
+        log(f"found solution with {allsets_get_cost()} words")
         save("ALLSETS")
 
 def run_euristic():
@@ -654,12 +654,17 @@ def build_from_scratch():
     initialize()
     log(f"  {len(ALLSETS)} Sets.")
 
-    log("computing dist_2_pinks (slow)...")
-    ALLSETS_calculate_dist_to_pinks(SAVE=True)
-    save("ALLSETS")
-
+    # optimize_all() maintains dist_2_pinks only incrementally, so the stored
+    # distances drift (they stay too optimistic as sets are deleted) and the
+    # distance-based prune under-fires. Recomputing dist_2_pinks from scratch
+    # between rounds unlocks the missed deletions; iterate until it's stable.
     log("reducing the search space (slow)...")
-    optimize_all()
+    previous = None
+    while previous != len(ALLSETS):
+        previous = len(ALLSETS)
+        allsets_calculate_dist_to_pinks()
+        optimize_all()
+        log(f"  round complete: {previous} -> {len(ALLSETS)} Sets")
 
     save("ALLSETS")
     save("dist_2_pinks")
