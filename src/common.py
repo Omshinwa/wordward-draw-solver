@@ -13,7 +13,7 @@ with open("dictionary.txt", "r") as file:
 
 class Set:
     def __init__(self, words: set[str], links: set[str]):
-        # links: ids of connected Sets (each is a key into ALLSETS)
+        # links: ids of connected Sets (each is a key into graph)
         self.isKey = False  # is the set part of the solution?
         self.words = set(words)
         self.links = links # connections to other sets
@@ -44,33 +44,33 @@ class Set:
         return len(self.words) > len(other.words)
     
     @staticmethod
-    def filter_sets(ALLSETS: dict[str, "Set"], pink=True):
+    def filter_sets(graph: dict[str, "Set"], pink=True):
         """
-        returns all PINKS (pink=True) or GREYS (pink=False) Sets from ALLSETS.
+        returns all PINKS (pink=True) or GREYS (pink=False) Sets from graph.
         """
         PINKS = {}
-        for key, SET in ALLSETS.items():
+        for key, SET in graph.items():
             if SET.isKey == pink:
                 PINKS[key] = SET
         return PINKS
     
     @staticmethod
-    def find_set(ALLSETS: dict[str, "Set"], word: str):
+    def find_set(graph: dict[str, "Set"], word: str):
         """
         Find the Set containing the WORD.
         """
-        for key, SET in ALLSETS.items():
+        for key, SET in graph.items():
             if word in SET.words:
                 return SET
         return None
     
-    def update(self, other_set: "Set", ALLSETS: dict[str, "Set"], dist_2_pinks: dict[str, dict[str, int]]):
+    def update(self, other_set: "Set", graph: dict[str, "Set"], dist_2_pinks: dict[str, dict[str, int]]):
         """Merge (contract) other_set into self: absorb its words/links, rewire
         neighbors to point at self.id(), and fold other_set's dist_2_pinks entries
         into self's (keeping the min distance).
 
-        NOTE: this does NOT remove other_set from ALLSETS or dist_2_pinks. The
-        caller is responsible for that via ALLSETS_del(other_set.id()) right after
+        NOTE: this does NOT remove other_set from graph or dist_2_pinks. The
+        caller is responsible for that via graph_del(other_set.id()) right after
         calling update() (see brute_force_this.py merge_pinks / optimize_greys).
         """
         self.words.update(other_set.words)
@@ -88,8 +88,8 @@ class Set:
 
         for link in self.links:
             # update the links in other Sets
-            ALLSETS[link].links -= self.words
-            ALLSETS[link].links.add( self.id() )
+            graph[link].links -= self.words
+            graph[link].links.add( self.id() )
 
         self.isKey = self.isKey or other_set.isKey
 

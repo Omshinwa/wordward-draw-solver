@@ -1,5 +1,5 @@
 """
-Render a solved ALLSETS pickle into a human-readable view of the solution.
+Render a solved graph pickle into a human-readable view of the solution.
 
 A solution is a *connected* set of 4-letter words. Because `undo` is free, we
 can walk a spanning tree of that set in (size - 1) real operations: every word
@@ -9,34 +9,34 @@ WARD -> DRAW.
 
 Two output formats, both built from that same spanning tree:
 
-  path (default)  the playable, annotated move list (the format of result.txt):
+  path (default)  the playable, annotated move list (the format of results/result_playable.txt):
       WORD n      forward move; n = running operation count. UPPERCASE = picture word.
       >word n     an undo (free). One '>' per undo step; n stays the same.
 
   csv (--csv, or an output filename ending in .csv)  the tree as a spreadsheet
-  (the format of smallestSET.csv):
+  (the format of results/result_csv_view.csv):
       word;isKeyWord;parent;children
 
 Usage:
-    python3 render_solution.py                                   # default pickle -> stdout (path)
-    python3 render_solution.py "ALLSETS 173 alt.pickle"          # -> stdout (path)
-    python3 render_solution.py "ALLSETS 173 alt.pickle" out.txt  # -> file (path)
-    python3 render_solution.py "ALLSETS 173 alt.pickle" out.csv  # -> file (csv, inferred)
-    python3 render_solution.py "ALLSETS 173 alt.pickle" --csv    # -> stdout (csv)
+    python3 src/render_solution.py                                   # default pickle -> stdout (path)
+    python3 src/render_solution.py "graph_173.pickle"          # -> stdout (path)
+    python3 src/render_solution.py "graph_173.pickle" out.txt  # -> file (path)
+    python3 src/render_solution.py "graph_173.pickle" out.csv  # -> file (csv, inferred)
+    python3 src/render_solution.py "graph_173.pickle" --csv    # -> stdout (csv)
 """
 import sys
 import pickle
-from common import find_all_branches, KEYWORDS, Set  # Set is needed to unpickle ALLSETS
+from common import find_all_branches, KEYWORDS, Set  # Set is needed to unpickle the graph
 
 # The game's forced opening.
 OPENING_ROOT = "worm"
 FORCED_NEXT = {"worm": "word", "word": "ward", "ward": "draw"}
 
 
-def solution_words(allsets):
+def solution_words(graph):
     """The solution is the union of the words in every PINK (committed) set."""
     words = set()
-    for s in allsets.values():
+    for s in graph.values():
         if s.isKey:
             words |= s.words
     return words
@@ -137,7 +137,7 @@ if __name__ == "__main__":
     flags = {a for a in sys.argv[1:] if a.startswith("--")}
     positional = [a for a in sys.argv[1:] if not a.startswith("--")]
 
-    src = positional[0] if positional else "ALLSETS 173 alt.pickle"
+    src = positional[0] if positional else "graph_173.pickle"
     out = positional[1] if len(positional) > 1 else None
 
     # format: explicit flag wins, else infer from the output extension, else path
@@ -151,9 +151,9 @@ if __name__ == "__main__":
         fmt = "path"
 
     with open(src, "rb") as handle:
-        allsets = pickle.load(handle)
+        graph = pickle.load(handle)
 
-    lines, ops, parent, children = walk(solution_words(allsets))
+    lines, ops, parent, children = walk(solution_words(graph))
     text = to_csv(parent, children) if fmt == "csv" else to_path(lines)
 
     if out:

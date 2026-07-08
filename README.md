@@ -88,7 +88,7 @@ global vars are:
 
 **`KEYWORDS`**
 **`dictionary`**
-**`ALLSETS`**
+**`graph`**
 
 **`dist_2_pinks`**
 
@@ -120,7 +120,7 @@ Because the picture-word list never changes, I first apply **optimality-preservi
 * **Drop distance-dominated GREYs** (`delete_equi_greys_dist_2_pinks`) — the same idea using `dist_2_pinks`: if `B` is at least as far from every PINK as `A` is, `B` can be discarded.
 * **Drop off-path GREYs** (`delete_hard_greys`) — for every pair of PINKs, collect every Set lying on a shortest path between them; a GREY that never appears on any such path can't help and is removed. (This is the slow one — it is effectively all-pairs shortest paths.)
 
-Starting from 3915 words, these bring the graph down to **2283** Sets (saved as `ALLSETS_OPTIMAL_2283.pickle`) without giving up a single optimal solution.
+Starting from 3915 words, these bring the graph down to **2283** Sets (saved as `graph_optimal_2283.pickle`) without giving up a single optimal solution.
 
 ## When the reductions stall: the heuristic
 
@@ -130,13 +130,13 @@ Past 2283, no reduction fires, so `euristic()` has to *guess* which GREY to comm
 2. **Pick its best neighbour.** For each candidate Set adjacent to that PINK, score it by how many PINKs it sits *near*: `sum( max(0, 7 − d)³ for d in dist_2_pinks[candidate] )`, minus the candidate's own `cost()`. The cube heavily rewards a word that is close to several picture words at once (anything farther than 7 contributes nothing); the `− cost()` penalises one that would drag in many non-picture words.
 3. **Commit and reduce.** Promote the winner to PINK, merge, and loop back through all the reductions.
 
-Repeated, this closes the graph down to a single connected set. My best-tuned run reached **173 operations** (preserved in `ALLSETS 173 alt.pickle`, and rendered as the annotated path in `results/result_playable.txt`).
+Repeated, this closes the graph down to a single connected set. My best-tuned run reached **173 operations** (preserved in `graph_173.pickle`, and rendered as the annotated path in `results/result_playable.txt`).
 
 ## Persisting state with `pickle`
 
 `pickle` is Python's built-in **serialization** library. `pickle.dump()` writes any in-memory object — a plain `dict`, or here a whole graph of custom `Set` instances together with their `.words` and `.links` — to a byte stream on disk, and `pickle.load()` rebuilds the exact same objects later, in a completely separate run of the program. It saves you from re-deriving state on every launch or hand-rolling your own file format: what you load back is indistinguishable from what you saved.
 
-I lean on it because both the reductions and the search are slow. `ALLSETS` and `dist_2_pinks` are dumped to / loaded from `.pickle` files via the `save()` / `load()` helpers, so a run can be stopped and resumed and expensive intermediate states can be frozen and reused. The named snapshots (`ALLSETS_OPTIMAL_2283.pickle`, `ALLSETS 173 alt.pickle`, …) are simply those dumps captured at notable milestones.
+I lean on it because both the reductions and the search are slow. `graph` and `dist_2_pinks` are dumped to / loaded from `.pickle` files via the `save()` / `load()` helpers, so a run can be stopped and resumed and expensive intermediate states can be frozen and reused. The named snapshots (`graph_optimal_2283.pickle`, `graph_173.pickle`, …) are simply those dumps captured at notable milestones.
 
 Two things to know: a pickle can only be loaded where its classes are importable (hence `from common import Set` before every `load`), and pickles are *not* safe to load from untrusted sources — loading one can execute arbitrary code.
 
@@ -148,7 +148,7 @@ No dependencies beyond **Python 3** (standard library only). The code lives in `
 python3 src/brute_force_this.py
 ```
 
-On start it loads `ALLSETS.pickle` + `dist_2_pinks.pickle`, runs the heuristic, logs each decision to `log.txt`, and saves the resulting set back to `ALLSETS.pickle`.
+On start it loads `graph.pickle` + `dist_2_pinks.pickle`, runs the heuristic, logs each decision to `log.txt`, and saves the resulting set back to `graph.pickle`.
 
 ### Starting from the beginning (all 3915 words)
 
@@ -158,34 +158,34 @@ The shipped `.pickle` files are pre-computed checkpoints. To regenerate them fro
 python3 src/brute_force_this.py init
 ```
 
-This starts from all **3915** words in `dictionary.txt`, turns each into a singleton `Set`, computes `dist_2_pinks`, then applies the optimality-preserving reductions until they reach a fixpoint — writing `ALLSETS.pickle` and `dist_2_pinks.pickle` when it finishes. This is the step that shrinks the instance from **3915 → 2283** Sets, the smaller search space the heuristic then works on. It takes about two minutes and reproduces the shipped milestone `ALLSETS_OPTIMAL_2283.pickle` exactly (2283 Sets, 76 PINKs). With those two files in place you can run the heuristic below.
+This starts from all **3915** words in `dictionary.txt`, turns each into a singleton `Set`, computes `dist_2_pinks`, then applies the optimality-preserving reductions until they reach a fixpoint — writing `graph.pickle` and `dist_2_pinks.pickle` when it finishes. This is the step that shrinks the instance from **3915 → 2283** Sets, the smaller search space the heuristic then works on. It takes about two minutes and reproduces the shipped milestone `graph_optimal_2283.pickle` exactly (2283 Sets, 76 PINKs). With those two files in place you can run the heuristic below.
 
 > One subtlety: `optimize_all()` maintains `dist_2_pinks` only incrementally, so its stored distances drift (they stay too optimistic as Sets are deleted) and the distance-based prune stops early — a single reduction pass bottoms out around 2316 Sets. `build_from_scratch()` therefore **recomputes `dist_2_pinks` from scratch between rounds**, which unlocks the missed deletions and converges to 2283.
 
 ### Re-running the heuristic
 
-The bundled `ALLSETS.pickle` is already a finished run, so as-is the script just re-reports that solution and exits immediately. To watch the search happen again, reset to the post-reduction checkpoint first (either the one `init` just produced, or the shipped milestone):
+The bundled `graph.pickle` is already a finished run, so as-is the script just re-reports that solution and exits immediately. To watch the search happen again, reset to the post-reduction checkpoint first (either the one `init` just produced, or the shipped milestone):
 
 ```bash
-cp ALLSETS_OPTIMAL_2283.pickle ALLSETS.pickle
+cp graph_optimal_2283.pickle graph.pickle
 cp "dist_2_pinks - 2283.pickle"  dist_2_pinks.pickle
 python3 src/brute_force_this.py        # now "euristic: added ..." lines appear in log.txt
 ```
 
-A full run is slow — the `delete_hard_greys` all-pairs pass dominates the time. Reaching the record 173 also involved hand-tuning the heuristic's weights and stop threshold, so a fresh run lands *near* — not necessarily on — 173; the record itself is preserved in `ALLSETS 173 alt.pickle` / `results/result_playable.txt`.
+A full run is slow — the `delete_hard_greys` all-pairs pass dominates the time. Reaching the record 173 also involved hand-tuning the heuristic's weights and stop threshold, so a fresh run lands *near* — not necessarily on — 173; the record itself is preserved in `graph_173.pickle` / `results/result_playable.txt`.
 
 ### Rendering the solution (path or CSV)
 
-A solved `ALLSETS` pickle stores the answer as a bare *set* of words. `src/render_solution.py` walks a spanning tree of that set — starting from the WORM → WORD → WARD → DRAW opening — and renders it in either of two formats. Run from the repo root:
+A solved `graph` pickle stores the answer as a bare *set* of words. `src/render_solution.py` walks a spanning tree of that set — starting from the WORM → WORD → WARD → DRAW opening — and renders it in either of two formats. Run from the repo root:
 
 ```bash
 # the playable move list: +1 per new word, free `>` undos
-python3 src/render_solution.py "ALLSETS 173 alt.pickle"                             # -> stdout
-python3 src/render_solution.py "ALLSETS 173 alt.pickle" results/result_playable.txt
+python3 src/render_solution.py "graph_173.pickle"                             # -> stdout
+python3 src/render_solution.py "graph_173.pickle" results/result_playable.txt
 
 # the spanning tree as a spreadsheet: word;isKeyWord;parent;children
-python3 src/render_solution.py "ALLSETS 173 alt.pickle" results/result_csv_view.csv  # inferred from .csv
-python3 src/render_solution.py "ALLSETS 173 alt.pickle" --csv                  # -> stdout
+python3 src/render_solution.py "graph_173.pickle" results/result_csv_view.csv  # inferred from .csv
+python3 src/render_solution.py "graph_173.pickle" --csv                  # -> stdout
 ```
 
-Because a spanning tree of *N* words has *N* − 1 edges, the move list is always exactly *N* − 1 operations. The generated files in `results/` are the human-readable twins of the `ALLSETS 173 alt.pickle` checkpoint.
+Because a spanning tree of *N* words has *N* − 1 edges, the move list is always exactly *N* − 1 operations. The generated files in `results/` are the human-readable twins of the `graph_173.pickle` checkpoint.
