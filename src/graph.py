@@ -77,12 +77,12 @@ class WordGraph:
         pinks = self.pinks()
         for pink in pinks.values():
             if len(pink.links) == 0 and len(pinks) > 1:
-                print(f"can't reach {pink}")
+                log(f"PINK set {pink} can no longer be reached.")
                 return False
             reachable |= pink.words
         if all(w in reachable for w in KEYWORDS):
             return True
-        log("some Keywords are missing")
+        log("Not all picture words are reachable in the PINK sets.")
         return False
 
     def check_ids(self):

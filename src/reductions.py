@@ -112,9 +112,7 @@ def optimize_all(g):
         log(f"  Currently {current} sets.")
 
         if not g.is_winnable():
-            log("not winnable anymore")
-            input("rip")
-            print("nooo")
+            log("ERROR: the graph is no longer winnable; aborting reduction.")
             g.save("graph")
             return
 
@@ -152,7 +150,7 @@ def delete_hard_greys(g):
 
     for grey in g.greys():
         if grey not in necessary:
-            log(f"  the set of {grey} is unecessary")
+            log(f"  removing unnecessary set {grey}")
             g.remove(grey)
 
 

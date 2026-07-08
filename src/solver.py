@@ -34,11 +34,11 @@ def euristic(g):
 
         g.save("graph")
 
-    if not g.is_winnable:
-        log("CANT WIN ANYMORE")
-        input("u suck")
+    if not g.is_winnable():
+        log("No winnable solution was reached.")
     else:
-        log(f"found solution with {g.cost()} words")
+        words, non_picture = g.cost()
+        log(f"Solution found: {len(words)} words ({non_picture} non-picture).")
         g.save("graph")
 
 
