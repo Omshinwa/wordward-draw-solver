@@ -26,7 +26,8 @@ Usage:
 """
 import sys
 import pickle
-from common import find_all_branches, KEYWORDS, Set  # Set is needed to unpickle the graph
+from word_set import KEYWORDS, Set  # Set is needed to unpickle the graph
+from utils import find_all_branches
 
 # The game's forced opening.
 OPENING_ROOT = "worm"

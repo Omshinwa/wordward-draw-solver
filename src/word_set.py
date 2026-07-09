@@ -1,15 +1,10 @@
-from itertools import permutations
+def _load_lines(path):
+    with open(path) as f:
+        return f.read().split("\n")
 
-# keywords
-with open("all_picture_words.txt", "r") as file:
-    data = file.read()
-    i = data.split("\n")
-    KEYWORDS = set(i)
-
-# dictionary
-with open("dictionary.txt", "r") as file:
-    data = file.read()
-    dictionary = data.split("\n")
+# module globals
+KEYWORDS = set(_load_lines("all_picture_words.txt"))
+dictionary = _load_lines("dictionary.txt")
 
 class Set:
     def __init__(self, words: set[str], links: set[str]):
@@ -106,29 +101,4 @@ class Set:
 #             self.links = set()
 #     def isKeyWord(self):
 #         return self.word in KEYWORDS
-
-
-def find_all_permutation(word):
-    valid_permutation = set()
-    list_permutation = set([''.join(p) for p in permutations(word)])
-    for permutation in list_permutation:
-        if permutation in dictionary:
-            valid_permutation.add(permutation)
-    return valid_permutation
-
-def find_all_substitution(word):
-    valid_sub = set()
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    for index in range(len(word)):
-        for letter in alphabet:
-            substitution = word[:index] + letter + word[index+1:] 
-            if substitution in dictionary:
-                valid_sub.add(substitution)
-    
-    return valid_sub
-
-def find_all_branches(word):
-    set1 = find_all_substitution(word)
-    set2 = find_all_permutation(word)
-    return set1.union(set2)
 

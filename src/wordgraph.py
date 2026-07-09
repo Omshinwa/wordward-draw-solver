@@ -8,8 +8,8 @@ committed to the solution (`Set.isKey`), and GREY otherwise.
 This module owns the *state* and the operations on it. The reductions that shrink
 the graph live in `reductions.py`, and the heuristic search in `solver.py`.
 """
-from common import find_all_branches, KEYWORDS, dictionary, Set
-from utils import load, save, log
+from word_set import KEYWORDS, dictionary, Set
+from utils import load, save, log, find_all_branches
 
 
 class WordGraph:

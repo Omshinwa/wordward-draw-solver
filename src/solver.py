@@ -8,9 +8,9 @@ See the README for the algorithm.
 """
 import sys
 import time
-from common import dictionary
+from word_set import dictionary
 from utils import load, save, log
-from graph import WordGraph
+from wordgraph import WordGraph
 from reductions import merge_pink_sets, optimize_all
 
 
