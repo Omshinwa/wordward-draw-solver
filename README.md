@@ -194,3 +194,10 @@ python3 src/render_solution.py "graph_173.pickle" --csv                  # -> st
 ```
 
 Because a spanning tree of *N* words has *N* − 1 edges, the move list is always exactly *N* − 1 operations. The generated files in `results/` are the human-readable twins of the `graph_173.pickle` checkpoint.
+
+# AI improvements
+
+This project was started on 2023. Now with AI tools I have found new ways to improve it.
+Name the problem: this is the Steiner Tree Problem in Graphs. My reductions are the Duin–Volgenant / Polzin family.
+delete_hard_greys is (I believe) not optimality-preserving
+

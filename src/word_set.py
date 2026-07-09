@@ -4,30 +4,23 @@ def _load_lines(path):
 
 # module globals
 KEYWORDS = set(_load_lines("all_picture_words.txt"))
-dictionary = _load_lines("dictionary.txt")
+dictionary = _load_lines("dictionary.txt")          # list: preserves file/build order
+DICTIONARY_WORDS = frozenset(dictionary)            # set: O(1) membership for branch-finding
 
 class Set:
     def __init__(self, words: set[str], links: set[str]):
         # links: ids of connected Sets (each is a key into graph)
-        self.isKey = False  # is the set part of the solution?
         self.words = set(words)
-        self.links = links # connections to other sets
-        
-        for word in words:
-            if word in KEYWORDS:
-                self.isKey = True
-                break
-    
+        self.links = links  # connections to other sets
+        # PINK (part of the solution) if it holds at least one picture word
+        self.isKey = any(word in KEYWORDS for word in self.words)
+
     def cost(self):
         """
         number of non keywords in it
         higher = the most costly is the solution
         """
-        i = 0
-        for word in self.words:
-            if word not in KEYWORDS:
-                i+=1
-        return i
+        return len(self.words - KEYWORDS)
     
     def id(self):
         return sorted(self.words)[0]
@@ -49,16 +42,7 @@ class Set:
         """
         self.words.update(other_set.words)
         self.links.update(other_set.links)
-
-        happened = True
-        while happened:
-            happened = False
-            for link in self.links:
-                if link in self.words:
-                    self.links.remove(link)
-                    happened = True
-                    break
-        
+        self.links -= self.words   # a Set never links to its own words
 
         for link in self.links:
             # update the links in other Sets

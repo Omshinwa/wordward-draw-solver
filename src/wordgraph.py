@@ -13,9 +13,15 @@ from utils import load, save, log, find_all_branches
 
 
 class WordGraph:
-    def __init__(self, sets=None):
-        self.sets = sets if sets is not None else {}   # {word_id: Set}
+    def __init__(self, sets: dict[str, Set] | None = None):
+        self.sets = sets or {}   # {word_id: Set}
         self.dist_to_pinks = {}                          # {set_id: {pink_id: distance}}
+        self.word_to_set = self._index_words()           # look up table, word -> get the id of the set containing that word
+        # {word: containing set id}
+
+    def _index_words(self):
+        "Build the {word: containing-set id} lookup from self.sets."
+        return {w: sid for sid, s in self.sets.items() for w in s.words}
 
     # -------------------------------------------------------------- build / io
     @classmethod
@@ -43,10 +49,8 @@ class WordGraph:
     # -------------------------------------------------------------- queries
     def find(self, word):
         "The Set containing <word>, or None."
-        for s in self.sets.values():
-            if word in s.words:
-                return s
-        return None
+        sid = self.word_to_set.get(word)
+        return self.sets.get(sid) if sid is not None else None
 
     def pinks(self):
         "The PINK (in-solution) Sets as {id: Set}."
@@ -80,7 +84,7 @@ class WordGraph:
                 log(f"PINK set {pink} can no longer be reached.")
                 return False
             reachable |= pink.words
-        if all(w in reachable for w in KEYWORDS):
+        if KEYWORDS.issubset(reachable):
             return True
         log("Not all picture words are reachable in the PINK sets.")
         return False
@@ -98,22 +102,43 @@ class WordGraph:
             file.write(result)
 
     # -------------------------------------------------------------- mutation
+    def merge_into(self, keep_id, drop_id):
+        """Contract the Set drop_id into keep_id and delete drop_id, keeping
+        word_to_set in sync. The surviving Set stays keyed under keep_id."""
+        self.sets[keep_id].update(self.sets[drop_id], self.sets, self.dist_to_pinks)
+        for w in self.sets[drop_id].words:      # the absorbed words now live in keep_id
+            self.word_to_set[w] = keep_id
+        self.remove(drop_id)
+
     def remove(self, word, doPrint=True):
         "Delete the Set keyed <word>, its dist_to_pinks entry, and any links to it."
-        words = self.sets[word].words
+        removed = self.sets[word]
+        words = removed.words
         del self.sets[word]
+
+        # keep the word->set index in sync, but only for words this Set still owns
+        # (a merge_into may have already reassigned them to the surviving Set)
+        for w in words:
+            if self.word_to_set.get(w) == word:
+                del self.word_to_set[w]
 
         if word in self.dist_to_pinks:
             del self.dist_to_pinks[word]
             if doPrint:
                 log(f"  removed {word} from dist_to_pinks")
 
-        for w in words:
-            for s in self.sets.values():
-                if w in s.links:
-                    if doPrint:
+        # links are symmetric, so only this Set's neighbours can reference it —
+        # clean just them instead of scanning every Set
+        for nbr in list(removed.links):
+            s = self.sets.get(nbr)
+            if s is None:
+                continue
+            stale = s.links & words
+            if stale:
+                s.links -= stale
+                if doPrint:
+                    for w in stale:
                         print(f"removed {w} from {s}'s links")
-                    s.links.remove(w)
 
     # -------------------------------------------------------------- distances
     def calculate_dist_to_pinks(self, save_result=False):

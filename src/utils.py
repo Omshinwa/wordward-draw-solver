@@ -2,8 +2,9 @@
 import pickle
 import time
 from itertools import permutations
+from string import ascii_lowercase
 
-from word_set import dictionary
+from word_set import DICTIONARY_WORDS
 
 
 def load(name):
@@ -35,24 +36,15 @@ def test_time(callback):
 
 def find_all_permutation(word) -> set[str]:
     "The valid words reachable by anagramming <word>."
-    valid_permutation = set()
-    list_permutation = set([''.join(p) for p in permutations(word)])
-    for permutation in list_permutation:
-        if permutation in dictionary:
-            valid_permutation.add(permutation)
-    return valid_permutation
+    permutations_ = {''.join(p) for p in permutations(word)}
+    return permutations_ & DICTIONARY_WORDS
 
 
 def find_all_substitution(word) -> set[str]:
     "The valid words reachable by swapping a single letter of <word>."
-    valid_sub = set()
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    for index in range(len(word)):
-        for letter in alphabet:
-            substitution = word[:index] + letter + word[index+1:]
-            if substitution in dictionary:
-                valid_sub.add(substitution)
-    return valid_sub
+    substitutions = {word[:i] + letter + word[i+1:]
+                     for i in range(len(word)) for letter in ascii_lowercase}
+    return substitutions & DICTIONARY_WORDS
 
 
 def find_all_branches(word) -> set[str]:

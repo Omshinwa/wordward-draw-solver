@@ -20,8 +20,7 @@ def merge_pink_sets(g):
                     if g.sets[link].isKey:
                         log(f"  pink: merged {g.sets[link]} with {s}")
                         first, second = sorted([g.sets[link].id(), s.id()])
-                        g.sets[first].update(g.sets[second], g.sets, g.dist_to_pinks)
-                        g.remove(second)
+                        g.merge_into(first, second)
                         changed = True
                         break
                 if changed:
@@ -85,8 +84,7 @@ def merge_greys(g):
                     for B in A.links:
                         if not g.sets[B].isKey and len(g.sets[B].links) == 2:
                             log(f"  grey: merged {A} with {B}")
-                            A.update(g.sets[B], g.sets, g.dist_to_pinks)
-                            g.remove(B)
+                            g.merge_into(key, B)
                             changed = True
                             break
                     if changed:
@@ -166,6 +164,7 @@ def find_necessary_sets(g):
     greys = g.greys()
     sets_backup = copy.deepcopy(g.sets)
     dist_backup = copy.deepcopy(g.dist_to_pinks)
+    index_backup = copy.deepcopy(g.word_to_set)
     cut_in_the_past = False
 
     i = 0
@@ -183,17 +182,20 @@ def find_necessary_sets(g):
                 print(f"    maybe must keep {SET}")
                 g.sets = copy.deepcopy(sets_backup)
                 g.dist_to_pinks = copy.deepcopy(dist_backup)
+                g.word_to_set = copy.deepcopy(index_backup)
                 cut_in_the_past = False
             else:
                 log(f"  MUST KEEP {SET}")
                 g.sets = copy.deepcopy(sets_backup)
                 g.dist_to_pinks = copy.deepcopy(dist_backup)
+                g.word_to_set = copy.deepcopy(index_backup)
                 g.sets[key].isKey = True
                 merge_pink_sets(g)
                 return
     log("      no necessary set found.")
     g.sets = copy.deepcopy(sets_backup)
     g.dist_to_pinks = copy.deepcopy(dist_backup)
+    g.word_to_set = copy.deepcopy(index_backup)
 
 
 def delete_equi_greys_dist_to_pinks(g):
