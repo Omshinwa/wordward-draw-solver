@@ -39,11 +39,36 @@ both units.
 |---|---|---|---|
 | Previous record (`src/solver.py`) | 67 | 173 | hand-tuned heuristic |
 | **Best found here** | **66** | **172** | randomized SPH + Steiner-node elimination |
-| Lower bound (proven) | ≥ 43 | ≥ 149 | directed-cut LP relaxation objective |
+| Lower bound (proven) | ≥ 44 | ≥ 150 | SCIP root directed-cut bound 43.5 (session 2) |
 
-**The true optimum is bracketed in `[149, 172]` operations.** We have a concrete,
+**The true optimum is bracketed in `[150, 172]` operations.** We have a concrete,
 better-than-record solution (saved as `best_solution.pickle`), and a valid proof
-that you can't do better than 149.
+that you can't do better than 150.
+
+### Session 2 (2026-07-09): optimality push + full-dictionary check
+
+Four parallel ~80–105 min runs, all warm-started at/around the 66-grey record:
+
+* **Global bound (SCIP, full 2283 graph, 105 min):** root bound reached 43.5
+  greys before the time limit → **proven ≥ 44 greys / ≥ 150 operations** (up
+  from 149). Still all root separation, no branching — unchanged diagnosis.
+* **Bigger pool matheuristic** (360-grey pool from ~7.2k randomized runs,
+  91 min MIP): nothing below 66; within-pool dual only reached 43.
+* **Incumbent-neighborhood exact solve** (terminals + record greys + all 446
+  greys with ≥2 attachments to the record tree = 588 nodes, 80 min): **no
+  65-grey solution found** near the record (timelimit at ~13% of the tree, so
+  not a full local-optimality proof; within-neighborhood dual 42).
+* **Full dictionary, no reductions** (`graph_full_3915.pickle`: 3915 singleton
+  Sets, 107 pink terminals, 22 916 edges — built because `delete_hard_greys` /
+  `delete_equi_greys_dist_to_pinks` in `src/reductions.py` are *not* provably
+  optimality-preserving for Steiner trees): ~9k randomized heuristics + pool
+  MIP give **exactly 66 greys / 172 operations again**, and the best solution
+  found uses **zero** of the 1601 words the reduction dropped. Empirically the
+  reduction lost nothing.
+
+Net: 66/172 survived ~16k randomized restarts and three independent exact
+subproblem searches on two graphs. Optimum still open in `[150, 172]`, with 172
+looking ever more likely to be it.
 
 ### Why it isn't closed to optimality
 
