@@ -57,7 +57,7 @@ XRAY 7
 
 # Paths to trees
 
-<img src="docs/representation.webp" alt="Left: the same solve written as a linear history with free undos. Right: the same solve as a tree, where order no longer matters" width="500">
+<img src="docs/representation.webp" alt="Left: the same solve written as a linear history with free undos. Right: the same solve as a tree, where order no longer matters" width="800">
 
 Since `undo` is free, order doesn't matter — only the set of words does. **bind** → **BIRD** then undo then **bind** → **WIND** costs 2, same as a hypothetical path through both. So we can drop the undos and draw the solve as a tree rooted at **DRAW** (the first word we control). Operations in the history = edges in the tree.
 
