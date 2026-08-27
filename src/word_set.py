@@ -9,7 +9,6 @@ DICTIONARY_WORDS = frozenset(dictionary)            # set: O(1) membership for b
 
 class Set:
     def __init__(self, words: set[str], links: set[str]):
-        # links: ids of connected Sets (each is a key into graph)
         self.words = set(words)
         self.links = links  # connections to other sets
         # PINK (part of the solution) if it holds at least one picture word

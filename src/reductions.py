@@ -46,27 +46,45 @@ def clean_graph(g):
                 done.add(key)
 
 
-def delete_equivalent_greys(g, minimum_connection=1):
-    """Drop dead GREYs (fewer than `minimum_connection` links) and GREYs dominated
-    by another (their links are a subset of another GREY's)."""
-    # dead ends first
-    for grey in g.greys():
-        if len(g.sets[grey].links) < minimum_connection:
-            log("   deleted: " + g.sets[grey].id() + " (isolated)")
-            g.remove(grey)
+def delete_dead_greys(g, minimum_connection=2):
+    """Drop GREYs with fewer than `minimum_connection` links."""
+    changed = True
+    while changed:
+        changed = False
+        for key, s in g.greys().items():
+            if len(s.links) < minimum_connection:
+                log(f"   deleted: {s.id()} ({len(s.links)} links)")
+                g.remove(key)
+                changed = True
 
+
+def marginal_cost(s):
+    "What including this Set still costs us: nothing if it is already committed."
+    return 0 if s.isKey else s.cost()
+
+
+def delete_dominated_greys(g):
+    """Drop GREYs dominated by another Set: if GREY B's links are a subset of A's,
+    anything B connects A connects too, so B goes — provided A costs no more to keep.
+
+    A may be PINK: a PINK is in the solution whatever we do, so its words are paid
+    for already and its marginal cost is 0. That makes it the strongest dominator
+    there is, and dropping B against one can never lose an optimal solution.
+    Slow — quadratic in the Sets."""
     greys = g.greys()
     count = 0
-    for key, A in greys.items():
+    for key, A in g.sets.copy().items():
         count += 1
         if count % 100 == 0:
             print(f"checking {key}")
         for key2, B in greys.items():
-            if A == B:
+            if key == key2:
                 continue
             if key not in g.sets or key2 not in g.sets:
                 continue
-            if (B.links - {A.id}).issubset(A.links - {B.id}):
+            if marginal_cost(A) > marginal_cost(B):
+                continue    # A connects more, but keeping it would cost more words
+            if (B.links - {A.id()}).issubset(A.links - {B.id()}):
                 log("   subset deleted: " + B.id() + " is included in " + A.id())
                 g.remove(key2)
 
@@ -92,18 +110,11 @@ def merge_greys(g):
                 done.add(key)
 
 
-def optimize_greys(g):
-    log("   - OPTIMIZING GREYS -")
-    log("       - MERGING GREYS-")
-    merge_greys(g)
-    log("       - DELETING EQUI-")
-    delete_equivalent_greys(g)
-    log("       - CLEANING (optional) -")
-    clean_graph(g)
-
-
 def optimize_all(g):
-    "Run every reduction to a fixpoint (the size stops shrinking)."
+    """Run every reduction to a fixpoint (the size stops shrinking).
+
+    Cheapest first. 
+    """
     current = 0
     while current != len(g.sets):
         current = len(g.sets)
@@ -116,40 +127,26 @@ def optimize_all(g):
 
         log("   - MERGING PINKS-")
         merge_pink_sets(g)
-
-        log("   - find_necessary_sets -")
-        find_necessary_sets(g)
-
-        optimize_greys(g)
+        log("   - MERGING GREYS-")
+        merge_greys(g)
+        log("   - CLEANING -")
+        clean_graph(g)
+        # after the sweep, so the link counts it tests are accurate
+        log("   - DELETING DEAD GREYS -")
+        delete_dead_greys(g)
 
         if current == len(g.sets):
-            log("   - delete_equi_greys_dist_to_pinks-")
+            log("   - find_necessary_sets -")
+            find_necessary_sets(g)
+
+        if current == len(g.sets):
+            log("   - delete_equi_greys_dist_to_pinks -")
             delete_equi_greys_dist_to_pinks(g)
-            log("   - delete_hard_greys -")
-            delete_hard_greys(g)
 
-
-def delete_hard_greys(g):
-    """Drop GREYs that never lie on a shortest path between two PINKs. Slow — it is
-    effectively all-pairs shortest paths."""
-    pinks = g.pinks()
-    necessary = set()
-    done = [set()]
-    for A in pinks:
-        for B in pinks:
-            if A == B:
-                continue
-            if {A, B} in done:
-                continue
-            done.append({A, B})
-            if len(done) % 100 == 0:
-                print(f"searching for {A} and {B}, currently {len(necessary)} words")
-            necessary.update(g.shortest_paths(A, B))
-
-    for grey in g.greys():
-        if grey not in necessary:
-            log(f"  removing unnecessary set {grey}")
-            g.remove(grey)
+        if current == len(g.sets):
+            log("   - delete_dominated_greys -")
+            delete_dominated_greys(g)
+            clean_graph(g)
 
 
 def find_necessary_sets(g):
@@ -211,6 +208,8 @@ def delete_equi_greys_dist_to_pinks(g):
                 continue
             if done % 100000 == 0:
                 print(f"{keyA}, {keyB} delete_equi_greys_dist_to_pinks")
+            if g.sets[keyA].cost() > g.sets[keyB].cost():
+                continue    # A is closer, but keeping it would cost more words
             if all(link in g.dist_to_pinks[keyA] and g.dist_to_pinks[keyB][link] >= g.dist_to_pinks[keyA][link]
                    for link in g.dist_to_pinks[keyB]):
                 log(f"  set deleted: {keyB} is worse than {keyA}")

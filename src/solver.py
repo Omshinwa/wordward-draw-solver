@@ -14,7 +14,7 @@ from wordgraph import WordGraph
 from reductions import merge_pink_sets, optimize_all
 
 
-def euristic(g):
+def heuristic(g):
     """Guess-and-reduce. When no reduction fires, commit the most promising Set to
     the bottleneck PINK, then re-run every reduction. Repeat until solved."""
     while g.is_winnable() and len(g.pinks()) > 1 and g.cost()[1] < 90:
@@ -23,11 +23,11 @@ def euristic(g):
         # the PINK that is, on average, farthest from the others: the current bottleneck
         bottleneck = g.pink_cost_sort()[-1][0]
         # score each neighbouring Set by how many PINKs it sits near, minus its own cost
-        scored = [(link, sum(max(0, 7 - d) ** 3 for d in g.dist_to_pinks[link].values()) - g.sets[link].cost())
+        scored = [(link, sum(max(0, 4 - d) ** 3 for d in g.dist_to_pinks[link].values()) - g.sets[link].cost())
                   for link in g.sets[bottleneck].links]
         best = sorted(scored, key=lambda x: x[1])[-1]
 
-        log(f"euristic: added {best} as Key")
+        log(f"heuristic: added {best} as Key")
         g.sets[best[0]].isKey = True
         merge_pink_sets(g)
         optimize_all(g)
@@ -42,7 +42,7 @@ def euristic(g):
         g.save("graph")
 
 
-def run_euristic():
+def run_heuristic():
     "Load the reduced graph + distances, run the heuristic, save the result."
     start = time.time()
 
@@ -50,7 +50,7 @@ def run_euristic():
     g.dist_to_pinks = load("dist_to_pinks")
 
     open("log.txt", "w").close()
-    euristic(g)
+    heuristic(g)
 
     log("--- %s seconds ---" % (time.time() - start))
     g.save("graph")
@@ -87,4 +87,4 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "init":
         build_from_scratch()
     else:
-        run_euristic()
+        run_heuristic()

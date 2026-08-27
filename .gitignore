@@ -2,3 +2,7 @@
 /.claude
 /.vscode
 __pycache__/
+/graph.pickle
+/dist_to_pinks.pickle
+/log.txt
+notes/

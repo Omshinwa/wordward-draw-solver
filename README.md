@@ -1,32 +1,46 @@
-# Goal
-This project tries to 'solve' the word game **wordward-draw** hosted at:
+This project solves the word game **wordward-draw** (https://managore.itch.io/wordward-draw) in Python.
 
-https://managore.itch.io/wordward-draw
+Originally written in 2023, it scored **173 operations**. Revisited with AI assistance in 2026: **171 operations**.
 
-Note that this project was mostly developped during the pre-AI era lol (circa 2023).
+## Contents
 
-# Rules of the game
+* [The game](#the-game)
+* [The result](#the-result)
+* [Paths to trees](#paths-to-trees)
+* [Complexity](#complexity)
+* [Code structure](#code-structure)
+  * [Pickles](#pickles)
+* [Reductions](#reductions)
+* [The heuristic](#the-heuristic)
+* [Running it](#running-it)
+  * [From scratch](#from-scratch)
+  * [Running the heuristic](#running-the-heuristic)
+  * [Readable solution](#readable-solution)
+* [Appendix: AI improvements (2026)](#appendix-ai-improvements-2026)
+  * [The reduction I got wrong](#the-reduction-i-got-wrong)
 
-You start with a 4 letter word (in the game, we start with the words WORM -> WORD -> WARD)
+# The game
 
-You can move from one word to another if
+Start from a 4-letter word. You can move to another word if:
 
 * They only differ by 1 letter. eg: W[O]RD -> W[A]RD
 * OR they are anagrams. eg: WARD -> DRAW
 
-The list of valid 4 letter word is defined in `./dictionary.txt`.
-The goal of the game is to reach 105 **picture words** (defined in `./all_picture_words.txt`)
 
-My goal, and what I call *solving* is finding the shortest path possible to reach all the words. The game also allows your to **`undo`** your last operation, I consider those as free operations.
+The goal is to reach all 105 **picture words** (`all_picture_words.txt`); valid words are in `dictionary.txt` (3915).
 
-# Results
+*Solving* is finding the shortest path to reach every picture word. `undo`-ing an operation is free.
 
-My current best score is 173 operations. The result can be seen in `results/result_playable.txt`.
+The game opens with WORM -> WORD -> WARD.
+
+# The result
+
+**171 operations**: [`results/result_playable_171.txt`](results/result_playable_171.txt).
 
 ```
-WORM 0 
+WORM 0
 WORD 1
-WARD 2 
+WARD 2
 DRAW 3
 dram 4
 DRUM 5
@@ -34,77 +48,51 @@ DRUM 5
 >>DRAW 5
 dray 6
 XRAY 7
->dray 7
->>DRAW 7
->>>WARD 7
-CARD 8
-caid 9
-ACID 10
->caid 10
->>CARD 10
 ...
 ```
-An uppercased word is part of the picture words.
-The `>` angled brackets indicate an undo.
 
-# Process
+* Uppercase = picture word
+* `>` = undo
+* right column = operation count.
 
-## Perspective shift
+# Paths to trees
 
-Instead of searching directly for the shortest path (the smallest number of operations), we look for the smallest **connected** set of words that contains all the picture words. Generating a path from that set is then easy: because **`undo`** is free, we can visit the entire set in exactly `(set size − 1)` operations, starting from DRAW (the first word where we control our next move).
+<img src="docs/representation.webp" alt="Left: the same solve written as a linear history with free undos. Right: the same solve as a tree, where order no longer matters" width="500">
 
-Why is such assumption permissible? Think of the set as a tree rooted at DRAW. Reaching each new word costs one operation, and after reaching a word we can `undo` back toward the root for free — so returning to a branch point to explore a different direction costs nothing. Every word is therefore paid for exactly once, when we first reach it. The total number of operations equals the number of words we have to reach, so minimizing operations is the same as minimizing the size of the set.
+Since `undo` is free, order doesn't matter — only the set of words does. **bind** → **BIRD** then undo then **bind** → **WIND** costs 2, same as a hypothetical path through both. So we can drop the undos and draw the solve as a tree rooted at **DRAW** (the first word we control). Operations in the history = edges in the tree.
 
-The game states 105 picture words, but you'll notice I have 107 in `./all_picture_words`. That is because I have added `ward` and `word` to that list, since they are the game's starting words I should have them in my set of words anyway.
+We can rephrase our problem: **find the smallest tree spanning every picture word.**
 
-## A NP-hard problem
+`all_picture_words.txt` holds 107 words, not 105: `ward` and `word` are included since the game's opening puts them in the tree anyway.
 
-There's 3915 words in the dictionary. The most naive approach would be to create a set with all picture words, then recurcively tries to add words one by one in the set until every picture word is connected.
-This takes too much time, it's not possible to find an optimal solution in a reasonable amount of time.
+# Complexity
 
-The problem is NP-hard. There's the [Kruskal Algorithm](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm) which look like it could give us a solution. But it is actually trivial to find a counter-example:
+There are 3915 words in the dictionary. The most naive approach would be to create a set with all picture words, then recursively test every combination of words until the set is connected. This is a very slow approach to find any solution.
 
-Given a set of connected nodes, Kruskal Algorithm gives us the minimum spanning tree. But crucially, one assumption is that all the nodes are already connected. In our case, we have nodes we can connect to the tree or not (all the other non picture words).
+Can't we use [Kruskal's Algorithm](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)?
 
-Selecting such nodes can have advantages the Kruskal Algorithm cannot take advantages of.
+Given a set of connected nodes, we can get the minimum spanning tree. But this assumes every node is already in the tree. Here we *choose* which non-picture words to include.
 
-![Moon rendered with miniRT](docs/kruskal_algo.webp)
+<img src="docs/kruskal_algo.webp" alt="Two routes between three picture words: the longer blue route visits fewer unique words overall than the shorter black one" width="500">
 
-Here's a trivial example with 3 Picture words, `bake`, `beat` and `lace`.
+A counter-example:
 
-The Kruskal Algorithm would pick the red connection of `bake - bare - bear - beat`. Failing to realize that even if it's one more word, the green route `bake - fake - fate - feat - beat` will eventually save a word when trying to connect with `lace`
+Given the 3 picture words `BAKE`, `BEAT` and `LACE`. Kruskal's algorithm would pick the shorter black connection `BAKE` `- bare - bear -` `BEAT`, failing to realize that even if the blue route `BAKE` `- fake - fate - feat -` `BEAT` is one word longer, it will eventually save a word when connecting to `LACE`.
 
-Red visited 7 unique words, green only hit 6.
+Black: 8 words, Blue: 7 words. We can't rely on Kruskal's Algorithm.
 
-What I do. Since the picture-word list is static, I first shrink the search space with optimality-preserving reductions — each keeps at least one optimal solution, so the reduced instance has the same optimum as the original. T
+# Code structure
 
-Only once no such reduction exist do I fall back on heuristics.
-
-We start with 3915 words in our dictionnary. I manage to reduce it to 2283 before doing my heuristic search.
-
-## Structure
-
-The code (`src/`) is layered so each file has one job:
-
-| module | holds |
-|---|---|
-| `common.py` | `Set`, `find_all_branches`, `KEYWORDS`, `dictionary` |
-| `utils.py` | `load`, `save`, `log` |
-| `graph.py` | the `WordGraph` class — the graph itself plus every operation on it |
-| `reductions.py` | the optimality-preserving reductions, as functions taking a `WordGraph` |
-| `solver.py` | the heuristic search and the `__main__` entry points |
-
-A **`Set`** is a group of one or more words that are all mutually reachable "for free" (e.g. anagrams already merged in):
+A **`Set`** groups words together.
 
 ```python
 class Set:
-    isKey : bool      # is the set part of the solution? (PINK vs GREY)
+    isKey : bool      # is the set part of the solution?
     words : set[str]  # the words in it
     links : set[str]  # ids of the connected Sets
     cost()            # number of non-picture words in it
+    id() : str        # alphabetically first word in the Set
 ```
-
-A **`WordGraph`** wraps the two pieces of state the whole solver revolves around:
 
 ```python
 class WordGraph:
@@ -112,92 +100,109 @@ class WordGraph:
     dist_to_pinks : dict[str, dict[str, int]]    # each Set's distance to every PINK it can reach
 ```
 
-Each Set is either **PINK** (`isKey == True` — it already contains a picture word, or we have committed it to the solution) or **GREY** (optional — a stepping-stone we may or may not keep). The problem becomes: make every PINK set connected as cheaply as possible, where a GREY set only costs us if we decide to keep it. `dist_to_pinks[A]` is what both the reductions and the heuristic use to reason about how expensive a word is to wire in.
+| module | holds |
+|---|---|
+| [`word_set.py`](src/word_set.py) | `Set`, plus `KEYWORDS` / `dictionary` loaded from the `.txt` files |
+| [`utils.py`](src/utils.py) | `load` / `save` (pickle), `log`, word moves (`find_all_branches`) |
+| [`wordgraph.py`](src/wordgraph.py) | `WordGraph` and every operation on it |
+| [`reductions.py`](src/reductions.py) | the reductions, as functions taking a `WordGraph` |
+| [`solver.py`](src/solver.py) | the heuristic search and `__main__` entry points |
+| [`render_solution.py`](src/render_solution.py) | solved pickle -> playable move list or CSV tree |
 
-## Reducing the search space
+`WordGraph.from_dictionary()` turns every word into a singleton Set: **PINK** if it's a picture word or committed to the solution, **GREY** otherwise. The problem becomes: connect every PINK as cheaply as possible; a GREY costs only if kept.
+Giving a graph like:
 
-Because the picture-word list never changes, I first apply **optimality-preserving** reductions: each one provably keeps at least one optimal solution, so the smaller instance has the exact same optimum as the original. They run to a fixpoint in `optimize_all()`, each pass feeding the next, until nothing more can be removed.
+<img src="docs/01.webp" alt="The dictionary as a graph: every word a node, picture words circled in pink" width="500">
 
-* **Merge adjacent PINKs** (`merge_pink_sets`) — two PINK sets that are neighbours will both be in the answer, so contracting them into one changes nothing.
-* **Promote forced sets** (`find_necessary_sets`) — tentatively delete a GREY; if the game becomes unwinnable (some PINK can no longer be reached), that GREY was a cut point present in *every* solution, so promote it to PINK. A PINK with a single neighbour forces that neighbour the same way.
-* **Contract GREY chains** (`merge_greys`) — a degree-2 GREY whose neighbour is also a degree-2 GREY: reaching one forces passing through the other, so merge them.
-* **Drop dead & dominated GREYs** (`delete_equivalent_greys`) — a GREY with ≤1 connection is a dead end (it can never bridge two PINKs). And if GREY `B`'s neighbours are a subset of GREY `A`'s, then `A` dominates `B` — anything `B` could connect, `A` connects at least as cheaply — so `B` goes.
-* **Drop distance-dominated GREYs** (`delete_equi_greys_dist_to_pinks`) — the same idea using `dist_to_pinks`: if `B` is at least as far from every PINK as `A` is, `B` can be discarded.
-* **Drop off-path GREYs** (`delete_hard_greys`) — for every pair of PINKs, collect every Set lying on a shortest path between them; a GREY that never appears on any such path can't help and is removed. (This is the slow one — it is effectively all-pairs shortest paths.)
+### Pickles
 
-Starting from 3915 words, these bring the graph down to **2283** Sets (saved as `graph_optimal_2283.pickle`) without giving up a single optimal solution.
+`pickle` is Python's built-in **serialization** library. I used it to save graphs I was working on.
 
-## When the reductions stall: the heuristic
+| pickle | what it holds |
+|---|---|
+| `graph_full_3915.pickle` | all 3915 words as singleton Sets, no reductions (107 PINKs, 22,916 edges) |
+| `graph_optimal_2738.pickle` | the same graph after every reduction has run to a fixpoint: 2738 Sets |
+| `dist_to_pinks_2738.pickle` | the matching distance cache for `graph_optimal_2738.pickle` |
+| `graph_173.pickle` | the finished 2023 run: one connected Set of 174 words |
 
-Past 2283, no reduction fires, so `euristic()` has to *guess* which GREY to commit — and once committed, it re-runs every reduction on the now-smaller graph:
+A pickle loads only where its classes are importable (hence `from word_set import Set` before every `load`). Also, be careful: loading an untrusted one can execute arbitrary code.
 
-1. **Find the bottleneck.** `pink_cost_sort()` ranks the PINKs by how far, on average, they sit from the others; the current hardest-to-reach picture word is where a wrong choice costs the most, so we work on it first.
-2. **Pick its best neighbour.** For each candidate Set adjacent to that PINK, score it by how many PINKs it sits *near*: `sum( max(0, 7 − d)³ for d in dist_to_pinks[candidate] )`, minus the candidate's own `cost()`. The cube heavily rewards a word that is close to several picture words at once (anything farther than 7 contributes nothing); the `− cost()` penalises one that would drag in many non-picture words.
-3. **Commit and reduce.** Promote the winner to PINK, merge, and loop back through all the reductions.
+# Reductions
 
-Repeated, this closes the graph down to a single connected set. My best-tuned run reached **173 operations** (preserved in `graph_173.pickle`, and rendered as the annotated path in `results/result_playable.txt`).
+Most of the 3915 words won't be in the solution. Each reduction below is *optimality-preserving* — it keeps at least one optimal solution. `optimize_all()` loops them until nothing fires.
 
-## Persisting state with `pickle`
+* **Drop dead GREYs** (`delete_dead_greys`) — no links or single-link GREYs (dead ends).
+* **Merge adjacent PINKs** (`merge_pink_sets`) — two PINK neighbours can be merged together. The solver is done when 1 PINK remains.
+* **Merge GREY chains** (`merge_greys`) — GREY `A` linked {B, C} and GREY `B` linked {A, D}: passing through one means passing through the other, so we can merge.
+* **Promote forced sets** (`find_necessary_sets`) — tentatively delete a GREY; if some PINK becomes unreachable, that GREY is in every solution, so promote it. A PINK with one neighbour forces it too.
+* **Drop dominated GREYs** (`delete_dominated_greys`) — if `B`'s neighbours ⊆ `A`'s *and* `A` costs no more, `A` connects anything `B` could for no extra words, so drop `B`.
+* **Drop distance-dominated GREYs** (`delete_equi_greys_dist_to_pinks`) — if `B` is at least as far from every PINK as `A` and `A` costs no more, drop `B`. **This one is wrong**, see [below](#the-reduction-i-got-wrong).
 
-`pickle` is Python's built-in **serialization** library. `pickle.dump()` writes any in-memory object — a plain `dict`, or here a whole graph of custom `Set` instances together with their `.words` and `.links` — to a byte stream on disk, and `pickle.load()` rebuilds the exact same objects later, in a completely separate run of the program. It saves you from re-deriving state on every launch or hand-rolling your own file format: what you load back is indistinguishable from what you saved.
+<img src="docs/reduction.gif" alt="The reduction pipeline, hand-drawn: merge pinks, delete equivalent greys, delete hard greys, merge greys" width="700">
 
-I lean on it because both the reductions and the search are slow. `graph` and `dist_to_pinks` are dumped to / loaded from `.pickle` files via the `save()` / `load()` helpers, so a run can be stopped and resumed and expensive intermediate states can be frozen and reused. The named snapshots (`graph_optimal_2283.pickle`, `graph_173.pickle`, …) are simply those dumps captured at notable milestones.
+3915 -> **2738** Sets.
 
-Two things to know: a pickle can only be loaded where its classes are importable (hence `from common import Set` before every `load`), and pickles are *not* safe to load from untrusted sources — loading one can execute arbitrary code.
+# The heuristic
 
-## Running it yourself
+Past that point nothing fires, so `heuristic()` commits a GREY by guess, then re-runs the reductions.
 
-No dependencies beyond **Python 3** (standard library only). The code lives in `src/` (see the module table under [Structure](#structure)), and commands are run from the repo root — the `.txt` inputs and `.pickle` checkpoints sit there, and `src/common.py` reads them relative to the working directory.
+1. **Find the bottleneck.** `pink_cost_sort()` ranks PINKs by average distance to the others; the hardest to reach is where a wrong choice costs most.
+2. **Pick its best neighbour.** Score each adjacent GREY `sum( max(0, 7 − d)³ for d in dist_to_pinks[candidate] ) - cost()`. The cube rewards sitting near several picture words at once; `- cost()` penalises dragging in non-picture words. Parameter chosen empirically.
+3. **Commit and reduce.** Promote the winner to PINK, loop.
 
-```bash
-python3 src/solver.py
-```
+Loads `graph.pickle` + `dist_to_pinks.pickle`, runs the heuristic, logs to `log.txt`, saves back to `graph.pickle`.
 
-On start it loads `graph.pickle` + `dist_to_pinks.pickle`, runs the heuristic, logs each decision to `log.txt`, and saves the resulting set back to `graph.pickle`.
+# Running it
 
-### Starting from the beginning (all 3915 words)
+### From scratch
 
-The shipped `.pickle` files are pre-computed checkpoints. To regenerate them from nothing but the raw dictionary, run:
+Python 3, stdlib only.
 
 ```bash
 python3 src/solver.py init
 ```
 
-This starts from all **3915** words in `dictionary.txt`, turns each into a singleton `Set`, computes `dist_to_pinks`, then applies the optimality-preserving reductions until they reach a fixpoint — writing `graph.pickle` and `dist_to_pinks.pickle` when it finishes. This is the step that shrinks the instance from **3915 → 2283** Sets, the smaller search space the heuristic then works on. It takes about two minutes and reproduces the shipped milestone `graph_optimal_2283.pickle` exactly (2283 Sets, 76 PINKs). With those two files in place you can run the heuristic below.
+Rebuilds from `dictionary.txt`, computes `dist_to_pinks`, reduces to a fixpoint, writes both pickles. Stops before the heuristic.
+It takes around 3 minutes.
 
-> One subtlety: `optimize_all()` maintains `dist_to_pinks` only incrementally, so its stored distances drift (they stay too optimistic as Sets are deleted) and the distance-based prune stops early — a single reduction pass bottoms out around 2316 Sets. `build_from_scratch()` therefore **recomputes `dist_to_pinks` from scratch between rounds**, which unlocks the missed deletions and converges to 2283.
+### Running the heuristic
 
-### Re-running the heuristic
-
-The bundled `graph.pickle` is already a finished run, so as-is the script just re-reports that solution and exits immediately. To watch the search happen again, reset to the post-reduction checkpoint first (either the one `init` just produced, or the shipped milestone):
-
-```bash
-cp graph_optimal_2283.pickle graph.pickle
-cp "dist_to_pinks_2283.pickle"  dist_to_pinks.pickle
-python3 src/solver.py        # now "euristic: added ..." lines appear in log.txt
-```
-
-A full run is slow — the `delete_hard_greys` all-pairs pass dominates the time. Reaching the record 173 also involved hand-tuning the heuristic's weights and stop threshold, so a fresh run lands *near* — not necessarily on — 173; the record itself is preserved in `graph_173.pickle` / `results/result_playable.txt`.
-
-### Rendering the solution (path or CSV)
-
-A solved `graph` pickle stores the answer as a bare *set* of words. `src/render_solution.py` walks a spanning tree of that set — starting from the WORM → WORD → WARD → DRAW opening — and renders it in either of two formats. Run from the repo root:
+After having created a graph.pickle from the previous step:
 
 ```bash
-# the playable move list: +1 per new word, free `>` undos
-python3 src/render_solution.py "graph_173.pickle"                             # -> stdout
-python3 src/render_solution.py "graph_173.pickle" results/result_playable.txt
-
-# the spanning tree as a spreadsheet: word;isKeyWord;parent;children
-python3 src/render_solution.py "graph_173.pickle" results/result_csv_view.csv  # inferred from .csv
-python3 src/render_solution.py "graph_173.pickle" --csv                  # -> stdout
+python3 src/solver.py
 ```
 
-Because a spanning tree of *N* words has *N* − 1 edges, the move list is always exactly *N* − 1 operations. The generated files in `results/` are the human-readable twins of the `graph_173.pickle` checkpoint.
+Note that there is some randomness involved as ties can happen, to get the exact result [`results/result_playable_171.txt`](results/result_playable_171.txt), run:
 
-# AI improvements
+```bash
+PYTHONHASHSEED=2 python3 src/solver.py     # 172 words, 171 operations
+```
 
-This project was started on 2023. Now with AI tools I have found new ways to improve it.
-Name the problem: this is the Steiner Tree Problem in Graphs. My reductions are the Duin–Volgenant / Polzin family.
-delete_hard_greys is (I believe) not optimality-preserving
+This will update the graph.pickle. It takes around 12 minutes.
 
+### Readable solution
+
+```bash
+# playable move list: +1 per new word, free `>` undos
+python3 src/render_solution.py "graph_173.pickle"                                 # -> stdout
+python3 src/render_solution.py "graph_173.pickle" results/result_playable_173.txt
+
+# spanning tree as a spreadsheet: word;isKeyWord;parent;children
+python3 src/render_solution.py "graph_173.pickle" results/result_csv_view.csv     # inferred from .csv
+python3 src/render_solution.py "graph_173.pickle" --csv                           # -> stdout
+```
+
+# Appendix: AI improvements (2026)
+
+Came back to this with Claude, to check the solution and clean up the code. Findings:
+
+The problem has a name: the **[node-weighted Steiner tree problem](https://en.wikipedia.org/wiki/Steiner_tree_problem)**. PINKs are terminals (weight 0, mandatory), GREYs are Steiner nodes (optional, weight = how many non-picture words they hold). My reductions turn out to be textbook — except one, which is wrong.
+
+It tried other approaches, but the most effective one was still reusing my heuristic. The AI could test different seedings and parameters. The loss function was changed from `max(0, 7 − d)³` to `max(0, 4 − d)³`. Result: **171 operations**, two better than 2023.
+
+### The reduction I got wrong
+
+<img src="docs/wrong_reduction.webp" alt="bad reduction" width="700">
+
+`delete_equi_greys_dist_to_pinks` can remove an optimal solution: node A has the same PINK distances as B and could get dropped.

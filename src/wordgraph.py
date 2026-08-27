@@ -8,6 +8,8 @@ committed to the solution (`Set.isKey`), and GREY otherwise.
 This module owns the *state* and the operations on it. The reductions that shrink
 the graph live in `reductions.py`, and the heuristic search in `solver.py`.
 """
+from __future__ import annotations
+
 from word_set import KEYWORDS, dictionary, Set
 from utils import load, save, log, find_all_branches
 
@@ -194,7 +196,10 @@ class WordGraph:
                     if link in tree:
                         del links[link]
 
-            del links[key]
+            # drop the seed from line 163: it is the accumulator's base case, not a
+            # distance to a PINK. In "hard" mode the sweep above already took it out
+            # (the origin is always in tree), so this has to tolerate it being gone.
+            links.pop(key, None)
             self.dist_to_pinks[key] = links
 
         if save_result:
@@ -227,8 +232,9 @@ class WordGraph:
         return sorted(averages.items(), key=lambda item: item[1])
 
     def shortest_paths(self, start_set, end_set):
-        """Every Set lying on a shortest path between two Set ids (used by
-        delete_hard_greys)."""
+        """Every Set lying on a shortest path between two Set ids. Counts hops, not
+        words, so a "shortest" path can hold more words than a longer one once Sets
+        have been merged. No longer used by any reduction — see `optimize_all`."""
         if start_set == end_set:
             return set()
 
