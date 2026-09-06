@@ -2,23 +2,6 @@ This project solves the word game **wordward-draw** (https://managore.itch.io/wo
 
 Originally written in 2023, it scored **173 operations**. Revisited with AI assistance in 2026: **171 operations**.
 
-## Contents
-
-* [The game](#the-game)
-* [The result](#the-result)
-* [Paths to trees](#paths-to-trees)
-* [Complexity](#complexity)
-* [Code structure](#code-structure)
-  * [Pickles](#pickles)
-* [Reductions](#reductions)
-* [The heuristic](#the-heuristic)
-* [Running it](#running-it)
-  * [From scratch](#from-scratch)
-  * [Running the heuristic](#running-the-heuristic)
-  * [Readable solution](#readable-solution)
-* [Appendix: AI improvements (2026)](#appendix-ai-improvements-2026)
-  * [The reduction I got wrong](#the-reduction-i-got-wrong)
-
 # The game
 
 Start from a 4-letter word. You can move to another word if:
@@ -100,14 +83,14 @@ class WordGraph:
     dist_to_pinks : dict[str, dict[str, int]]    # each Set's distance to every PINK it can reach
 ```
 
-| module | holds |
+<!-- | module | holds |
 |---|---|
 | [`word_set.py`](src/word_set.py) | `Set`, plus `KEYWORDS` / `dictionary` loaded from the `.txt` files |
 | [`utils.py`](src/utils.py) | `load` / `save` (pickle), `log`, word moves (`find_all_branches`) |
 | [`wordgraph.py`](src/wordgraph.py) | `WordGraph` and every operation on it |
 | [`reductions.py`](src/reductions.py) | the reductions, as functions taking a `WordGraph` |
 | [`solver.py`](src/solver.py) | the heuristic search and `__main__` entry points |
-| [`render_solution.py`](src/render_solution.py) | solved pickle -> playable move list or CSV tree |
+| [`render_solution.py`](src/render_solution.py) | solved pickle -> playable move list or CSV tree | -->
 
 `WordGraph.from_dictionary()` turns every word into a singleton Set: **PINK** if it's a picture word or committed to the solution, **GREY** otherwise. The problem becomes: connect every PINK as cheaply as possible; a GREY costs only if kept.
 Giving a graph like:
@@ -121,22 +104,18 @@ Giving a graph like:
 | pickle | what it holds |
 |---|---|
 | `graph_full_3915.pickle` | all 3915 words as singleton Sets, no reductions (107 PINKs, 22,916 edges) |
-| `graph_optimal_2738.pickle` | the same graph after every reduction has run to a fixpoint: 2738 Sets |
-| `dist_to_pinks_2738.pickle` | the matching distance cache for `graph_optimal_2738.pickle` |
-| `graph_173.pickle` | the finished 2023 run: one connected Set of 174 words |
-
-A pickle loads only where its classes are importable (hence `from word_set import Set` before every `load`). Also, be careful: loading an untrusted one can execute arbitrary code.
+| `graph.pickle` | the pickle the heuristic will load |
 
 # Reductions
 
 Most of the 3915 words won't be in the solution. Each reduction below is *optimality-preserving* — it keeps at least one optimal solution. `optimize_all()` loops them until nothing fires.
 
-* **Drop dead GREYs** (`delete_dead_greys`) — no links or single-link GREYs (dead ends).
+<!-- * **Drop dead GREYs** (`delete_dead_greys`) — no links or single-link GREYs (dead ends).
 * **Merge adjacent PINKs** (`merge_pink_sets`) — two PINK neighbours can be merged together. The solver is done when 1 PINK remains.
 * **Merge GREY chains** (`merge_greys`) — GREY `A` linked {B, C} and GREY `B` linked {A, D}: passing through one means passing through the other, so we can merge.
 * **Promote forced sets** (`find_necessary_sets`) — tentatively delete a GREY; if some PINK becomes unreachable, that GREY is in every solution, so promote it. A PINK with one neighbour forces it too.
 * **Drop dominated GREYs** (`delete_dominated_greys`) — if `B`'s neighbours ⊆ `A`'s *and* `A` costs no more, `A` connects anything `B` could for no extra words, so drop `B`.
-* **Drop distance-dominated GREYs** (`delete_equi_greys_dist_to_pinks`) — if `B` is at least as far from every PINK as `A` and `A` costs no more, drop `B`. **This one is wrong**, see [below](#the-reduction-i-got-wrong).
+* **Drop distance-dominated GREYs** (`delete_equi_greys_dist_to_pinks`) — if `B` is at least as far from every PINK as `A` and `A` costs no more, drop `B`. **This one is wrong**, see [below](#the-reduction-i-got-wrong). -->
 
 <img src="docs/reduction.gif" alt="The reduction pipeline, hand-drawn: merge pinks, delete equivalent greys, delete hard greys, merge greys" width="700">
 
