@@ -174,7 +174,7 @@ python3 src/render_solution.py "graph_173.pickle" --csv                         
 
 # Appendix: AI improvements (2026)
 
-Came back to this with Claude, to check the solution and clean up the code. Findings:
+Came back to this with Claude, to check the solution and clean up the code.
 
 The problem has a name: the **[node-weighted Steiner tree problem](https://en.wikipedia.org/wiki/Steiner_tree_problem)**. PINKs are terminals (weight 0, mandatory), GREYs are Steiner nodes (optional, weight = how many non-picture words they hold). My reductions turn out to be textbook — except one, which is wrong.
 
@@ -184,4 +184,4 @@ It tried other approaches, but the most effective one was still reusing my heuri
 
 <img src="docs/wrong_reduction.webp" alt="bad reduction" width="700">
 
-`delete_equi_greys_dist_to_pinks` can remove an optimal solution: node A has the same PINK distances as B and could get dropped.
+**Drop distance dominated Greys** can remove an optimal solution: node A has the same PINK distances as B and could get dropped.
